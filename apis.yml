@@ -1,8 +1,25 @@
 aid: alkemics
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/alkemics.png
 name: Alkemics
-description: 'Alkemics is a company surfaced as a portfolio company of partech and added to the API Evangelist
-  network as a stub for enrichment. Sector: Applicative SaaS. This profile is a lead awaiting the enrichment
-  pipeline.'
+description: 'Alkemics was a French SaaS company founded in 2011 in Paris that operated a collaborative
+  commerce platform connecting consumer packaged goods (CPG) brands and retailers to share, enrich, and
+  distribute product content and data across the FMCG/grocery supply chain. Backed by investors including
+  Partech, Cathay Innovation, and Serena, Alkemics was acquired by Salsify (a US product experience
+  management company) in October 2020. The product now lives on as "SupplierXM by Salsify"; alkemics.com
+  and docs.alkemics.com redirect to Salsify, and the successor developer documentation is hosted at
+  docs.supplierxm.salsify.com. This company profile is preserved in the API Evangelist network with an
+  honest acquisition/successor record. No independent Alkemics-owned API surface remains.'
 url: https://raw.githubusercontent.com/api-evangelist/alkemics/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -12,10 +29,20 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
+x-acquired-by: salsify
+x-acquired-date: '2020-10'
+x-successor-product: SupplierXM by Salsify
 tags:
 - Company
 - Applicative Saas
+- Product Content
+- Product Information Management
+- CPG
+- Retail
+- Ecommerce
+- Data Syndication
+- Acquired
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -23,5 +50,20 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/alkemics-domain-security.yml
+- type: WellKnown
+  url: well-known/alkemics-well-known.yml
 - type: Website
   url: https://www.alkemics.com/
+- type: Documentation
+  name: SupplierXM by Salsify API Reference (successor to the Alkemics API)
+  url: https://docs.supplierxm.salsify.com/reference
+- type: Company
+  name: Salsify (acquirer)
+  url: https://www.salsify.com/
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

@@ -1,0 +1,27 @@
+generated: '2026-07-17'
+method: searched
+source: live probes of https://www.alkemics.com/.well-known/*
+note: >-
+  alkemics.com no longer serves an independent web or API surface. Every
+  probed path returns 301 Moved Permanently and redirects to the acquirer
+  (https://www.salsify.com/). Alkemics was acquired by Salsify in October 2020
+  and the product is now marketed as "SupplierXM by Salsify"; the successor
+  developer docs live at https://docs.supplierxm.salsify.com/. No Alkemics-owned
+  well-known documents exist. Empty result is expected and valid.
+host: https://www.alkemics.com
+documents:
+- path: /.well-known/security.txt
+  status: 301
+  redirects_to: https://www.salsify.com/
+- path: /.well-known/openid-configuration
+  status: 301
+  redirects_to: https://www.salsify.com/
+- path: /.well-known/oauth-authorization-server
+  status: 301
+  redirects_to: https://www.salsify.com/
+- path: /.well-known/api-catalog
+  status: 301
+  redirects_to: https://www.salsify.com/
+- path: /.well-known/ai-plugin.json
+  status: 301
+  redirects_to: https://www.salsify.com/
