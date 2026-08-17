@@ -1,0 +1,111 @@
+generated: '2026-08-17'
+method: searched
+source: >-
+  npm registry search + registry.npmjs.org metadata, pypi.org/pypi/<pkg>/json,
+  proxy.golang.org, and the live github.com/alkemics organization
+  (https://api.github.com/orgs/alkemics — 5 public repositories, org blog now
+  https://www.salsify.com/fr/, org description "Salsify SupplierXM")
+note: >-
+  IMPORTANT — none of these is an API client SDK. Alkemics never published a client
+  library for its own API, and no such package exists on npm, PyPI, RubyGems,
+  Packagist, crates.io, NuGet, Maven Central or pkg.go.dev. What the company did
+  publish, and still owns, is a small set of general-purpose open-source developer
+  utilities under the github.com/alkemics organization. They are recorded here as
+  genuine first-party output and as dated decay evidence, but NO common[] SDKs
+  pointer is emitted from this file: there is no Alkemics API for them to wrap, so
+  crediting them as SDKs would be false credit.
+  The GitHub organization survived the October 2020 Salsify acquisition and is still
+  maintained (goflow last pushed 2026-08-03), which is the only live first-party
+  engineering surface the Alkemics name still has.
+github_organization: https://github.com/alkemics
+sdk_count: 0
+package_count: 4
+packages:
+- language: javascript
+  registry: npm
+  name: cancelable-promise
+  url: https://www.npmjs.com/package/cancelable-promise
+  install: npm install cancelable-promise
+  repository: https://github.com/alkemics/CancelablePromise
+  official: true
+  api_client: false
+  version: 4.3.1
+  published: '2022-10-14'
+  note: >-
+    A cancelable Promise implementation in TypeScript. First-party Alkemics OSS, not
+    an API SDK. Repository is still active (last pushed 2026-07-26) but the published
+    npm release has not moved since 2022-10-14.
+- language: javascript
+  registry: npm
+  name: cauliflower
+  url: https://www.npmjs.com/package/cauliflower
+  install: npm install cauliflower
+  repository: https://github.com/alkemics/cauliflower
+  official: true
+  api_client: false
+  version: 0.1.4
+  published: '2016-12-12'
+  note: >-
+    A simple error-handler library. Repository is ARCHIVED on GitHub; last npm release
+    2016-12-12. Abandoned.
+- language: python
+  registry: pypi
+  name: pandagg
+  url: https://pypi.org/project/pandagg/
+  install: pip install pandagg
+  repository: https://github.com/alkemics/pandagg
+  official: true
+  api_client: false
+  version: 0.2.4
+  published: '2022-03-08'
+  note: >-
+    Pandas-style interface for Elasticsearch queries and aggregations, authored inside
+    Alkemics. Repository still receives commits (last pushed 2026-04-01) but the
+    published PyPI release has not moved since 2022-03-08.
+- language: go
+  registry: go
+  name: github.com/alkemics/goflow
+  url: https://pkg.go.dev/github.com/alkemics/goflow
+  install: go get github.com/alkemics/goflow
+  repository: https://github.com/alkemics/goflow
+  official: true
+  api_client: false
+  version: v0.3.2
+  published: '2025-04-30'
+  note: >-
+    Go code generator. The most recently released first-party package; module version
+    read from proxy.golang.org/github.com/alkemics/goflow/@latest.
+excluded:
+- name: snapshottest
+  registry: pypi
+  reason: >-
+    github.com/alkemics/snapshottest is an ARCHIVED FORK. The PyPI package
+    (pypi.org/project/snapshottest/, 0.6.0, 2020-09-29) is authored by Syrus Akbary
+    and homed at github.com/syrusakbary/snapshottest — not Alkemics. Excluded to avoid
+    attributing a third party's package to this company.
+- name: alkemicscomponents
+  registry: npm
+  reason: >-
+    npm package alkemicscomponents 1.0.0 (published 2018-10-08) carries the Alkemics
+    name but has no description, no repository, no homepage and a personal author
+    field. First-party ownership cannot be established, so it is not claimed. Recorded
+    here so a later round does not re-discover it and guess.
+registries_checked:
+- registry: npm
+  result: 4 name-matching results, 2 first-party (see packages[])
+- registry: pypi
+  result: no `alkemics` project (HTTP 404); pandagg is the one first-party project
+- registry: rubygems
+  result: empty search result for "alkemics"
+- registry: go
+  result: github.com/alkemics/goflow only
+- registry: crates.io
+  result: 'crates.io/api/v1/crates?q=alkemics returned total: 0'
+- registry: nuget
+  result: azuresearch-usnc.nuget.org query "alkemics" returned totalHits 0
+- registry: maven-central
+  result: search.maven.org solrsearch "alkemics" returned numFound 0
+- registry: packagist
+  result: >-
+    packagist.org/search.json?q=alkemics returned 2 unrelated fuzzy matches
+    (alkimisti/simplerouter, aldemirsouza/cafeapi) and no Alkemics package

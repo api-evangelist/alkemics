@@ -29,7 +29,7 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-18'
+modified: '2026-08-17'
 x-acquired-by: salsify
 x-acquired-date: '2020-10'
 x-successor-product: SupplierXM by Salsify
@@ -52,8 +52,18 @@ maintainers:
 common:
 - type: DomainSecurity
   url: security/alkemics-domain-security.yml
-- type: WellKnown
-  url: well-known/alkemics-well-known.yml
+- type: Lifecycle
+  name: Terminal lifecycle record — acquisition, DNS removal, and the 301 migration to SupplierXM
+  url: lifecycle/alkemics-lifecycle.yml
+- type: Packages
+  name: First-party open-source packages published by Alkemics (no API client SDK exists)
+  url: packages/alkemics-packages.yml
+- type: LLMsTxt
+  name: Generated llms.txt — points agents at the Salsify successor rather than a dead host
+  url: llms/alkemics-llms.txt
+- type: GitHubOrganization
+  name: github.com/alkemics — organization survived the acquisition, now labelled "Salsify SupplierXM"
+  url: https://github.com/alkemics
 - type: Website
   url: https://www.alkemics.com/
 - type: Documentation
@@ -63,7 +73,33 @@ common:
   name: Salsify (acquirer)
   url: https://www.salsify.com/
 x-enrichment:
-  date: '2026-07-19'
-  status: backfilled
+  date: '2026-08-17'
+  status: minimal
+  artifacts_added: 3
   pass: local-v1
-  note: backfilled from .gitignore signal + verified work evidence
+  note: >-
+    Full contract-discovery pass run against every surviving Alkemics host. No API
+    surface exists. Removed the WellKnown common[] pointer because its own probe
+    records HTTP 301 on every path and never a 200 document. Added a terminal
+    lifecycle record, a first-party package inventory (4 OSS packages, 0 SDKs) and a
+    generated llms.txt that routes agents to the Salsify successor.
+x-coverage:
+  state: none
+  reason: defunct
+  detail: >-
+    Alkemics was fully absorbed by Salsify in October 2020 — alkemics.com and
+    docs.alkemics.com now answer only HTTP 301 to salsify.com and
+    docs.supplierxm.salsify.com, and api.alkemics.com returns NXDOMAIN, so there is no
+    Alkemics-owned host left to serve a contract.
+  evidence:
+  - url: https://www.alkemics.com/
+    status: 301
+  - url: https://docs.alkemics.com/openapi.json
+    status: 301
+  - url: https://api.alkemics.com/
+    status: 0
+  - url: https://www.alkemics.com/.well-known/agent-card.json
+    status: 301
+  - url: https://github.com/alkemics
+    status: 200
+  checked: '2026-08-17'

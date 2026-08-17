@@ -1,27 +1,93 @@
-generated: '2026-07-17'
-method: searched
-source: live probes of https://www.alkemics.com/.well-known/*
+generated: '2026-08-17'
+method: probed
+source: live probes of https://www.alkemics.com/.well-known/* and https://docs.alkemics.com/.well-known/*
 note: >-
-  alkemics.com no longer serves an independent web or API surface. Every
-  probed path returns 301 Moved Permanently and redirects to the acquirer
-  (https://www.salsify.com/). Alkemics was acquired by Salsify in October 2020
-  and the product is now marketed as "SupplierXM by Salsify"; the successor
-  developer docs live at https://docs.supplierxm.salsify.com/. No Alkemics-owned
-  well-known documents exist. Empty result is expected and valid.
-host: https://www.alkemics.com
-documents:
-- path: /.well-known/security.txt
-  status: 301
-  redirects_to: https://www.salsify.com/
-- path: /.well-known/openid-configuration
-  status: 301
-  redirects_to: https://www.salsify.com/
-- path: /.well-known/oauth-authorization-server
-  status: 301
-  redirects_to: https://www.salsify.com/
-- path: /.well-known/api-catalog
-  status: 301
-  redirects_to: https://www.salsify.com/
-- path: /.well-known/ai-plugin.json
-  status: 301
-  redirects_to: https://www.salsify.com/
+  Alkemics no longer serves an independent web or API surface. Every probed path on
+  both surviving Alkemics hosts returns 301 Moved Permanently: www.alkemics.com
+  redirects to the acquirer's marketing site (https://www.salsify.com/fr/) and
+  docs.alkemics.com redirects path-for-path to the successor documentation host
+  (https://docs.supplierxm.salsify.com/). api.alkemics.com and
+  developer.alkemics.com no longer resolve in DNS at all. Alkemics was acquired by
+  Salsify in October 2020 and the product is now marketed as "SupplierXM by Salsify".
+  NOT ONE probed path returned a 200 carrying a real document, so this file records a
+  verified ABSENCE and deliberately carries NO common[] WellKnown or SecurityTxt
+  pointer — an absence must not be scored as a presence. Empty result is expected
+  and valid for an absorbed company.
+hosts:
+- host: https://www.alkemics.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 301
+    redirects_to: https://www.salsify.com/
+  - path: /.well-known/openid-configuration
+    status: 301
+    redirects_to: https://www.salsify.com/
+  - path: /.well-known/oauth-authorization-server
+    status: 301
+    redirects_to: https://www.salsify.com/
+  - path: /.well-known/api-catalog
+    status: 301
+    redirects_to: https://www.salsify.com/
+  - path: /.well-known/ai-plugin.json
+    status: 301
+    redirects_to: https://www.salsify.com/
+  - path: /.well-known/agent-card.json
+    status: 301
+    redirects_to: https://www.salsify.com/
+  - path: /.well-known/agent.json
+    status: 301
+    redirects_to: https://www.salsify.com/
+  - path: /llms.txt
+    status: 301
+    redirects_to: https://www.salsify.com/
+  - path: /openapi.json
+    status: 301
+    redirects_to: https://www.salsify.com/
+  - path: /swagger.json
+    status: 301
+    redirects_to: https://www.salsify.com/
+- host: https://docs.alkemics.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 301
+    redirects_to: https://docs.supplierxm.salsify.com/.well-known/security.txt
+  - path: /.well-known/openid-configuration
+    status: 301
+    redirects_to: https://docs.supplierxm.salsify.com/.well-known/openid-configuration
+  - path: /.well-known/oauth-authorization-server
+    status: 301
+    redirects_to: https://docs.supplierxm.salsify.com/.well-known/oauth-authorization-server
+  - path: /.well-known/api-catalog
+    status: 301
+    redirects_to: https://docs.supplierxm.salsify.com/.well-known/api-catalog
+  - path: /.well-known/ai-plugin.json
+    status: 301
+    redirects_to: https://docs.supplierxm.salsify.com/.well-known/ai-plugin.json
+  - path: /.well-known/agent-card.json
+    status: 301
+    redirects_to: https://docs.supplierxm.salsify.com/.well-known/agent-card.json
+  - path: /.well-known/agent.json
+    status: 301
+    redirects_to: https://docs.supplierxm.salsify.com/.well-known/agent.json
+  - path: /llms.txt
+    status: 301
+    redirects_to: https://docs.supplierxm.salsify.com/llms.txt
+  - path: /openapi.json
+    status: 301
+    redirects_to: https://docs.supplierxm.salsify.com/openapi.json
+  - path: /swagger.json
+    status: 301
+    redirects_to: https://docs.supplierxm.salsify.com/swagger.json
+dns:
+- host: api.alkemics.com
+  resolves: false
+- host: developer.alkemics.com
+  resolves: false
+- host: app.alkemics.com
+  resolves: false
+- host: www.alkemics.com
+  resolves: true
+  a: 13.95.154.42
+- host: docs.alkemics.com
+  resolves: true
+  a: 13.95.154.42

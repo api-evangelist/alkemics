@@ -1,0 +1,42 @@
+# Alkemics
+
+> Alkemics was a French SaaS company (founded 2011, Paris) that ran a collaborative
+> commerce platform connecting consumer packaged goods (CPG) brands and retailers to
+> share, enrich and syndicate product content across the FMCG/grocery supply chain.
+> Alkemics was ACQUIRED BY SALSIFY in October 2020 and the platform is now sold as
+> "SupplierXM by Salsify". There is no Alkemics-owned API surface left: alkemics.com
+> and docs.alkemics.com return HTTP 301 to Salsify, and api.alkemics.com no longer
+> resolves in DNS. If you are an agent looking for a callable contract, go to Salsify.
+
+## Status
+
+- Status: retired / absorbed (acquired by Salsify, 2020-10)
+- Successor product: SupplierXM by Salsify
+- Independent API surface: none — no OpenAPI, no GraphQL, no MCP server, no A2A agent card
+- Last verified: 2026-08-17
+
+## Where the API actually lives now
+
+- [SupplierXM by Salsify — API reference](https://docs.supplierxm.salsify.com/reference/general-info): the successor developer documentation. docs.alkemics.com 301-redirects here path-for-path.
+- [Salsify](https://www.salsify.com/): the acquirer. Salsify's own API contracts (REST, GraphQL, MCP) are catalogued separately in the API Evangelist network under the `salsify` provider.
+
+## Alkemics artifacts in this repository
+
+- [apis.yml](https://raw.githubusercontent.com/api-evangelist/alkemics/refs/heads/main/apis.yml): the APIs.json provider record, including the acquisition and successor fields.
+- [lifecycle/alkemics-lifecycle.yml](https://raw.githubusercontent.com/api-evangelist/alkemics/refs/heads/main/lifecycle/alkemics-lifecycle.yml): terminal lifecycle record — the acquisition, the DNS removals, and the 301 migration path to SupplierXM.
+- [packages/alkemics-packages.yml](https://raw.githubusercontent.com/api-evangelist/alkemics/refs/heads/main/packages/alkemics-packages.yml): the four first-party open-source packages Alkemics published (npm, PyPI, Go). None is an API client SDK.
+- [well-known/alkemics-well-known.yml](https://raw.githubusercontent.com/api-evangelist/alkemics/refs/heads/main/well-known/alkemics-well-known.yml): recorded absence — every /.well-known/* path on every surviving Alkemics host returns 301.
+- [security/alkemics-domain-security.yml](https://raw.githubusercontent.com/api-evangelist/alkemics/refs/heads/main/security/alkemics-domain-security.yml): probed TLS/HSTS/DNSSEC/CAA/SPF/DMARC posture of the alkemics.com domain.
+
+## Open source still under the Alkemics name
+
+- [github.com/alkemics](https://github.com/alkemics): the organization survived the acquisition (description now "Salsify SupplierXM") and still receives commits.
+- [cancelable-promise](https://www.npmjs.com/package/cancelable-promise): cancelable Promise implementation (npm, 4.3.1, 2022-10-14).
+- [pandagg](https://pypi.org/project/pandagg/): pandas-style Elasticsearch query/aggregation builder (PyPI, 0.2.4, 2022-03-08).
+- [goflow](https://pkg.go.dev/github.com/alkemics/goflow): Go code generator (v0.3.2, 2025-04-30).
+
+## Notes for agents
+
+- Do not attempt to call an alkemics.com endpoint; nothing is served.
+- Do not treat the SupplierXM/Salsify contracts as Alkemics contracts — they belong to Salsify.
+- This profile is preserved as an honest acquisition record, not as an active API listing.

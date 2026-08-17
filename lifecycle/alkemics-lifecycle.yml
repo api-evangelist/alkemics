@@ -1,0 +1,87 @@
+generated: '2026-08-17'
+method: probed
+source: >-
+  live HTTP/DNS probes of alkemics.com, www.alkemics.com, docs.alkemics.com,
+  api.alkemics.com, developer.alkemics.com, app.alkemics.com on 2026-08-17
+note: >-
+  This is a TERMINAL lifecycle record, not an active versioning policy. Alkemics the
+  independent API provider no longer exists: the company was acquired by Salsify in
+  October 2020 and the platform was rebranded "SupplierXM by Salsify". Alkemics
+  published no deprecation policy, no sunset notice, no SLA and no status page of its
+  own before the surface went away — the shutdown is observable only as DNS removal
+  and HTTP 301s. Accordingly this file deliberately carries NO StatusPage and NO
+  Deprecation common[] pointer; there is no such Alkemics-published page to point at,
+  and emitting one would credit a policy the company never wrote.
+status: retired
+lifecycle_stage: absorbed
+acquisition:
+  acquirer: Salsify
+  acquirer_url: https://www.salsify.com/
+  date: '2020-10'
+  successor_product: SupplierXM by Salsify
+  successor_docs: https://docs.supplierxm.salsify.com/reference/general-info
+  successor_repo: all/salsify
+versioning:
+  scheme: unknown
+  current: null
+  docs: null
+  note: >-
+    No Alkemics versioning policy is recoverable from any live Alkemics-controlled
+    surface. Every documentation URL now resolves to Salsify's SupplierXM reference.
+deprecation:
+  policy_url: null
+  sunset_header: unknown
+  announced: false
+  note: >-
+    No RFC 8594 Sunset/Deprecation header could be observed because no Alkemics API
+    host answers. api.alkemics.com does not resolve in DNS.
+sla:
+  url: null
+  uptime_target: null
+status_page: null
+migration:
+  mechanism: path-preserving HTTP 301 redirect
+  from: https://docs.alkemics.com/
+  to: https://docs.supplierxm.salsify.com/
+  evidence: >-
+    GET https://docs.alkemics.com/ -> 301 https://docs.supplierxm.salsify.com/ and
+    GET https://docs.alkemics.com/openapi.json -> 301
+    https://docs.supplierxm.salsify.com/openapi.json (probed 2026-08-17). The redirect
+    is path-preserving, which is the only migration guidance the Alkemics domain still
+    provides to an integrator or an agent.
+  note: >-
+    The SupplierXM/Salsify contracts belong to Salsify and are catalogued in
+    all/salsify/ — they are deliberately NOT copied into this repo. See the ownership
+    rule in 0-working/pipeline-enrich.md STEP 0c.
+hosts:
+- host: alkemics.com
+  status: 301
+  redirects_to: https://www.salsify.com/fr/
+- host: www.alkemics.com
+  status: 301
+  redirects_to: https://www.salsify.com/fr/
+- host: docs.alkemics.com
+  status: 301
+  redirects_to: https://docs.supplierxm.salsify.com/
+- host: api.alkemics.com
+  status: null
+  resolves: false
+  note: NXDOMAIN — no DNS record
+- host: developer.alkemics.com
+  status: null
+  resolves: false
+  note: NXDOMAIN — no DNS record
+- host: app.alkemics.com
+  status: null
+  resolves: false
+  note: NXDOMAIN — no DNS record
+surviving_surfaces:
+- surface: GitHub organization
+  url: https://github.com/alkemics
+  status: 200
+  note: >-
+    5 public repositories, org description now "Salsify SupplierXM", org blog
+    https://www.salsify.com/fr/. Still receiving commits (goflow pushed 2026-08-03).
+    Open-source utilities only — no API specification, no client SDK. See
+    packages/alkemics-packages.yml.
+deprecated_operations: []
