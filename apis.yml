@@ -46,6 +46,9 @@ modified: '2026-08-17'
 x-acquired-by: salsify
 x-acquired-date: '2020-10'
 x-successor-product: SupplierXM by Salsify
+x-docs-platform: readme
+x-docs-platform-confidence: high
+x-docs-platform-checked: 2026-09-17
 tags:
 - Company
 - Applicative Saas
