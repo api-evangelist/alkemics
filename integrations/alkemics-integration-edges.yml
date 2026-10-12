@@ -1,0 +1,16 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/alkemics/integrations
+- https://n8n.io/integrations/alkemics/
+- https://composio.dev/toolkits/alkemics
+- https://monid.ai/tools/alkemics
+checked:
+- https://composio.dev/toolkits/alkemics
+- https://monid.ai/tools/alkemics
+- https://n8n.io/integrations/alkemics/
+- https://zapier.com/apps/alkemics/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
