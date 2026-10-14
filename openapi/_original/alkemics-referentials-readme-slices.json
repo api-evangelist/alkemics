@@ -1,0 +1,105 @@
+[
+ {
+  "page": "https://docs.supplierxm.salsify.com/reference/list-referential-code-values.md",
+  "definition": {
+   "openapi": "3.1.0",
+   "info": {
+    "title": "referentials",
+    "version": "2.1"
+   },
+   "servers": [
+    {
+     "url": "https://apis.supplierxm.salsify.com/field/documentation/v1/downloads/referentials"
+    }
+   ],
+   "components": {
+    "securitySchemes": {
+     "sec0": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "Authorization",
+      "x-bearer-format": "bearer",
+      "x-default": "SALSIFY"
+     }
+    }
+   },
+   "security": [
+    {
+     "sec0": []
+    }
+   ],
+   "paths": {
+    "/": {
+     "post": {
+      "summary": "List referential code values",
+      "description": "",
+      "operationId": "list-referential-code-values",
+      "requestBody": {
+       "content": {
+        "application/json": {
+         "schema": {
+          "type": "object",
+          "properties": {
+           "root": {
+            "type": "integer",
+            "description": "Filters the unit type. (FIELD_ROOT_UNKNOWN=0 / CONSUMER_UNIT=1 / PICTURE=2 / VIDEO=3 / ENRICHED_CONTENT=4 / DOCUMENT=5 / SHARING_UNIT=6 / DISPLAY_UNIT=7 / LOGISTICAL_UNIT=8 / RFP_EVENT=9 / RFP_BU=10 / RFP_SUPPLIER=11 / ORGANIZATION=12 / RFP_PROPOSAL=13)",
+            "default": 0,
+            "format": "int32"
+           },
+           "lang": {
+            "type": "string",
+            "description": "Is going to translate some of the label & description in the chosen language",
+            "default": "en"
+           }
+          }
+         }
+        }
+       }
+      },
+      "responses": {
+       "200": {
+        "description": "200",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {}
+          }
+         }
+        }
+       },
+       "400": {
+        "description": "400",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {}
+          }
+         }
+        }
+       }
+      },
+      "deprecated": false
+     }
+    }
+   },
+   "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+   },
+   "x-readme-fauxas": true
+  }
+ }
+]

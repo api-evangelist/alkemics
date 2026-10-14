@@ -1,0 +1,234 @@
+[
+ {
+  "page": "https://docs.supplierxm.salsify.com/reference/request-engine-import-1.md",
+  "definition": {
+   "openapi": "3.1.0",
+   "info": {
+    "title": "information-requests",
+    "version": "2.1"
+   },
+   "servers": [
+    {
+     "url": "https://apis.supplierxm.salsify.com/public/v1/products/requests"
+    }
+   ],
+   "components": {
+    "securitySchemes": {
+     "sec0": {
+      "type": "oauth2",
+      "flows": {}
+     }
+    }
+   },
+   "security": [
+    {
+     "sec0": []
+    }
+   ],
+   "paths": {
+    "/track/{tracker_id}": {
+     "get": {
+      "summary": "Request Engine import tracking",
+      "description": "",
+      "operationId": "request-engine-import-1",
+      "parameters": [
+       {
+        "name": "tracker_id",
+        "in": "path",
+        "schema": {
+         "type": "integer",
+         "format": "int32"
+        },
+        "required": true
+       }
+      ],
+      "responses": {
+       "200": {
+        "description": "200",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{\n  \"status\": \"SUCCESS\", \n  \"count\": 1, \n\t\"tracking\": 42, \n  \"products\": [\n    {\n      \"status\": \"SUCCESS\", \n      \"message\": \"\", \n      \"gtin\": \"0123456789123\"\n    }\n  ]\n}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {
+            "status": {
+             "type": "string",
+             "example": "SUCCESS"
+            },
+            "count": {
+             "type": "integer",
+             "example": 1,
+             "default": 0
+            },
+            "tracking": {
+             "type": "integer",
+             "example": 42,
+             "default": 0
+            },
+            "products": {
+             "type": "array",
+             "items": {
+              "type": "object",
+              "properties": {
+               "status": {
+                "type": "string",
+                "example": "SUCCESS"
+               },
+               "message": {
+                "type": "string",
+                "example": ""
+               },
+               "gtin": {
+                "type": "string",
+                "example": "0123456789123"
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      },
+      "deprecated": false
+     }
+    }
+   },
+   "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+   },
+   "x-readme-fauxas": true
+  }
+ },
+ {
+  "page": "https://docs.supplierxm.salsify.com/reference/request-engine-import.md",
+  "definition": {
+   "openapi": "3.1.0",
+   "info": {
+    "title": "information-requests",
+    "version": "2.1"
+   },
+   "servers": [
+    {
+     "url": "https://apis.supplierxm.salsify.com/public/v1/products/requests"
+    }
+   ],
+   "components": {
+    "securitySchemes": {
+     "sec0": {
+      "type": "oauth2",
+      "flows": {}
+     }
+    }
+   },
+   "security": [
+    {
+     "sec0": []
+    }
+   ],
+   "paths": {
+    "/": {
+     "post": {
+      "summary": "Request Engine import",
+      "description": "",
+      "operationId": "request-engine-import",
+      "requestBody": {
+       "content": {
+        "application/json": {
+         "schema": {
+          "type": "object",
+          "required": [
+           "gtin",
+           "supplierInternalId"
+          ],
+          "properties": {
+           "gtin": {
+            "type": "string",
+            "description": "The GTIN of the requested product."
+           },
+           "supplierInternalId": {
+            "type": "string",
+            "description": "Your internal id for the supplier to whom you are requesting the product. NB: corresponds to the internalID of one of your suppliers imported via the supplier directory."
+           },
+           "isRequested": {
+            "type": "boolean",
+            "default": true
+           },
+           "primaryInternalReference": {
+            "type": "string",
+            "description": "Your internal reference for this product"
+           },
+           "categoryId": {
+            "type": "string",
+            "description": "The short id of the category to which you want to link your product, if you are using a custom product hierarchy - also called retailer categories."
+           },
+           "namePublicLong": {
+            "type": "string",
+            "description": "The name of the product, in the shape {\"namePublicLong\": [{\"data\": \"<name>\", \"expressedIn\": {\"code\": \"<lang, e.g. 'fr'>\"}}",
+            "format": "json"
+           }
+          }
+         }
+        }
+       }
+      },
+      "responses": {
+       "200": {
+        "description": "200",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{\n  \"tracker\": {\n     \"id\": 42\n  }\n}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {
+            "tracker": {
+             "type": "object",
+             "properties": {
+              "id": {
+               "type": "integer",
+               "example": 42,
+               "default": 0
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      },
+      "deprecated": false,
+      "x-readme": {
+       "code-samples": [
+        {
+         "language": "curl",
+         "code": "curl -H 'Authorization: Bearer SALSIFY_TOKEN' -XPOST 'https://apis.supplierxm.salsify.com/public/v1/products/requests' -H 'Content-Type: application/json' -d '{\n  \"products\": [\n    {\n      \"gtin\": \"0123456789123\",\n      \"isRequested\": true,\n      \"namePublicLong\": [\n        {\n          \"data\": \"Product name\",\n          \"expressedIn\": {\n            \"code\": \"fr\"\n          }\n        }\n      ],\n      \"primaryInternalReference\": \"0x42\",\n      \"supplierInternalId\": \"supplier_internal_id\"\n    }\n  ]\n}'"
+        }
+       ],
+       "samples-languages": [
+        "curl"
+       ]
+      }
+     }
+    }
+   },
+   "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+   },
+   "x-readme-fauxas": true
+  }
+ }
+]

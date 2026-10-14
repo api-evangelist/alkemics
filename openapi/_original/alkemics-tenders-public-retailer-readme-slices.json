@@ -1,0 +1,3138 @@
+[
+ {
+  "page": "https://docs.supplierxm.salsify.com/reference/create-event.md",
+  "definition": {
+   "openapi": "3.1.0",
+   "info": {
+    "title": "tenders-public-retailer",
+    "version": "2.1"
+   },
+   "servers": [
+    {
+     "url": "https://apis.supplierxm.salsify.com/rfp/public/"
+    }
+   ],
+   "components": {
+    "securitySchemes": {
+     "sec0": {
+      "type": "apiKey",
+      "in": "header",
+      "x-default": "SALSIFY_TOKEN",
+      "name": "Authorization",
+      "x-bearer-format": "bearer"
+     }
+    }
+   },
+   "security": [
+    {
+     "sec0": []
+    }
+   ],
+   "paths": {
+    "/v1/events": {
+     "post": {
+      "summary": "Create Event",
+      "description": "",
+      "operationId": "create-event",
+      "requestBody": {
+       "content": {
+        "application/json": {
+         "schema": {
+          "type": "object",
+          "properties": {
+           "events": {
+            "properties": {
+             "code": {
+              "type": "string",
+              "description": "All event must have a unique `code`"
+             },
+             "data": {
+              "properties": {
+               "descriptionText": {
+                "type": "string",
+                "description": "The event name"
+               },
+               "startDate": {
+                "type": "string",
+                "description": "The event start date"
+               },
+               "endDate": {
+                "type": "string",
+                "description": "The event end date"
+               }
+              },
+              "required": [
+               "descriptionText",
+               "startDate",
+               "endDate"
+              ],
+              "type": "object"
+             }
+            },
+            "required": [
+             "code"
+            ],
+            "type": "object"
+           }
+          }
+         }
+        }
+       }
+      },
+      "responses": {
+       "200": {
+        "description": "200",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{\n    \"events\": [\n        {\n            \"uuid\": \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n            \"code\": \"UNIQUE-CODE-EVENT\",\n            \"data\": {\n                \"descriptionText\": [\n                    {\n                        \"data\": \"Event 1\",\n                        \"expressedIn\": {\n                            \"code\": \"fra-FR\",\n                            \"rank\": null,\n                            \"label\": \"fra-FR\",\n                            \"description\": \"fra-FR\",\n                            \"expressedIn\": [],\n                            \"_type\": \"Language\",\n                            \"data\": {\n                                \"locale\": \"fr_FR\",\n                                \"GDSN3.1\": \"fr-250\",\n                                \"GDSN2.8\": \"fr-250\"\n                            },\n                            \"normalizedCode\": \"fr\"\n                        }\n                    }\n                ],\n                \"startDate\": \"2022-03-30\",\n                \"endDate\": \"2022-06-30\"\n            },\n        }\n    ]\n}"
+           }
+          }
+         }
+        }
+       },
+       "400": {
+        "description": "400",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {}
+          }
+         }
+        }
+       }
+      },
+      "deprecated": false,
+      "x-readme": {
+       "code-samples": [
+        {
+         "language": "curl",
+         "code": "curl --request POST \\\n     --url https://apis.supplierxm.salsify.com/rfp/public/v1/events \\\n     --header 'Accept: application/json' \\\n     --header 'Authorization: Bearer SALSIFY_TOKEN' \\\n     --header 'Content-Type: application/json' \\\n     --data '\n        {\n          \"events\": [\n            {\n              \"code\": \"UNIQUE-CODE-EVENT\",\n              \"data\": {\n                \"descriptionText\": [\n                  {\n                    \"data\": \"Event 1\",\n                    \"expressedIn\": {\n                      \"code\": \"fra-FR\"\n                    }\n                  }\n                ],\n                \"startDate\": \"2022-03-30\",\n                \"endDate\": \"2022-06-30\"\n              }\n            }\n          ]\n        }'"
+        }
+       ],
+       "samples-languages": [
+        "curl"
+       ]
+      }
+     }
+    }
+   },
+   "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+   },
+   "x-readme-fauxas": true
+  }
+ },
+ {
+  "page": "https://docs.supplierxm.salsify.com/reference/update-event.md",
+  "definition": {
+   "openapi": "3.1.0",
+   "info": {
+    "title": "tenders-public-retailer",
+    "version": "2.1"
+   },
+   "servers": [
+    {
+     "url": "https://apis.supplierxm.salsify.com/rfp/public/"
+    }
+   ],
+   "components": {
+    "securitySchemes": {
+     "sec0": {
+      "type": "apiKey",
+      "in": "header",
+      "x-default": "SALSIFY_TOKEN",
+      "name": "Authorization",
+      "x-bearer-format": "bearer"
+     }
+    }
+   },
+   "security": [
+    {
+     "sec0": []
+    }
+   ],
+   "paths": {
+    "/v1/events": {
+     "put": {
+      "summary": "Update Event",
+      "description": "",
+      "operationId": "update-event",
+      "requestBody": {
+       "content": {
+        "application/json": {
+         "schema": {
+          "type": "object",
+          "properties": {
+           "events": {
+            "properties": {
+             "uuid": {
+              "type": "string",
+              "description": "The uuid of the event"
+             },
+             "data": {
+              "properties": {
+               "descriptionText": {
+                "type": "string",
+                "description": "The event name"
+               },
+               "startDate": {
+                "type": "string",
+                "description": "The event start date"
+               },
+               "endDate": {
+                "type": "string",
+                "description": "The event end date"
+               }
+              },
+              "required": [
+               "descriptionText",
+               "startDate",
+               "endDate"
+              ],
+              "type": "object"
+             }
+            },
+            "required": [
+             "uuid"
+            ],
+            "type": "object"
+           }
+          }
+         }
+        }
+       }
+      },
+      "responses": {
+       "200": {
+        "description": "200",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{\n    \"events\": [\n        {\n            \"uuid\": \"UNIQUE_ID\",\n            \"code\": \"UNIQUE-CODE-EVENT\",\n            \"data\": {\n                \"descriptionText\": [\n                    {\n                        \"data\": \"Event Name\",\n                        \"expressedIn\": {\n                            \"code\": \"fra-FR\",\n                            \"rank\": null,\n                            \"label\": \"fra-FR\",\n                            \"description\": \"fra-FR\",\n                            \"expressedIn\": [],\n                            \"_type\": \"Language\",\n                            \"data\": {\n                                \"locale\": \"fr_FR\",\n                                \"GDSN3.1\": \"fr-250\",\n                                \"GDSN2.8\": \"fr-250\"\n                            },\n                            \"normalizedCode\": \"fr\"\n                        }\n                    }\n                ],\n                \"startDate\": \"2022-03-30\",\n                \"endDate\": \"2022-06-30\"\n            }\n        }\n    ]\n}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {
+            "events": {
+             "type": "array",
+             "items": {
+              "type": "object",
+              "properties": {
+               "uuid": {
+                "type": "string",
+                "example": "UNIQUE_ID"
+               },
+               "code": {
+                "type": "string",
+                "example": "UNIQUE-CODE-EVENT"
+               },
+               "data": {
+                "type": "object",
+                "properties": {
+                 "descriptionText": {
+                  "type": "array",
+                  "items": {
+                   "type": "object",
+                   "properties": {
+                    "data": {
+                     "type": "string",
+                     "example": "Event Name"
+                    },
+                    "expressedIn": {
+                     "type": "object",
+                     "properties": {
+                      "code": {
+                       "type": "string",
+                       "example": "fra-FR"
+                      },
+                      "rank": {},
+                      "label": {
+                       "type": "string",
+                       "example": "fra-FR"
+                      },
+                      "description": {
+                       "type": "string",
+                       "example": "fra-FR"
+                      },
+                      "expressedIn": {
+                       "type": "array"
+                      },
+                      "_type": {
+                       "type": "string",
+                       "example": "Language"
+                      },
+                      "data": {
+                       "type": "object",
+                       "properties": {
+                        "locale": {
+                         "type": "string",
+                         "example": "fr_FR"
+                        },
+                        "GDSN3.1": {
+                         "type": "string",
+                         "example": "fr-250"
+                        },
+                        "GDSN2.8": {
+                         "type": "string",
+                         "example": "fr-250"
+                        }
+                       }
+                      },
+                      "normalizedCode": {
+                       "type": "string",
+                       "example": "fr"
+                      }
+                     }
+                    }
+                   }
+                  }
+                 },
+                 "startDate": {
+                  "type": "string",
+                  "example": "2022-03-30"
+                 },
+                 "endDate": {
+                  "type": "string",
+                  "example": "2022-06-30"
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       },
+       "404": {
+        "description": "404",
+        "content": {
+         "text/plain": {
+          "examples": {
+           "Result": {
+            "value": ""
+           }
+          }
+         }
+        }
+       }
+      },
+      "deprecated": false,
+      "x-readme": {
+       "code-samples": [
+        {
+         "language": "curl",
+         "code": "curl --request PUT \\\n     --url https://apis.supplierxm.salsify.com/rfp/public/v1/events \\\n     --header 'Accept: application/json' \\\n     --header 'Authorization: Bearer SALSIFY_TOKEN' \\\n     --header 'Content-Type: application/json' \\\n     --data '\n        {\n          \"events\": [\n            {\n              \"uuid\": \"UNIQUE_ID\",\n              \"data\": {\n                \"descriptionText\": [\n                  {\n                    \"data\": \"Event 1\",\n                    \"expressedIn\": {\n                      \"code\": \"fra-FR\"\n                    }\n                  }\n                ],\n                \"startDate\": \"2022-03-30\",\n                \"endDate\": \"2022-06-30\"\n              }\n            }\n          ]\n        }'"
+        }
+       ],
+       "samples-languages": [
+        "curl"
+       ]
+      }
+     }
+    }
+   },
+   "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+   },
+   "x-readme-fauxas": true
+  }
+ },
+ {
+  "page": "https://docs.supplierxm.salsify.com/reference/list-event-retailer.md",
+  "definition": {
+   "openapi": "3.1.0",
+   "info": {
+    "title": "tenders-public-retailer",
+    "version": "2.1"
+   },
+   "servers": [
+    {
+     "url": "https://apis.supplierxm.salsify.com/rfp/public/"
+    }
+   ],
+   "components": {
+    "securitySchemes": {
+     "sec0": {
+      "type": "apiKey",
+      "in": "header",
+      "x-default": "SALSIFY_TOKEN",
+      "name": "Authorization",
+      "x-bearer-format": "bearer"
+     }
+    }
+   },
+   "security": [
+    {
+     "sec0": []
+    }
+   ],
+   "paths": {
+    "/v1/events": {
+     "get": {
+      "summary": "List Event",
+      "description": "",
+      "operationId": "list-event-retailer",
+      "parameters": [
+       {
+        "name": "uuids",
+        "in": "query",
+        "description": "List of filtered event uuids",
+        "schema": {
+         "type": "string",
+         "default": "UUID_1,UUID_2"
+        }
+       },
+       {
+        "name": "offset",
+        "in": "query",
+        "description": "The index of the first event to be returned.",
+        "schema": {
+         "type": "integer",
+         "format": "int32",
+         "default": 0
+        }
+       },
+       {
+        "name": "limit",
+        "in": "query",
+        "description": "The maximum number of events to be returned.",
+        "schema": {
+         "type": "integer",
+         "format": "int32",
+         "default": 20
+        }
+       },
+       {
+        "name": "start_date",
+        "in": "query",
+        "description": "Filter events which start at a certain date",
+        "schema": {
+         "type": "string",
+         "format": "date"
+        }
+       },
+       {
+        "name": "end_date",
+        "in": "query",
+        "description": "Filter events which end at a certain date",
+        "schema": {
+         "type": "string",
+         "format": "date"
+        }
+       },
+       {
+        "name": "from_last_updated_at",
+        "in": "query",
+        "description": "Filter events for which the data has been updated at a certain date/time.",
+        "schema": {
+         "type": "string",
+         "format": "date"
+        }
+       },
+       {
+        "name": "to_last_updated_at",
+        "in": "query",
+        "description": "Filter events for which the data has been updated at a certain date/time.",
+        "schema": {
+         "type": "string",
+         "format": "date"
+        }
+       }
+      ],
+      "responses": {
+       "200": {
+        "description": "200",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{\n  \"events\": [\n    {\n      \"uuid\": \"UNIQUE-ID-1\",\n      \"code\": \"EVENT-CODE-1\",\n      \"data\": {\n        \"descriptionText\": [\n          {\n            \"data\": \"EVENT NAME 1\",\n            \"expressedIn\": {\n              \"code\": \"fra-FR\",\n              \"rank\": null,\n              \"label\": \"fra-FR\",\n              \"description\": \"fra-FR\",\n              \"expressedIn\": [],\n              \"_type\": \"Language\",\n              \"data\": {\n                \"locale\": \"fr_FR\",\n                \"GDSN3.1\": \"fr-250\",\n                \"GDSN2.8\": \"fr-250\"\n              },\n              \"normalizedCode\": \"fr\"\n            }\n          }\n        ],\n        \"startDate\": \"2022-04-01\",\n        \"endDate\": \"2022-04-30\"\n      },\n    },\n    {\n      \"uuid\": \"UNIQUE-ID-2\",\n      \"code\": \"EVENT-CODE-2\",\n      \"data\": {\n        \"descriptionText\": [\n          {\n            \"data\": \"EVENT NAME 2\",\n            \"expressedIn\": {\n              \"code\": \"fra-FR\",\n              \"rank\": null,\n              \"label\": \"fra-FR\",\n              \"description\": \"fra-FR\",\n              \"expressedIn\": [],\n              \"_type\": \"Language\",\n              \"data\": {\n                \"locale\": \"fr_FR\",\n                \"GDSN3.1\": \"fr-250\",\n                \"GDSN2.8\": \"fr-250\"\n              },\n              \"normalizedCode\": \"fr\"\n            }\n          }\n        ],\n        \"startDate\": \"2022-04-01\",\n        \"endDate\": \"2022-04-23\"\n      },\n    }\n  ],\n  \"totalResults\": number of events\n}"
+           }
+          }
+         }
+        }
+       },
+       "400": {
+        "description": "400",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {}
+          }
+         }
+        }
+       }
+      },
+      "deprecated": false
+     }
+    }
+   },
+   "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+   },
+   "x-readme-fauxas": true
+  }
+ },
+ {
+  "page": "https://docs.supplierxm.salsify.com/reference/delete-event.md",
+  "definition": {
+   "openapi": "3.1.0",
+   "info": {
+    "title": "tenders-public-retailer",
+    "version": "2.1"
+   },
+   "servers": [
+    {
+     "url": "https://apis.supplierxm.salsify.com/rfp/public/"
+    }
+   ],
+   "components": {
+    "securitySchemes": {
+     "sec0": {
+      "type": "apiKey",
+      "in": "header",
+      "x-default": "SALSIFY_TOKEN",
+      "name": "Authorization",
+      "x-bearer-format": "bearer"
+     }
+    }
+   },
+   "security": [
+    {
+     "sec0": []
+    }
+   ],
+   "paths": {
+    "/v1/events": {
+     "delete": {
+      "summary": "Delete Event",
+      "description": "",
+      "operationId": "delete-event",
+      "parameters": [
+       {
+        "name": "uuids",
+        "in": "query",
+        "description": "List of event uuids to delete",
+        "schema": {
+         "type": "string",
+         "default": "UUID_1,UUID_2"
+        }
+       }
+      ],
+      "responses": {
+       "200": {
+        "description": "200",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "null"
+           }
+          },
+          "schema": {}
+         }
+        }
+       },
+       "400": {
+        "description": "400",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {}
+          }
+         }
+        }
+       }
+      },
+      "deprecated": false
+     }
+    }
+   },
+   "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+   },
+   "x-readme-fauxas": true
+  }
+ },
+ {
+  "page": "https://docs.supplierxm.salsify.com/reference/create-bu.md",
+  "definition": {
+   "openapi": "3.1.0",
+   "info": {
+    "title": "tenders-public-retailer",
+    "version": "2.1"
+   },
+   "servers": [
+    {
+     "url": "https://apis.supplierxm.salsify.com/rfp/public/"
+    }
+   ],
+   "components": {
+    "securitySchemes": {
+     "sec0": {
+      "type": "apiKey",
+      "in": "header",
+      "x-default": "SALSIFY_TOKEN",
+      "name": "Authorization",
+      "x-bearer-format": "bearer"
+     }
+    }
+   },
+   "security": [
+    {
+     "sec0": []
+    }
+   ],
+   "paths": {
+    "/v1/business_units": {
+     "post": {
+      "summary": "Create BU",
+      "description": "",
+      "operationId": "create-bu",
+      "requestBody": {
+       "content": {
+        "application/json": {
+         "schema": {
+          "type": "object",
+          "properties": {
+           "business_units": {
+            "properties": {
+             "code": {
+              "type": "string",
+              "description": "All business unit must have a unique `code`"
+             },
+             "event": {
+              "properties": {
+               "uuid": {
+                "type": "string",
+                "description": "The uuid of the event"
+               }
+              },
+              "required": [
+               "uuid"
+              ],
+              "type": "object"
+             },
+             "data": {
+              "properties": {
+               "descriptionText": {
+                "type": "string",
+                "description": "The business unit name"
+               },
+               "limitDate": {
+                "type": "string",
+                "description": "The business unit's response deadline."
+               }
+              },
+              "required": [
+               "descriptionText",
+               "limitDate"
+              ],
+              "type": "object"
+             }
+            },
+            "required": [
+             "code"
+            ],
+            "type": "object"
+           }
+          }
+         }
+        }
+       }
+      },
+      "responses": {
+       "200": {
+        "description": "200",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{\n    \"business_units\": [\n        {\n            \"uuid\": \"UNIQUE-ID-BU\",\n            \"code\": \"UNIQUE-CODE-BU\",\n            \"data\": {\n                \"descriptionText\": [\n                    {\n                        \"data\": \"Business Unit Name\",\n                        \"expressedIn\": {\n                            \"code\": \"fra-FR\",\n                            \"rank\": null,\n                            \"label\": \"fra-FR\",\n                            \"description\": \"fra-FR\",\n                            \"expressedIn\": [],\n                            \"_type\": \"Language\",\n                            \"data\": {\n                                \"locale\": \"fr_FR\",\n                                \"GDSN3.1\": \"fr-250\",\n                                \"GDSN2.8\": \"fr-250\"\n                            },\n                            \"normalizedCode\": \"fr\"\n                        }\n                    }\n                ],\n                \"limitDate\": \"2022-03-23\"\n            },\n            \"event\": {\n                \"uuid\": \"UNIQUE-ID-EVENT\"\n            }\n        }\n    ]\n}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {
+            "business_units": {
+             "type": "array",
+             "items": {
+              "type": "object",
+              "properties": {
+               "uuid": {
+                "type": "string",
+                "example": "UNIQUE-ID-BU"
+               },
+               "code": {
+                "type": "string",
+                "example": "UNIQUE-CODE-BU"
+               },
+               "data": {
+                "type": "object",
+                "properties": {
+                 "descriptionText": {
+                  "type": "array",
+                  "items": {
+                   "type": "object",
+                   "properties": {
+                    "data": {
+                     "type": "string",
+                     "example": "Business Unit Name"
+                    },
+                    "expressedIn": {
+                     "type": "object",
+                     "properties": {
+                      "code": {
+                       "type": "string",
+                       "example": "fra-FR"
+                      },
+                      "rank": {},
+                      "label": {
+                       "type": "string",
+                       "example": "fra-FR"
+                      },
+                      "description": {
+                       "type": "string",
+                       "example": "fra-FR"
+                      },
+                      "expressedIn": {
+                       "type": "array"
+                      },
+                      "_type": {
+                       "type": "string",
+                       "example": "Language"
+                      },
+                      "data": {
+                       "type": "object",
+                       "properties": {
+                        "locale": {
+                         "type": "string",
+                         "example": "fr_FR"
+                        },
+                        "GDSN3.1": {
+                         "type": "string",
+                         "example": "fr-250"
+                        },
+                        "GDSN2.8": {
+                         "type": "string",
+                         "example": "fr-250"
+                        }
+                       }
+                      },
+                      "normalizedCode": {
+                       "type": "string",
+                       "example": "fr"
+                      }
+                     }
+                    }
+                   }
+                  }
+                 },
+                 "limitDate": {
+                  "type": "string",
+                  "example": "2022-03-23"
+                 }
+                }
+               },
+               "event": {
+                "type": "object",
+                "properties": {
+                 "uuid": {
+                  "type": "string",
+                  "example": "UNIQUE-ID-EVENT"
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       },
+       "400": {
+        "description": "400",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {}
+          }
+         }
+        }
+       }
+      },
+      "deprecated": false,
+      "x-readme": {
+       "code-samples": [
+        {
+         "language": "curl",
+         "code": "curl --request POST \\\n     --url https://apis.supplierxm.salsify.com/rfp/public/v1/business_units \\\n     --header 'Accept: application/json' \\\n     --header 'Authorization: Bearer SALSIFY_TOKEN' \\\n     --header 'Content-Type: application/json' \\\n     --data '\n        {\n          \"business_units\": [\n            {\n              \"code\": \"UNIQUE-CODE-BU\",\n              \"event\": {\n                \"uuid\": \"UNIQUE-ID-EVENT\"\n              },\n              \"data\": {\n                \"descriptionText\": [\n                  {\n                    \"data\": \"Business Unit Name\",\n                    \"expressedIn\": {\n                      \"code\": \"fra-FR\"\n                    }\n                  }\n                ],\n                \"limitDate\": \"2022-03-23\"\n              }\n            }\n          ]\n        }\n'"
+        }
+       ],
+       "samples-languages": [
+        "curl"
+       ]
+      }
+     }
+    }
+   },
+   "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+   },
+   "x-readme-fauxas": true
+  }
+ },
+ {
+  "page": "https://docs.supplierxm.salsify.com/reference/update-bu.md",
+  "definition": {
+   "openapi": "3.1.0",
+   "info": {
+    "title": "tenders-public-retailer",
+    "version": "2.1"
+   },
+   "servers": [
+    {
+     "url": "https://apis.supplierxm.salsify.com/rfp/public/"
+    }
+   ],
+   "components": {
+    "securitySchemes": {
+     "sec0": {
+      "type": "apiKey",
+      "in": "header",
+      "x-default": "SALSIFY_TOKEN",
+      "name": "Authorization",
+      "x-bearer-format": "bearer"
+     }
+    }
+   },
+   "security": [
+    {
+     "sec0": []
+    }
+   ],
+   "paths": {
+    "/v1/business_units": {
+     "put": {
+      "summary": "Update BU",
+      "description": "",
+      "operationId": "update-bu",
+      "requestBody": {
+       "content": {
+        "application/json": {
+         "schema": {
+          "type": "object",
+          "properties": {
+           "business_units": {
+            "properties": {
+             "uuid": {
+              "type": "string",
+              "description": "The uuid of the business unit"
+             },
+             "data": {
+              "properties": {
+               "descriptionText": {
+                "type": "string",
+                "description": "The business unit name"
+               },
+               "limitDate": {
+                "type": "string",
+                "description": "The business unit's response deadline."
+               }
+              },
+              "required": [
+               "descriptionText",
+               "limitDate"
+              ],
+              "type": "object"
+             }
+            },
+            "required": [
+             "uuid"
+            ],
+            "type": "object"
+           }
+          }
+         }
+        }
+       }
+      },
+      "responses": {
+       "200": {
+        "description": "200",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{\n    \"business_units\": [\n        {\n            \"uuid\": \"UNIQUE-ID-BU\",\n            \"code\": \"UNIQUE-CODE-BU\",\n            \"data\": {\n                \"descriptionText\": [\n                    {\n                        \"data\": \"Business Unit Name\",\n                        \"expressedIn\": {\n                            \"code\": \"fra-FR\",\n                            \"rank\": null,\n                            \"label\": \"fra-FR\",\n                            \"description\": \"fra-FR\",\n                            \"expressedIn\": [],\n                            \"_type\": \"Language\",\n                            \"data\": {\n                                \"locale\": \"fr_FR\",\n                                \"GDSN3.1\": \"fr-250\",\n                                \"GDSN2.8\": \"fr-250\"\n                            },\n                            \"normalizedCode\": \"fr\"\n                        }\n                    }\n                ],\n                \"limitDate\": \"2022-03-23\"\n            },\n            \"event\": {\n                \"uuid\": \"UNIQUE-ID-EVENT\"\n                }\n            }\n        }\n    ]\n}"
+           }
+          }
+         }
+        }
+       },
+       "400": {
+        "description": "400",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {}
+          }
+         }
+        }
+       }
+      },
+      "deprecated": false,
+      "x-readme": {
+       "code-samples": [
+        {
+         "language": "curl",
+         "code": "curl --request PUT \\\n     --url https://apis.supplierxm.salsify.com/rfp/public/v1/business_units \\\n     --header 'Accept: application/json' \\\n     --header 'Authorization: Bearer SALSIFY_TOKEN' \\\n     --header 'Content-Type: application/json' \\\n     --data '\n        {\n          \"business_units\": [\n            {\n              \"uuid\": \"UNIQUE-ID-BU\",\n              \"event\": {\n                \"uuid\": \"UNIQUE-ID-EVENT\"\n              },\n              \"data\": {\n                \"descriptionText\": [\n                  {\n                    \"data\": \"Business Unit Name\",\n                    \"expressedIn\": {\n                      \"code\": \"fra-FR\"\n                    }\n                  }\n                ],\n                \"limitDate\": \"2022-03-23\"\n              }\n            }\n          ]\n        }'"
+        }
+       ],
+       "samples-languages": [
+        "curl"
+       ]
+      }
+     }
+    }
+   },
+   "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+   },
+   "x-readme-fauxas": true
+  }
+ },
+ {
+  "page": "https://docs.supplierxm.salsify.com/reference/list-bu.md",
+  "definition": {
+   "openapi": "3.1.0",
+   "info": {
+    "title": "tenders-public-retailer",
+    "version": "2.1"
+   },
+   "servers": [
+    {
+     "url": "https://apis.supplierxm.salsify.com/rfp/public/"
+    }
+   ],
+   "components": {
+    "securitySchemes": {
+     "sec0": {
+      "type": "apiKey",
+      "in": "header",
+      "x-default": "SALSIFY_TOKEN",
+      "name": "Authorization",
+      "x-bearer-format": "bearer"
+     }
+    }
+   },
+   "security": [
+    {
+     "sec0": []
+    }
+   ],
+   "paths": {
+    "/v1/business_units": {
+     "get": {
+      "summary": "List BU",
+      "description": "",
+      "operationId": "list-bu",
+      "parameters": [
+       {
+        "name": "uuids",
+        "in": "query",
+        "description": "List of filtered business unit uuids",
+        "schema": {
+         "type": "string",
+         "default": "UUID_1,UUID_2"
+        }
+       },
+       {
+        "name": "offset",
+        "in": "query",
+        "description": "The index of the first business unit to be returned.",
+        "schema": {
+         "type": "integer",
+         "format": "int32",
+         "default": 0
+        }
+       },
+       {
+        "name": "limit",
+        "in": "query",
+        "description": "The maximum number of business units to be returned.",
+        "schema": {
+         "type": "integer",
+         "format": "int32",
+         "default": 20
+        }
+       },
+       {
+        "name": "from_updated_at",
+        "in": "query",
+        "description": "Filter business units for which the data has been updated at a certain date/time.",
+        "schema": {
+         "type": "string",
+         "format": "date"
+        }
+       },
+       {
+        "name": "to_updated_at",
+        "in": "query",
+        "description": "Filter business units for which the data has been updated at a certain date/time.",
+        "schema": {
+         "type": "string",
+         "format": "date"
+        }
+       }
+      ],
+      "responses": {
+       "200": {
+        "description": "200",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{\n    \"business_units\": {\n        \"data\": [\n            {\n                \"data\": {\n                    \"uuid\": \"UNIQUE-ID-BU-1\",\n                    \"code\": \"UNIQUE-CODE-BU-1\",\n                    \"data\": {\n                        \"descriptionText\": [\n                            {\n                                \"data\": \"Business Unit Name 1\",\n                                \"expressedIn\": {\n                                    \"code\": \"fra-FR\",\n                                    \"rank\": null,\n                                    \"label\": \"fra-FR\",\n                                    \"description\": \"fra-FR\",\n                                    \"expressedIn\": [],\n                                    \"_type\": \"Language\",\n                                    \"data\": {\n                                        \"locale\": \"fr_FR\",\n                                        \"GDSN3.1\": \"fr-250\",\n                                        \"GDSN2.8\": \"fr-250\"\n                                    },\n                                    \"normalizedCode\": \"fr\"\n                                }\n                            }\n                        ],\n                        \"limitDate\": \"2022-03-23\"\n                    },\n                    \"event\": {\n                        \"uuid\": \"UNIQUE-ID-EVENT-1\"\n                        }\n                    }\n                }\n            },\n            {\n                \"data\": {\n                    \"uuid\": \"UNIQUE-ID-BU-2\",\n                    \"code\": \"UNIQUE-CODE-BU-2\",\n                    \"data\": {\n                        \"descriptionText\": [\n                            {\n                                \"data\": \"Business Unit Name 2\",\n                                \"expressedIn\": {\n                                    \"code\": \"fra-FR\",\n                                    \"rank\": null,\n                                    \"label\": \"fra-FR\",\n                                    \"description\": \"fra-FR\",\n                                    \"expressedIn\": [],\n                                    \"_type\": \"Language\",\n                                    \"data\": {\n                                        \"locale\": \"fr_FR\",\n                                        \"GDSN3.1\": \"fr-250\",\n                                        \"GDSN2.8\": \"fr-250\"\n                                    },\n                                    \"normalizedCode\": \"fr\"\n                                }\n                            }\n                        ],\n                        \"limitDate\": \"2022-04-30\"\n                    },\n                    \"event\": {\n                        \"uuid\": \"UNIQUE-ID-EVENT-2\"\n                        }\n                    }\n                }\n            }\n        ],\n        \"totalResults\": 161\n    }\n}"
+           }
+          }
+         }
+        }
+       },
+       "400": {
+        "description": "400",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {}
+          }
+         }
+        }
+       }
+      },
+      "deprecated": false
+     }
+    }
+   },
+   "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+   },
+   "x-readme-fauxas": true
+  }
+ },
+ {
+  "page": "https://docs.supplierxm.salsify.com/reference/delete-bu.md",
+  "definition": {
+   "openapi": "3.1.0",
+   "info": {
+    "title": "tenders-public-retailer",
+    "version": "2.1"
+   },
+   "servers": [
+    {
+     "url": "https://apis.supplierxm.salsify.com/rfp/public/"
+    }
+   ],
+   "components": {
+    "securitySchemes": {
+     "sec0": {
+      "type": "apiKey",
+      "in": "header",
+      "x-default": "SALSIFY_TOKEN",
+      "name": "Authorization",
+      "x-bearer-format": "bearer"
+     }
+    }
+   },
+   "security": [
+    {
+     "sec0": []
+    }
+   ],
+   "paths": {
+    "/v1/business_units": {
+     "delete": {
+      "summary": "Delete BU",
+      "description": "",
+      "operationId": "delete-bu",
+      "parameters": [
+       {
+        "name": "uuids",
+        "in": "query",
+        "description": "List of business unit uuids to delete",
+        "schema": {
+         "type": "string",
+         "default": "UUID_1,UUID_2"
+        }
+       }
+      ],
+      "responses": {
+       "200": {
+        "description": "200",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "null"
+           }
+          },
+          "schema": {}
+         }
+        }
+       },
+       "400": {
+        "description": "400",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {}
+          }
+         }
+        }
+       }
+      },
+      "deprecated": false
+     }
+    }
+   },
+   "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+   },
+   "x-readme-fauxas": true
+  }
+ },
+ {
+  "page": "https://docs.supplierxm.salsify.com/reference/create-rfp.md",
+  "definition": {
+   "openapi": "3.1.0",
+   "info": {
+    "title": "tenders-public-retailer",
+    "version": "2.1"
+   },
+   "servers": [
+    {
+     "url": "https://apis.supplierxm.salsify.com/rfp/public/"
+    }
+   ],
+   "components": {
+    "securitySchemes": {
+     "sec0": {
+      "type": "apiKey",
+      "in": "header",
+      "x-default": "SALSIFY_TOKEN",
+      "name": "Authorization",
+      "x-bearer-format": "bearer"
+     }
+    }
+   },
+   "security": [
+    {
+     "sec0": []
+    }
+   ],
+   "paths": {
+    "/v1/rfps": {
+     "post": {
+      "summary": "Create RFP",
+      "description": "",
+      "operationId": "create-rfp",
+      "requestBody": {
+       "content": {
+        "application/json": {
+         "schema": {
+          "type": "object",
+          "properties": {
+           "rfps": {
+            "properties": {
+             "business_unit": {
+              "properties": {
+               "uuid": {
+                "type": "string",
+                "description": "The uuid of the business unit"
+               }
+              },
+              "required": [
+               "uuid"
+              ],
+              "type": "object"
+             },
+             "supplier": {
+              "properties": {
+               "id": {
+                "type": "string",
+                "description": "Your internal id for the supplier you are inviting to the tender. NB: corresponds to the internalID of one of your suppliers imported via the supplier directory."
+               }
+              },
+              "required": [
+               "id"
+              ],
+              "type": "object"
+             }
+            },
+            "required": [],
+            "type": "object"
+           }
+          }
+         }
+        }
+       }
+      },
+      "responses": {
+       "200": {
+        "description": "200",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{\n    \"data\": [\n        {\n            \"sent\": false,\n            \"status\": \"NOT_SENT\",\n            \"supplier\": [\n                {\n                    \"id\": \"UNIQUE-ID-SUPPLIER\"\n                }\n            ],\n            \"data\": {\n                \"limitDate\": \"2022-03-27\"\n            },\n            \"business_unit\": {\n                \"uuid\": \"UNIQUE-ID-BU\"\n            },\n            \"uuid\": \"UNIQUE-ID-RFP\",\n            \"declined\": false,\n            \"last_chased_at\": null,\n            \"chased\": false\n        }\n    ]\n}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {
+            "data": {
+             "type": "array",
+             "items": {
+              "type": "object",
+              "properties": {
+               "sent": {
+                "type": "boolean",
+                "example": false,
+                "default": true
+               },
+               "status": {
+                "type": "string",
+                "example": "NOT_SENT"
+               },
+               "supplier": {
+                "type": "array",
+                "items": {
+                 "type": "object",
+                 "properties": {
+                  "id": {
+                   "type": "string",
+                   "example": "UNIQUE-ID-SUPPLIER"
+                  }
+                 }
+                }
+               },
+               "data": {
+                "type": "object",
+                "properties": {
+                 "limitDate": {
+                  "type": "string",
+                  "example": "2022-03-27"
+                 }
+                }
+               },
+               "business_unit": {
+                "type": "object",
+                "properties": {
+                 "uuid": {
+                  "type": "string",
+                  "example": "UNIQUE-ID-BU"
+                 }
+                }
+               },
+               "uuid": {
+                "type": "string",
+                "example": "UNIQUE-ID-RFP"
+               },
+               "declined": {
+                "type": "boolean",
+                "example": false,
+                "default": true
+               },
+               "last_chased_at": {},
+               "chased": {
+                "type": "boolean",
+                "example": false,
+                "default": true
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       },
+       "400": {
+        "description": "400",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {}
+          }
+         }
+        }
+       }
+      },
+      "deprecated": false,
+      "x-readme": {
+       "code-samples": [
+        {
+         "language": "curl",
+         "code": "curl --request POST \\\n     --url https://apis.supplierxm.salsify.com/rfp/public/v1/rfps \\\n     --header 'Accept: application/json' \\\n     --header 'Authorization: Bearer SALSIFY_TOKEN' \\\n     --header 'Content-Type: application/json' \\\n     --data '\n        {\n          \"rfps\": [\n            {\n              \"business_unit\": {\n                \"uuid\": \"UNIQUE-ID-BU\"\n              },\n              \"supplier\": {\n                \"id\": \"UNIQUE-ID-SUPPLIER\"\n              }\n            }\n          ]\n        }'\t"
+        }
+       ],
+       "samples-languages": [
+        "curl"
+       ]
+      }
+     }
+    }
+   },
+   "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+   },
+   "x-readme-fauxas": true
+  }
+ },
+ {
+  "page": "https://docs.supplierxm.salsify.com/reference/update-rfp.md",
+  "definition": {
+   "openapi": "3.1.0",
+   "info": {
+    "title": "tenders-public-retailer",
+    "version": "2.1"
+   },
+   "servers": [
+    {
+     "url": "https://apis.supplierxm.salsify.com/rfp/public/"
+    }
+   ],
+   "components": {
+    "securitySchemes": {
+     "sec0": {
+      "type": "apiKey",
+      "in": "header",
+      "x-default": "SALSIFY_TOKEN",
+      "name": "Authorization",
+      "x-bearer-format": "bearer"
+     }
+    }
+   },
+   "security": [
+    {
+     "sec0": []
+    }
+   ],
+   "paths": {
+    "/v1/rfps": {
+     "put": {
+      "summary": "Update RFP",
+      "description": "",
+      "operationId": "update-rfp",
+      "requestBody": {
+       "content": {
+        "application/json": {
+         "schema": {
+          "type": "object",
+          "properties": {
+           "rfps": {
+            "properties": {
+             "uuid": {
+              "type": "string",
+              "description": "The uuid of the rfp"
+             },
+             "data": {
+              "properties": {
+               "limitDate": {
+                "type": "object",
+                "description": "The limit date is the response deadline for a given RFP",
+                "properties": {}
+               }
+              },
+              "required": [],
+              "type": "object"
+             }
+            },
+            "required": [
+             "uuid"
+            ],
+            "type": "object"
+           },
+           "chased": {
+            "type": "string"
+           },
+           "last_chased_at": {
+            "type": "string"
+           },
+           "status": {
+            "type": "string",
+            "description": "The RFP status. Was the RFP sent by retailer or not?"
+           }
+          }
+         }
+        }
+       }
+      },
+      "responses": {
+       "200": {
+        "description": "200",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{\n    \"data\": [\n        {\n            \"sent\": false,\n            \"status\": \"NOT_SENT\",\n            \"supplier\": [\n                {\n                    \"id\": \"UNIQUE-ID-SUPPLIER\"\n                }\n            ],\n            \"data\": {\n                \"limitDate\": \"2022-03-27\"\n            },\n            \"business_unit\": {\n                \"uuid\": \"UNIQUE-ID-BU\"\n            },\n            \"uuid\": \"UNIQUE-ID-RFP\",\n            \"declined\": false,\n            \"last_chased_at\": null,\n            \"chased\": false\n        }\n    ]\n}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {
+            "data": {
+             "type": "array",
+             "items": {
+              "type": "object",
+              "properties": {
+               "sent": {
+                "type": "boolean",
+                "example": false,
+                "default": true
+               },
+               "status": {
+                "type": "string",
+                "example": "NOT_SENT"
+               },
+               "supplier": {
+                "type": "array",
+                "items": {
+                 "type": "object",
+                 "properties": {
+                  "id": {
+                   "type": "string",
+                   "example": "UNIQUE-ID-SUPPLIER"
+                  }
+                 }
+                }
+               },
+               "data": {
+                "type": "object",
+                "properties": {
+                 "limitDate": {
+                  "type": "string",
+                  "example": "2022-03-27"
+                 }
+                }
+               },
+               "business_unit": {
+                "type": "object",
+                "properties": {
+                 "uuid": {
+                  "type": "string",
+                  "example": "UNIQUE-ID-BU"
+                 }
+                }
+               },
+               "uuid": {
+                "type": "string",
+                "example": "UNIQUE-ID-RFP"
+               },
+               "declined": {
+                "type": "boolean",
+                "example": false,
+                "default": true
+               },
+               "last_chased_at": {},
+               "chased": {
+                "type": "boolean",
+                "example": false,
+                "default": true
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       },
+       "400": {
+        "description": "400",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {}
+          }
+         }
+        }
+       }
+      },
+      "deprecated": false,
+      "x-readme": {
+       "code-samples": [
+        {
+         "language": "curl",
+         "code": "curl --request PUT \\\n     --url https://apis.supplierxm.salsify.com/rfp/public/v1/rfps \\\n     --header 'Accept: application/json' \\\n     --header 'Authorization: Bearer SALSIFY_TOKEN' \\\n     --header 'Content-Type: application/json' \\\n     --data '\n        {\n          \"rfps\": [\n            {\n\t\t\t\t\t\t\t\"uuid\": \"{{RfpUuid}}\",\n\t\t\t\t\t\t\t\"data\": {\n\t\t\t\t\t\t\t\"chased\": \"{{status: true or false}}\" ,\n\t\t\t\t\t\t\t\"last_chased_at\": \"{{date}}\",\n\t\t\t\t\t\t\t\"status\":\"{{status: SENT or NOT SENT}}\n              }\n            }\n          ]\n        }'"
+        }
+       ],
+       "samples-languages": [
+        "curl"
+       ]
+      }
+     }
+    }
+   },
+   "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+   },
+   "x-readme-fauxas": true
+  }
+ },
+ {
+  "page": "https://docs.supplierxm.salsify.com/reference/list-rfp.md",
+  "definition": {
+   "openapi": "3.1.0",
+   "info": {
+    "title": "tenders-public-retailer",
+    "version": "2.1"
+   },
+   "servers": [
+    {
+     "url": "https://apis.supplierxm.salsify.com/rfp/public/"
+    }
+   ],
+   "components": {
+    "securitySchemes": {
+     "sec0": {
+      "type": "apiKey",
+      "in": "header",
+      "x-default": "SALSIFY_TOKEN",
+      "name": "Authorization",
+      "x-bearer-format": "bearer"
+     }
+    }
+   },
+   "security": [
+    {
+     "sec0": []
+    }
+   ],
+   "paths": {
+    "/v1/rfps": {
+     "get": {
+      "summary": "List RFP",
+      "description": "",
+      "operationId": "list-rfp",
+      "parameters": [
+       {
+        "name": "uuids",
+        "in": "query",
+        "description": "List of filtered rfps uuids",
+        "schema": {
+         "type": "string",
+         "default": "UUID_1,UUID_2"
+        }
+       },
+       {
+        "name": "offset",
+        "in": "query",
+        "description": "The index of the first rfp to be returned.",
+        "schema": {
+         "type": "integer",
+         "format": "int32",
+         "default": 0
+        }
+       },
+       {
+        "name": "limit",
+        "in": "query",
+        "description": "The maximum number of rfp to be returned.",
+        "schema": {
+         "type": "integer",
+         "format": "int32",
+         "default": 20
+        }
+       },
+       {
+        "name": "from_updated_at",
+        "in": "query",
+        "description": "Filter requests for proposals for which the data has been updated after a certain date/time.",
+        "schema": {
+         "type": "string",
+         "format": "date"
+        }
+       },
+       {
+        "name": "to_updated_at",
+        "in": "query",
+        "description": "Filter requests for proposals for which the data has been updated after a certain date/time.",
+        "schema": {
+         "type": "string",
+         "format": "date"
+        }
+       }
+      ],
+      "responses": {
+       "200": {
+        "description": "200",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{\n    \"data\": [\n        {\n            \"sent\": true,\n            \"status\": \"SENT\",\n            \"supplier\": [\n                {\n                    \"id\": \"SUPPLIER-ID-1\"\n                },\n                {\n                    \"id\": \"SUPPLIER-ID-2\"\n                }\n            ],\n            \"data\": {\n                \"limitDate\": \"2020-04-09\"\n            },\n            \"business_unit\": {\n                \"uuid\": \"UNIQUE-ID-BU-1\"\n            },\n            \"uuid\": \"UNIQUE-ID-RFP-1\",\n            \"declined\": false,\n            \"last_chased_at\": null,\n            \"chased\": false\n        },\n        {\n            \"sent\": true,\n            \"status\": \"ANSWERED\",\n            \"supplier\": [\n                {\n                    \"id\": \"SUPPLIER-ID-3\"\n                }\n            ],\n            \"data\": {\n                \"limitDate\": \"2020-04-09\"\n            },\n            \"business_unit\": {\n                \"uuid\": \"UNIQUE-ID-BU-2\"\n            },\n            \"uuid\": \"UNIQUE-ID-RFP-2\",\n            \"declined\": false,\n            \"last_chased_at\": null,\n            \"chased\": false\n        }\n    ],\n    \"totalResults\": 240\n}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {
+            "data": {
+             "type": "array",
+             "items": {
+              "type": "object",
+              "properties": {
+               "sent": {
+                "type": "boolean",
+                "example": true,
+                "default": true
+               },
+               "status": {
+                "type": "string",
+                "example": "SENT"
+               },
+               "supplier": {
+                "type": "array",
+                "items": {
+                 "type": "object",
+                 "properties": {
+                  "id": {
+                   "type": "string",
+                   "example": "SUPPLIER-ID-1"
+                  }
+                 }
+                }
+               },
+               "data": {
+                "type": "object",
+                "properties": {
+                 "limitDate": {
+                  "type": "string",
+                  "example": "2020-04-09"
+                 }
+                }
+               },
+               "business_unit": {
+                "type": "object",
+                "properties": {
+                 "uuid": {
+                  "type": "string",
+                  "example": "UNIQUE-ID-BU-1"
+                 }
+                }
+               },
+               "uuid": {
+                "type": "string",
+                "example": "UNIQUE-ID-RFP-1"
+               },
+               "declined": {
+                "type": "boolean",
+                "example": false,
+                "default": true
+               },
+               "last_chased_at": {},
+               "chased": {
+                "type": "boolean",
+                "example": false,
+                "default": true
+               }
+              }
+             }
+            },
+            "totalResults": {
+             "type": "integer",
+             "example": 240,
+             "default": 0
+            }
+           }
+          }
+         }
+        }
+       },
+       "400": {
+        "description": "400",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {}
+          }
+         }
+        }
+       }
+      },
+      "deprecated": false
+     }
+    }
+   },
+   "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+   },
+   "x-readme-fauxas": true
+  }
+ },
+ {
+  "page": "https://docs.supplierxm.salsify.com/reference/delete-rfp.md",
+  "definition": {
+   "openapi": "3.1.0",
+   "info": {
+    "title": "tenders-public-retailer",
+    "version": "2.1"
+   },
+   "servers": [
+    {
+     "url": "https://apis.supplierxm.salsify.com/rfp/public/"
+    }
+   ],
+   "components": {
+    "securitySchemes": {
+     "sec0": {
+      "type": "apiKey",
+      "in": "header",
+      "x-default": "SALSIFY_TOKEN",
+      "name": "Authorization",
+      "x-bearer-format": "bearer"
+     }
+    }
+   },
+   "security": [
+    {
+     "sec0": []
+    }
+   ],
+   "paths": {
+    "/v1/rfps": {
+     "delete": {
+      "summary": "Delete RFP",
+      "description": "",
+      "operationId": "delete-rfp",
+      "parameters": [
+       {
+        "name": "uuids",
+        "in": "query",
+        "description": "List of rfps uuids to delete",
+        "required": true,
+        "schema": {
+         "type": "string",
+         "default": "UUID_1,UUID_2"
+        }
+       }
+      ],
+      "responses": {
+       "200": {
+        "description": "200",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "null"
+           }
+          },
+          "schema": {}
+         }
+        }
+       },
+       "400": {
+        "description": "400",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {}
+          }
+         }
+        }
+       }
+      },
+      "deprecated": false
+     }
+    }
+   },
+   "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+   },
+   "x-readme-fauxas": true
+  }
+ },
+ {
+  "page": "https://docs.supplierxm.salsify.com/reference/send-answer-1.md",
+  "definition": {
+   "openapi": "3.1.0",
+   "info": {
+    "title": "tenders-public-retailer",
+    "version": "2.1"
+   },
+   "servers": [
+    {
+     "url": "https://apis.supplierxm.salsify.com/rfp/public/"
+    }
+   ],
+   "components": {
+    "securitySchemes": {
+     "sec0": {
+      "type": "apiKey",
+      "in": "header",
+      "x-default": "SALSIFY_TOKEN",
+      "name": "Authorization",
+      "x-bearer-format": "bearer"
+     }
+    }
+   },
+   "security": [
+    {
+     "sec0": []
+    }
+   ],
+   "paths": {
+    "/v1/rfps/send": {
+     "post": {
+      "summary": "Send RFP",
+      "description": "",
+      "operationId": "send-answer-1",
+      "requestBody": {
+       "content": {
+        "application/json": {
+         "schema": {
+          "type": "object",
+          "required": [
+           "uuids"
+          ],
+          "properties": {
+           "uuids": {
+            "type": "array",
+            "description": "The uuids of the rfps to send",
+            "items": {
+             "type": "string"
+            }
+           }
+          }
+         }
+        }
+       }
+      },
+      "responses": {
+       "200": {
+        "description": "200",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{\n    \"success\": true\n}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {
+            "success": {
+             "type": "boolean",
+             "example": true,
+             "default": true
+            }
+           }
+          }
+         }
+        }
+       },
+       "400": {
+        "description": "400",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {}
+          }
+         }
+        }
+       }
+      },
+      "deprecated": false,
+      "x-readme": {
+       "code-samples": [
+        {
+         "language": "curl",
+         "code": "curl --request POST \\\n     --url https://apis.supplierxm.salsify.com/rfp/public/v1/rfps/send \\\n     --header 'Accept: application/json' \\\n     --header 'Authorization: Bearer SALSIFY_TOKEN' \\\n     --header 'Content-Type: application/json' \\\n     --data '\n        {\n          \"uuids\": [\"UNIQUE-ID-RFP\"]\n        }'"
+        }
+       ],
+       "samples-languages": [
+        "curl"
+       ]
+      }
+     }
+    }
+   },
+   "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+   },
+   "x-readme-fauxas": true
+  }
+ },
+ {
+  "page": "https://docs.supplierxm.salsify.com/reference/list-answer-retailer.md",
+  "definition": {
+   "openapi": "3.1.0",
+   "info": {
+    "title": "tenders-public-retailer",
+    "version": "2.1"
+   },
+   "servers": [
+    {
+     "url": "https://apis.supplierxm.salsify.com/rfp/public/"
+    }
+   ],
+   "components": {
+    "securitySchemes": {
+     "sec0": {
+      "type": "apiKey",
+      "in": "header",
+      "x-default": "SALSIFY_TOKEN",
+      "name": "Authorization",
+      "x-bearer-format": "bearer"
+     }
+    }
+   },
+   "security": [
+    {
+     "sec0": []
+    }
+   ],
+   "paths": {
+    "/v1/answers": {
+     "get": {
+      "summary": "List Answer",
+      "description": "",
+      "operationId": "list-answer-retailer",
+      "parameters": [
+       {
+        "name": "offset",
+        "in": "query",
+        "description": "The index of the first proposal to be returned.",
+        "schema": {
+         "type": "integer",
+         "format": "int32",
+         "default": 0
+        }
+       },
+       {
+        "name": "limit",
+        "in": "query",
+        "description": "The maximum number of proposals to be returned.",
+        "schema": {
+         "type": "integer",
+         "format": "int32",
+         "default": 20
+        }
+       },
+       {
+        "name": "start_date",
+        "in": "query",
+        "description": "Filter proposals for which the data has been updated on manufacturer side at a certain date/time.",
+        "schema": {
+         "type": "string",
+         "format": "date"
+        }
+       },
+       {
+        "name": "end_date",
+        "in": "query",
+        "description": "Filter proposals for which the data has been updated on manufacturer side at a certain date/time.",
+        "schema": {
+         "type": "string",
+         "format": "date"
+        }
+       },
+       {
+        "name": "business_unit_uuids",
+        "in": "query",
+        "description": "Filter by business units uuid",
+        "schema": {
+         "type": "array",
+         "items": {
+          "type": "string"
+         }
+        }
+       },
+       {
+        "name": "answer_uuids",
+        "in": "query",
+        "description": "Filter by proposals uuid",
+        "schema": {
+         "type": "array",
+         "items": {
+          "type": "string"
+         }
+        }
+       },
+       {
+        "name": "target_status_updated_at_from",
+        "in": "query",
+        "description": "Filter proposals for which the selection status has been updated after a certain timestamp.",
+        "schema": {
+         "type": "string",
+         "format": "date"
+        }
+       },
+       {
+        "name": "target_status_updated_at_to",
+        "in": "query",
+        "description": "Filter proposals for which the selection status has been updated before a certain timestamp.",
+        "schema": {
+         "type": "string",
+         "format": "date"
+        }
+       },
+       {
+        "name": "statuses",
+        "in": "query",
+        "description": "Filter proposals by selection status (NEED_REVIEW, UPDATE_REQUESTED, UPDATE_RECEIVED, PRE_SELECTED, SELECTED, REJECTED, SELECTED_NOTIFIED, REJECTED_NOTIFIED)",
+        "schema": {
+         "type": "string"
+        }
+       }
+      ],
+      "responses": {
+       "200": {
+        "description": "200",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{\n    \"answers\": [\n        {\n          \t\"uuid\": \"ANSWER_UUID_2\",\n            \"product\": {\n                \"gtin\": \"11111111111111\",\n                \"label\": \"11111111111111 - PACK-TO-SHARE\"\n            },\n            \"data\": {\n                \"isExclusive\": false,\n                \"hierarchyProduct\": {\n                    \"gtin\": \"22222222222222\",\n                    \"label\": \"22222222222222 - colis - PACK-TO-SHARE\",\n                    \"uuid\": \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n                },\n                \"comment\": [\n                    {\n                        \"data\": \".\",\n                        \"expressedIn\": {\n                            \"code\": \"fra-FR\",\n                            \"rank\": null,\n                            \"label\": \"fra-FR\",\n                            \"description\": \"fra-FR\",\n                            \"expressedIn\": [],\n                            \"_type\": \"Language\",\n                            \"data\": {\n                                \"locale\": \"fr_FR\",\n                                \"GDSN3.1\": \"fr-250\",\n                                \"GDSN2.8\": \"fr-250\"\n                            },\n                            \"normalizedCode\": \"fr\"\n                        }\n                    }\n                ],\n                \"contractNumber\": \"2\",\n                \"currency\": {\n                    \"code\": \"EUR\",\n                    \"rank\": null,\n                    \"label\": \"euro\",\n                    \"description\": \"Euro\",\n                    \"expressedIn\": [],\n                    \"_type\": \"Currency\",\n                    \"data\": {\n                        \"GDSN3.1\": \"EUR\",\n                        \"GDSN2.8\": \"EUR\"\n                    }\n                },\n                \"recommendedRetailPriceNumber\": [\n                    {\n                        \"data\": 1.5,\n                        \"expressedIn\": {\n                            \"code\": \"EUR\",\n                            \"rank\": null,\n                            \"label\": \"euro\",\n                            \"description\": \"Euro\",\n                            \"expressedIn\": [],\n                            \"_type\": \"Currency\",\n                            \"data\": {\n                                \"GDSN3.1\": \"EUR\",\n                                \"GDSN2.8\": \"EUR\"\n                            }\n                        }\n                    }\n                ]\n            },\n            \"status\": \"UPDATE_REQUESTED\",\n            \"target_status_updated_at\": \"2022-10-11T08:16:50\",\n          \t\"update_requested_message\": \"Message 1\",\n            \"rfp\": {\n                \"uuid\": \"RFP_UUID_1\"\n            },\n            \"has_been_notified\": false,\n            \"reception_date\": \"2022-06-23T12:37:24\",\n            \"last_received_at\": \"2022-06-23T12:37:24\"\n        }\n    ],\n    \"totalResults\": 508\n}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {
+            "answers": {
+             "type": "array",
+             "items": {
+              "type": "object",
+              "properties": {
+               "uuid": {
+                "type": "string",
+                "example": "ANSWER_UUID_2"
+               },
+               "product": {
+                "type": "object",
+                "properties": {
+                 "gtin": {
+                  "type": "string",
+                  "example": "11111111111111"
+                 },
+                 "label": {
+                  "type": "string",
+                  "example": "11111111111111 - PACK-TO-SHARE"
+                 }
+                }
+               },
+               "data": {
+                "type": "object",
+                "properties": {
+                 "isExclusive": {
+                  "type": "boolean",
+                  "example": false,
+                  "default": true
+                 },
+                 "hierarchyProduct": {
+                  "type": "object",
+                  "properties": {
+                   "gtin": {
+                    "type": "string",
+                    "example": "22222222222222"
+                   },
+                   "label": {
+                    "type": "string",
+                    "example": "22222222222222 - colis - PACK-TO-SHARE"
+                   },
+                   "uuid": {
+                    "type": "string",
+                    "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+                   }
+                  }
+                 },
+                 "comment": {
+                  "type": "array",
+                  "items": {
+                   "type": "object",
+                   "properties": {
+                    "data": {
+                     "type": "string",
+                     "example": "."
+                    },
+                    "expressedIn": {
+                     "type": "object",
+                     "properties": {
+                      "code": {
+                       "type": "string",
+                       "example": "fra-FR"
+                      },
+                      "rank": {},
+                      "label": {
+                       "type": "string",
+                       "example": "fra-FR"
+                      },
+                      "description": {
+                       "type": "string",
+                       "example": "fra-FR"
+                      },
+                      "expressedIn": {
+                       "type": "array"
+                      },
+                      "_type": {
+                       "type": "string",
+                       "example": "Language"
+                      },
+                      "data": {
+                       "type": "object",
+                       "properties": {
+                        "locale": {
+                         "type": "string",
+                         "example": "fr_FR"
+                        },
+                        "GDSN3.1": {
+                         "type": "string",
+                         "example": "fr-250"
+                        },
+                        "GDSN2.8": {
+                         "type": "string",
+                         "example": "fr-250"
+                        }
+                       }
+                      },
+                      "normalizedCode": {
+                       "type": "string",
+                       "example": "fr"
+                      }
+                     }
+                    }
+                   }
+                  }
+                 },
+                 "contractNumber": {
+                  "type": "string",
+                  "example": "2"
+                 },
+                 "currency": {
+                  "type": "object",
+                  "properties": {
+                   "code": {
+                    "type": "string",
+                    "example": "EUR"
+                   },
+                   "rank": {},
+                   "label": {
+                    "type": "string",
+                    "example": "euro"
+                   },
+                   "description": {
+                    "type": "string",
+                    "example": "Euro"
+                   },
+                   "expressedIn": {
+                    "type": "array"
+                   },
+                   "_type": {
+                    "type": "string",
+                    "example": "Currency"
+                   },
+                   "data": {
+                    "type": "object",
+                    "properties": {
+                     "GDSN3.1": {
+                      "type": "string",
+                      "example": "EUR"
+                     },
+                     "GDSN2.8": {
+                      "type": "string",
+                      "example": "EUR"
+                     }
+                    }
+                   }
+                  }
+                 },
+                 "recommendedRetailPriceNumber": {
+                  "type": "array",
+                  "items": {
+                   "type": "object",
+                   "properties": {
+                    "data": {
+                     "type": "number",
+                     "example": 1.5,
+                     "default": 0
+                    },
+                    "expressedIn": {
+                     "type": "object",
+                     "properties": {
+                      "code": {
+                       "type": "string",
+                       "example": "EUR"
+                      },
+                      "rank": {},
+                      "label": {
+                       "type": "string",
+                       "example": "euro"
+                      },
+                      "description": {
+                       "type": "string",
+                       "example": "Euro"
+                      },
+                      "expressedIn": {
+                       "type": "array"
+                      },
+                      "_type": {
+                       "type": "string",
+                       "example": "Currency"
+                      },
+                      "data": {
+                       "type": "object",
+                       "properties": {
+                        "GDSN3.1": {
+                         "type": "string",
+                         "example": "EUR"
+                        },
+                        "GDSN2.8": {
+                         "type": "string",
+                         "example": "EUR"
+                        }
+                       }
+                      }
+                     }
+                    }
+                   }
+                  }
+                 }
+                }
+               },
+               "status": {
+                "type": "string",
+                "example": "UPDATE_REQUESTED"
+               },
+               "target_status_updated_at": {
+                "type": "string",
+                "example": "2022-10-11T08:16:50"
+               },
+               "update_requested_message": {
+                "type": "string",
+                "example": "Message 1"
+               },
+               "rfp": {
+                "type": "object",
+                "properties": {
+                 "uuid": {
+                  "type": "string",
+                  "example": "RFP_UUID_1"
+                 }
+                }
+               },
+               "has_been_notified": {
+                "type": "boolean",
+                "example": false,
+                "default": true
+               },
+               "reception_date": {
+                "type": "string",
+                "example": "2022-06-23T12:37:24"
+               },
+               "last_received_at": {
+                "type": "string",
+                "example": "2022-06-23T12:37:24"
+               }
+              }
+             }
+            },
+            "totalResults": {
+             "type": "integer",
+             "example": 508,
+             "default": 0
+            }
+           }
+          }
+         }
+        }
+       },
+       "400": {
+        "description": "400",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {}
+          }
+         }
+        }
+       }
+      },
+      "deprecated": false
+     }
+    }
+   },
+   "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+   },
+   "x-readme-fauxas": true
+  }
+ },
+ {
+  "page": "https://docs.supplierxm.salsify.com/reference/decline-rfp.md",
+  "definition": {
+   "openapi": "3.1.0",
+   "info": {
+    "title": "tenders-public-retailer",
+    "version": "2.1"
+   },
+   "servers": [
+    {
+     "url": "https://apis.supplierxm.salsify.com/rfp/public/"
+    }
+   ],
+   "components": {
+    "securitySchemes": {
+     "sec0": {
+      "type": "apiKey",
+      "in": "header",
+      "x-default": "SALSIFY_TOKEN",
+      "name": "Authorization",
+      "x-bearer-format": "bearer"
+     }
+    }
+   },
+   "security": [
+    {
+     "sec0": []
+    }
+   ],
+   "paths": {
+    "/v1/business_units/{uuid}/decline": {
+     "post": {
+      "summary": "Decline BU",
+      "description": "",
+      "operationId": "decline-rfp",
+      "parameters": [
+       {
+        "name": "uuid",
+        "in": "path",
+        "description": "The uuid of the business unit to decline",
+        "schema": {
+         "type": "string"
+        },
+        "required": true
+       }
+      ],
+      "requestBody": {
+       "content": {
+        "application/json": {
+         "schema": {
+          "type": "object",
+          "required": [
+           "declined"
+          ],
+          "properties": {
+           "declined": {
+            "type": "boolean",
+            "default": true
+           }
+          }
+         }
+        }
+       }
+      },
+      "responses": {
+       "200": {
+        "description": "200",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "null"
+           }
+          },
+          "schema": {}
+         }
+        }
+       },
+       "404": {
+        "description": "404",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{\n    \"message\": \"Business unit(s) ['UUID'] not found\",\n    \"status\": 404,\n    \"data\": {\n        \"message\": \"Business unit(s) ['UUID'] not found\",\n        \"code\": 404,\n        \"business_unit_ids\": [\n            \"UUID\"\n        ]\n    }\n}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {
+            "message": {
+             "type": "string",
+             "example": "Business unit(s) ['UUID'] not found"
+            },
+            "status": {
+             "type": "integer",
+             "example": 404,
+             "default": 0
+            },
+            "data": {
+             "type": "object",
+             "properties": {
+              "message": {
+               "type": "string",
+               "example": "Business unit(s) ['UUID'] not found"
+              },
+              "code": {
+               "type": "integer",
+               "example": 404,
+               "default": 0
+              },
+              "business_unit_ids": {
+               "type": "array",
+               "items": {
+                "type": "string",
+                "example": "UUID"
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      },
+      "deprecated": false,
+      "x-readme": {
+       "code-samples": [
+        {
+         "language": "curl",
+         "code": "curl --request POST \\\n     --url https://apis.supplierxm.salsify.com/rfp/public/v1/business_units/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/decline \\\n     --header 'Accept: application/json' \\\n     --header 'Authorization: Bearer SALSIFY_TOKEN' \\\n     --header 'Content-Type: application/json' \\\n     --data '\n        {\n\t\t\t\t    declined: true\n        }'"
+        }
+       ],
+       "samples-languages": [
+        "curl"
+       ]
+      }
+     }
+    }
+   },
+   "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+   },
+   "x-readme-fauxas": true
+  }
+ },
+ {
+  "page": "https://docs.supplierxm.salsify.com/reference/create-webhook.md",
+  "definition": {
+   "openapi": "3.1.0",
+   "info": {
+    "title": "tenders-public-retailer",
+    "version": "2.1"
+   },
+   "servers": [
+    {
+     "url": "https://apis.supplierxm.salsify.com/rfp/public/"
+    }
+   ],
+   "components": {
+    "securitySchemes": {
+     "sec0": {
+      "type": "apiKey",
+      "in": "header",
+      "x-default": "SALSIFY_TOKEN",
+      "name": "Authorization",
+      "x-bearer-format": "bearer"
+     }
+    }
+   },
+   "security": [
+    {
+     "sec0": []
+    }
+   ],
+   "paths": {
+    "/v1/webhook": {
+     "post": {
+      "summary": "Create Webhook",
+      "description": "",
+      "operationId": "create-webhook",
+      "requestBody": {
+       "content": {
+        "application/json": {
+         "schema": {
+          "type": "object",
+          "properties": {
+           "webhook": {
+            "properties": {
+             "url": {
+              "type": "string",
+              "description": "URL of your webhook, must be https"
+             },
+             "signature_token": {
+              "type": "string"
+             },
+             "registered_events": {
+              "properties": {
+               "name": {
+                "type": "string",
+                "description": "Name of the event you want to register"
+               },
+               "version": {
+                "type": "integer",
+                "description": "Version of the event you want to register",
+                "format": "int32"
+               }
+              },
+              "required": [],
+              "type": "object"
+             }
+            },
+            "required": [
+             "url"
+            ],
+            "type": "object"
+           }
+          }
+         }
+        }
+       }
+      },
+      "responses": {
+       "200": {
+        "description": "200",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{\n  \"webhook\": {\n  \t\"uuid\": \"WEBHOOK_UUID\",\n    \"url\": \"https://webhook_url.com\",\n    \"last_success_at\": null,\n    \"is_broken\": false,\n    \"last_failure_at\": null,\n    \"signature_token\": null,\n    \"registered_events\": [\n      {\n        \"name\": \"BU_CHASED\",\n        \"version\": 1\n      },\n      {\n        \"name\": \"EVENT_CREATED\",\n        \"version\": 1\n      },\n      {\n        \"name\": \"EVENT_UPDATED\",\n        \"version\": 1\n      },\n      {\n        \"name\": \"EVENT_DELETED\",\n        \"version\": 1\n      },\n      {\n        \"name\": \"ANSWER_STATUS_UPDATED\",\n        \"version\": 1\n      },\n      {\n        \"name\": \"NEW_CHAT_MESSAGE\",\n        \"version\": 1\n      }\n    ],\n  }\n}"
+           }
+          }
+         }
+        }
+       },
+       "400": {
+        "description": "400",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {}
+          }
+         }
+        }
+       }
+      },
+      "deprecated": false,
+      "x-readme": {
+       "code-samples": [
+        {
+         "language": "curl",
+         "code": "curl --request POST \\\n     --url https://apis.supplierxm.salsify.com/rfp/public/v1/business_units \\\n     --header 'Accept: application/json' \\\n     --header 'Authorization: Bearer SALSIFY_TOKEN' \\\n     --header 'Content-Type: application/json' \\\n     --data '\n        {\n            \"webhook\": {\n                \"url\": \"https://webhook_url.com\",\n                \"signature_token\": \"TOKEN\",\n                \"registered_events\": [\n                    {\n                        \"name\": \"BU_CHASED\",\n                        \"version\": 1\n                    },\n                    {\n                        \"name\": \"EVENT_CREATED\",\n                        \"version\": 1\n                    },\n                    {\n                        \"name\": \"EVENT_UPDATED\",\n                        \"version\": 1\n                    },\n                    {\n                        \"name\": \"EVENT_DELETED\",\n                        \"version\": 1\n                    },\n                    {\n                        \"name\": \"ANSWER_STATUS_UPDATED\",\n                        \"version\": 1\n                    },\n                    {\n                        \"name\": \"NEW_CHAT_MESSAGE\",\n                        \"version\": 1\n                    },\n                    {\n                   \t\t\t\"name\": \"ANSWER_SENDABLE_UPDATED\",\n                        \"version\": 1\n                    }\n                ]\n            }\n        }\n     '"
+        }
+       ],
+       "samples-languages": [
+        "curl"
+       ]
+      }
+     }
+    }
+   },
+   "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+   },
+   "x-readme-fauxas": true
+  }
+ },
+ {
+  "page": "https://docs.supplierxm.salsify.com/reference/update-webhook.md",
+  "definition": {
+   "openapi": "3.1.0",
+   "info": {
+    "title": "tenders-public-retailer",
+    "version": "2.1"
+   },
+   "servers": [
+    {
+     "url": "https://apis.supplierxm.salsify.com/rfp/public/"
+    }
+   ],
+   "components": {
+    "securitySchemes": {
+     "sec0": {
+      "type": "apiKey",
+      "in": "header",
+      "x-default": "SALSIFY_TOKEN",
+      "name": "Authorization",
+      "x-bearer-format": "bearer"
+     }
+    }
+   },
+   "security": [
+    {
+     "sec0": []
+    }
+   ],
+   "paths": {
+    "/v1/webhook": {
+     "put": {
+      "summary": "Update Webhook",
+      "description": "",
+      "operationId": "update-webhook",
+      "requestBody": {
+       "content": {
+        "application/json": {
+         "schema": {
+          "type": "object",
+          "properties": {
+           "webhook": {
+            "properties": {
+             "uuid": {
+              "type": "string",
+              "description": "The uuid of the webhook"
+             },
+             "url": {
+              "type": "string",
+              "description": "URL of your webhook, must be https"
+             },
+             "signature_token": {
+              "type": "string"
+             },
+             "registered_events": {
+              "properties": {
+               "name": {
+                "type": "string",
+                "description": "Name of the event you want to register"
+               },
+               "version": {
+                "type": "integer",
+                "description": "Version of the event you want to register",
+                "format": "int32"
+               }
+              },
+              "required": [],
+              "type": "object"
+             }
+            },
+            "required": [
+             "uuid"
+            ],
+            "type": "object"
+           }
+          }
+         }
+        }
+       }
+      },
+      "responses": {
+       "200": {
+        "description": "200",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{\n  \"webhook\": {\n  \t\"uuid\": \"WEBHOOK_UUID\",\n    \"url\": \"https://webhook_url.com\",\n    \"last_success_at\": null,\n    \"is_broken\": false,\n    \"last_failure_at\": null,\n    \"signature_token\": null,\n    \"registered_events\": [\n      {\n        \"name\": \"BU_CHASED\",\n        \"version\": 1\n      },\n      {\n        \"name\": \"EVENT_CREATED\",\n        \"version\": 1\n      },\n      {\n        \"name\": \"EVENT_UPDATED\",\n        \"version\": 1\n      },\n      {\n        \"name\": \"EVENT_DELETED\",\n        \"version\": 1\n      },\n      {\n        \"name\": \"ANSWER_STATUS_UPDATED\",\n        \"version\": 1\n      },\n      {\n        \"name\": \"NEW_CHAT_MESSAGE\",\n        \"version\": 1\n      }\n    ],\n  }\n}"
+           }
+          }
+         }
+        }
+       }
+      },
+      "deprecated": false,
+      "x-readme": {
+       "code-samples": [
+        {
+         "language": "curl",
+         "code": "curl --request POST \\\n     --url https://apis.supplierxm.salsify.com/rfp/public/v1/business_units \\\n     --header 'Accept: application/json' \\\n     --header 'Authorization: Bearer SALSIFY_TOKEN' \\\n     --header 'Content-Type: application/json' \\\n     --data '\n        {\n            \"webhook\": {\n\t  \t\t\t\t\t\t\"uuid\": \"WEBHOOK_UUID\",\n                \"url\": \"https://webhook_url.com\",\n                \"signature_token\": \"TOKEN\",\n                \"registered_events\": [\n                    {\n                        \"name\": \"BU_CHASED\",\n                        \"version\": 1\n                    },\n                    {\n                        \"name\": \"EVENT_CREATED\",\n                        \"version\": 1\n                    },\n                    {\n                        \"name\": \"EVENT_UPDATED\",\n                        \"version\": 1\n                    },\n                    {\n                        \"name\": \"EVENT_DELETED\",\n                        \"version\": 1\n                    },\n                    {\n                        \"name\": \"ANSWER_STATUS_UPDATED\",\n                        \"version\": 1\n                    },\n                    {\n                        \"name\": \"NEW_CHAT_MESSAGE\",\n                        \"version\": 1\n                    }\n                ]\n            }\n        }\n     '"
+        }
+       ],
+       "samples-languages": [
+        "curl"
+       ]
+      }
+     }
+    }
+   },
+   "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+   },
+   "x-readme-fauxas": true
+  }
+ },
+ {
+  "page": "https://docs.supplierxm.salsify.com/reference/list-webhook.md",
+  "definition": {
+   "openapi": "3.1.0",
+   "info": {
+    "title": "tenders-public-retailer",
+    "version": "2.1"
+   },
+   "servers": [
+    {
+     "url": "https://apis.supplierxm.salsify.com/rfp/public/"
+    }
+   ],
+   "components": {
+    "securitySchemes": {
+     "sec0": {
+      "type": "apiKey",
+      "in": "header",
+      "x-default": "SALSIFY_TOKEN",
+      "name": "Authorization",
+      "x-bearer-format": "bearer"
+     }
+    }
+   },
+   "security": [
+    {
+     "sec0": []
+    }
+   ],
+   "paths": {
+    "/v1/webhook": {
+     "get": {
+      "summary": "List Webhook",
+      "description": "",
+      "operationId": "list-webhook",
+      "responses": {
+       "200": {
+        "description": "200",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{\n  \"webhooks\": [\n    {\n      \"uuid\": \"WEBHOOK_UUID_1\",\n      \"url\": \"https://webhook_url_1.com\",\n      \"last_success_at\": null,\n      \"is_broken\": false,\n      \"last_failure_at\": null,\n      \"signature_token\": null,\n      \"registered_events\": [\n        {\n          \"name\": \"BU_CHASED\",\n          \"version\": 1\n        },\n        {\n          \"name\": \"EVENT_CREATED\",\n          \"version\": 1\n        },\n        {\n          \"name\": \"EVENT_UPDATED\",\n          \"version\": 1\n        },\n        {\n          \"name\": \"EVENT_DELETED\",\n          \"version\": 1\n        },\n        {\n          \"name\": \"ANSWER_STATUS_UPDATED\",\n          \"version\": 1\n        },\n        {\n          \"name\": \"NEW_CHAT_MESSAGE\",\n          \"version\": 1\n        },\n        {\n          \"name\": \"ANSWER_SENDABLE_UPDATED\",\n          \"version\": 1\n        }\n      ],\n    },\n    {\n      \"uuid\": \"WEBHOOK_UUID_2\",\n      \"url\": \"https://webhook_url_2.com\",\n      \"last_success_at\": null,\n      \"is_broken\": false,\n      \"last_failure_at\": null,\n      \"signature_token\": null,\n      \"registered_events\": []\n    }\n  ]\n}"
+           }
+          }
+         }
+        }
+       }
+      },
+      "deprecated": false
+     }
+    }
+   },
+   "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+   },
+   "x-readme-fauxas": true
+  }
+ },
+ {
+  "page": "https://docs.supplierxm.salsify.com/reference/delete-webhook.md",
+  "definition": {
+   "openapi": "3.1.0",
+   "info": {
+    "title": "tenders-public-retailer",
+    "version": "2.1"
+   },
+   "servers": [
+    {
+     "url": "https://apis.supplierxm.salsify.com/rfp/public/"
+    }
+   ],
+   "components": {
+    "securitySchemes": {
+     "sec0": {
+      "type": "apiKey",
+      "in": "header",
+      "x-default": "SALSIFY_TOKEN",
+      "name": "Authorization",
+      "x-bearer-format": "bearer"
+     }
+    }
+   },
+   "security": [
+    {
+     "sec0": []
+    }
+   ],
+   "paths": {
+    "/v1/webhook": {
+     "delete": {
+      "summary": "Delete Webhook",
+      "description": "",
+      "operationId": "delete-webhook",
+      "requestBody": {
+       "content": {
+        "application/json": {
+         "schema": {
+          "type": "object",
+          "properties": {
+           "webhook": {
+            "properties": {
+             "uuid": {
+              "type": "string",
+              "description": "The uuid of the webhook"
+             }
+            },
+            "required": [
+             "uuid"
+            ],
+            "type": "object"
+           }
+          }
+         }
+        }
+       }
+      },
+      "responses": {
+       "200": {
+        "description": "200",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{\n  \"deleted_webhook\": \"WEBHOOK_UUID\",\n}"
+           }
+          }
+         }
+        }
+       },
+       "400": {
+        "description": "400",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {}
+          }
+         }
+        }
+       }
+      },
+      "deprecated": false,
+      "x-readme": {
+       "code-samples": [
+        {
+         "language": "curl",
+         "code": "curl --request POST \\\n     --url https://apis.supplierxm.salsify.com/rfp/public/v1/business_units \\\n     --header 'Accept: application/json' \\\n     --header 'Authorization: Bearer SALSIFY_TOKEN' \\\n     --header 'Content-Type: application/json' \\\n     --data '\n        {\n            \"webhook\": {\n\t  \t\t\t\t\t\t\"uuid\": \"WEBHOOK_UUID\"\n            }\n        }\n     '"
+        }
+       ],
+       "samples-languages": [
+        "curl"
+       ]
+      }
+     }
+    }
+   },
+   "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+   },
+   "x-readme-fauxas": true
+  }
+ },
+ {
+  "page": "https://docs.supplierxm.salsify.com/reference/unbreak-webhook.md",
+  "definition": {
+   "openapi": "3.1.0",
+   "info": {
+    "title": "tenders-public-retailer",
+    "version": "2.1"
+   },
+   "servers": [
+    {
+     "url": "https://apis.supplierxm.salsify.com/rfp/public/"
+    }
+   ],
+   "components": {
+    "securitySchemes": {
+     "sec0": {
+      "type": "apiKey",
+      "in": "header",
+      "x-default": "SALSIFY_TOKEN",
+      "name": "Authorization",
+      "x-bearer-format": "bearer"
+     }
+    }
+   },
+   "security": [
+    {
+     "sec0": []
+    }
+   ],
+   "paths": {
+    "/v1/webhooks/{uuid}/unbreak": {
+     "post": {
+      "summary": "Unbreak Webhook",
+      "description": "",
+      "operationId": "unbreak-webhook",
+      "parameters": [
+       {
+        "name": "uuid",
+        "in": "path",
+        "description": "The uuid of the webhook",
+        "schema": {
+         "type": "string"
+        },
+        "required": true
+       }
+      ],
+      "responses": {
+       "200": {
+        "description": "200",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "null"
+           }
+          },
+          "schema": {}
+         }
+        }
+       },
+       "400": {
+        "description": "400",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {}
+          }
+         }
+        }
+       }
+      },
+      "deprecated": false
+     }
+    }
+   },
+   "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+   },
+   "x-readme-fauxas": true
+  }
+ },
+ {
+  "page": "https://docs.supplierxm.salsify.com/reference/list-webhook-event.md",
+  "definition": {
+   "openapi": "3.1.0",
+   "info": {
+    "title": "tenders-public-retailer",
+    "version": "2.1"
+   },
+   "servers": [
+    {
+     "url": "https://apis.supplierxm.salsify.com/rfp/public/"
+    }
+   ],
+   "components": {
+    "securitySchemes": {
+     "sec0": {
+      "type": "apiKey",
+      "in": "header",
+      "x-default": "SALSIFY_TOKEN",
+      "name": "Authorization",
+      "x-bearer-format": "bearer"
+     }
+    }
+   },
+   "security": [
+    {
+     "sec0": []
+    }
+   ],
+   "paths": {
+    "/v1/webhooks_events": {
+     "get": {
+      "summary": "List Webhook Event",
+      "description": "",
+      "operationId": "list-webhook-event",
+      "responses": {
+       "200": {
+        "description": "200",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{\n    \"webhook_events\": [\n        {\n            \"name\": \"ANSWER_STATUS_UPDATED\",\n            \"version\": 1\n        },\n        {\n            \"name\": \"EVENT_CREATED\",\n            \"version\": 1\n        },\n        {\n            \"name\": \"EVENT_DELETED\",\n            \"version\": 1\n        },\n        {\n            \"name\": \"EVENT_UPDATED\",\n            \"version\": 1\n        },\n        {\n            \"name\": \"NEW_CHAT_MESSAGE\",\n            \"version\": 1\n        },\n        {\n            \"name\": \"BU_CHASED\",\n            \"version\": 1\n        }\n    ]\n}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {
+            "webhook_events": {
+             "type": "array",
+             "items": {
+              "type": "object",
+              "properties": {
+               "name": {
+                "type": "string",
+                "example": "ANSWER_STATUS_UPDATED"
+               },
+               "version": {
+                "type": "integer",
+                "example": 1,
+                "default": 0
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       },
+       "400": {
+        "description": "400",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {}
+          }
+         }
+        }
+       }
+      },
+      "deprecated": false
+     }
+    }
+   },
+   "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+   },
+   "x-readme-fauxas": true
+  }
+ }
+]

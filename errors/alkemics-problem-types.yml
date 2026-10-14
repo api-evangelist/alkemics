@@ -1,0 +1,38 @@
+generated: '2026-10-14'
+method: derived
+generator: derive-problem-types.py
+source:
+- openapi/alkemics-authentication-openapi.yml
+- openapi/alkemics-bulk-activate-scenarios-openapi.yml
+- openapi/alkemics-information-requests-openapi.yml
+- openapi/alkemics-list-available-scenarios-openapi.yml
+- openapi/alkemics-product-openapi.yml
+- openapi/alkemics-product-segment-openapi.yml
+- openapi/alkemics-referentials-openapi.yml
+- openapi/alkemics-supplier-openapi.yml
+- openapi/alkemics-tariff-openapi.yml
+- openapi/alkemics-tenders-public-retailer-openapi.yml
+- openapi/alkemics-tenders-public-supplier-openapi.yml
+format: custom
+envelope:
+  media_type: application/json
+  schema: null
+coverage:
+  operations: 48
+  statuses_declared: 2
+problems:
+- status: 400
+  title: Bad Request
+  description: '400'
+  operations: 39
+  media_types:
+  - application/json
+  schema: null
+- status: 404
+  title: Not Found
+  description: '404'
+  operations: 3
+  media_types:
+  - application/json
+  - text/plain
+  schema: null

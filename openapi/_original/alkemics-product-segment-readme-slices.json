@@ -1,0 +1,94 @@
+[
+ {
+  "page": "https://docs.supplierxm.salsify.com/reference/list-product-segments.md",
+  "definition": {
+   "openapi": "3.1.0",
+   "info": {
+    "title": "product-segment",
+    "version": "2"
+   },
+   "servers": [
+    {
+     "url": "https://apis.alkemics.com/core/v3/productsegments/hierarchy"
+    }
+   ],
+   "components": {
+    "securitySchemes": {
+     "sec0": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "Authorization",
+      "x-bearer-format": "bearer",
+      "x-default": "TOKEN"
+     }
+    }
+   },
+   "security": [
+    {
+     "sec0": []
+    }
+   ],
+   "paths": {
+    "/": {
+     "get": {
+      "summary": "List product segments",
+      "description": "",
+      "operationId": "list-product-segments",
+      "parameters": [
+       {
+        "name": "permission",
+        "in": "query",
+        "description": "The type of permission requested.",
+        "schema": {
+         "type": "string",
+         "default": "product.show"
+        }
+       }
+      ],
+      "responses": {
+       "200": {
+        "description": "200",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {}
+          }
+         }
+        }
+       },
+       "400": {
+        "description": "400",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {}
+          }
+         }
+        }
+       }
+      },
+      "deprecated": false
+     }
+    }
+   },
+   "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+   },
+   "x-readme-fauxas": true
+  }
+ }
+]

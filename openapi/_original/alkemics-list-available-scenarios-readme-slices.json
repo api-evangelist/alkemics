@@ -1,0 +1,101 @@
+[
+ {
+  "page": "https://docs.supplierxm.salsify.com/reference/list-available-scenarios-for-your-organization-1.md",
+  "definition": {
+   "openapi": "3.1.0",
+   "info": {
+    "title": "list-available-scenarios",
+    "version": "2.1"
+   },
+   "servers": [
+    {
+     "url": "https://apis.supplierxm.salsify.com/public/v1/validation/rulesets/requestable"
+    }
+   ],
+   "components": {
+    "securitySchemes": {
+     "sec0": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "Authorization",
+      "x-bearer-format": "bearer",
+      "x-default": "SALSIFY_TOKEN"
+     }
+    }
+   },
+   "security": [
+    {
+     "sec0": []
+    }
+   ],
+   "paths": {
+    "/": {
+     "get": {
+      "summary": "List available scenarios for your organization",
+      "description": "",
+      "operationId": "list-available-scenarios-for-your-organization",
+      "responses": {
+       "200": {
+        "description": "200",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{\n  \"data\": [\n    {\"id\": 1, \"label\": \"My first business process\"}\n  ]\n}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {
+            "data": {
+             "type": "array",
+             "items": {
+              "type": "object",
+              "properties": {
+               "id": {
+                "type": "integer",
+                "example": 1,
+                "default": 0
+               },
+               "label": {
+                "type": "string",
+                "example": "My first business process"
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       },
+       "400": {
+        "description": "400",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {}
+          }
+         }
+        }
+       }
+      },
+      "deprecated": false
+     }
+    }
+   },
+   "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+   },
+   "x-readme-fauxas": true
+  }
+ }
+]

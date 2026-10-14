@@ -1,0 +1,51 @@
+generated: '2026-10-14'
+method: derived
+source: the pre-flight dossier, apis.yml pointers, spec servers, well-known, vendors -- nothing fetched here
+generator: derive-hosts.py
+summary:
+  hosts: 4
+  own: 1
+  other_domain: 2
+  platform: 1
+  roles:
+  - docs
+  - other
+  - source
+  - website
+hosts:
+- host: docs.supplierxm.salsify.com
+  found_by:
+  - pointer
+  types:
+  - Documentation
+  serves: []
+  registrable_domain: salsify.com
+  role: docs
+  relation: other-domain
+- host: github.com
+  found_by:
+  - pointer
+  types:
+  - GitHubOrganization
+  serves: []
+  registrable_domain: github.com
+  role: source
+  relation: platform
+- host: www.alkemics.com
+  found_by:
+  - pointer
+  types:
+  - Website
+  serves: []
+  registrable_domain: alkemics.com
+  role: website
+  relation: own
+- host: www.salsify.com
+  found_by:
+  - pointer
+  types:
+  - Company
+  serves: []
+  registrable_domain: salsify.com
+  role: other
+  relation: other-domain

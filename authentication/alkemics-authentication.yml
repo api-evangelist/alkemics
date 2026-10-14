@@ -1,0 +1,33 @@
+generated: '2026-10-14'
+method: derived
+source: openapi/alkemics-bulk-activate-scenarios-openapi.yml, openapi/alkemics-information-requests-openapi.yml,
+  openapi/alkemics-list-available-scenarios-openapi.yml, openapi/alkemics-product-openapi.yml,
+  openapi/alkemics-product-segment-openapi.yml, openapi/alkemics-referentials-openapi.yml, openapi/alkemics-supplier-openapi.yml,
+  openapi/alkemics-tariff-openapi.yml, openapi/alkemics-tenders-public-retailer-openapi.yml,
+  openapi/alkemics-tenders-public-supplier-openapi.yml
+summary:
+  types:
+  - apiKey
+  - oauth2
+  api_key_in:
+  - header
+schemes:
+- name: sec0
+  type: apiKey
+  in: header
+  parameter: Authorization
+  sources:
+  - openapi/alkemics-bulk-activate-scenarios-openapi.yml
+  - openapi/alkemics-list-available-scenarios-openapi.yml
+  - openapi/alkemics-product-openapi.yml
+  - openapi/alkemics-product-segment-openapi.yml
+  - openapi/alkemics-referentials-openapi.yml
+  - openapi/alkemics-supplier-openapi.yml
+  - openapi/alkemics-tariff-openapi.yml
+  - openapi/alkemics-tenders-public-retailer-openapi.yml
+  - openapi/alkemics-tenders-public-supplier-openapi.yml
+- name: sec0
+  type: oauth2
+  flows: []
+  sources:
+  - openapi/alkemics-information-requests-openapi.yml

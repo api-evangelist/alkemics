@@ -1,0 +1,267 @@
+openapi: 3.1.0
+info:
+  title: supplier
+  version: '2.1'
+servers:
+- url: https://apis.supplierxm.salsify.com/public/v1/supplier
+security:
+- sec0: []
+x-readme-fauxas: true
+paths:
+  /:
+    post:
+      summary: Supplier Import
+      description: ''
+      operationId: import
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"tracker\": {\n     \"id\": 42\n  }\n}"
+              schema:
+                type: object
+                properties:
+                  tracker:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 42
+                        default: 0
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl -H 'Authorization: Bearer SALSIFY_TOKEN' -XPOST 'https://apis.supplierxm.salsify.com/public/v1/supplier' -H 'Content-Type: application/json' -d '{\n    \"suppliers\": [\n        {\n            \"internalID\": \"Unique supplierID 1\",\n            \"name\": \"The 1st Supplier\\'s Name\",\n            \"sirens\": [\"123456789\"],\n            \"vatNumbers\": [\"FR01123456789\"],\n            \"contacts\":[\n       \t\t \t\t{\n              \"emailAddress\": \"SupplierContact.ret301.1\",\n              \"firstName\":\"Bastien\",\n              \"lastName\":\"Testalk\",\n              \"jobTitle\":\"Sourcing Mgr\",\n              \"phoneNumber\":\"0612334455\",\n              \"mobileNumber\":\"0755667788\"\n           \t  },\n     \t\t\t   {\n              \"emailAddress\": \"SupplierContact.ret301.2\",\n              \"firstName\":\"Lee\",\n              \"lastName\":\"Long\",\n              \"jobTitle\":\"Long job title\",\n              \"phoneNumber\":\"0600101112\"\
+            ,\n              \"mobileNumber\":\"0743101112\"\n    \t\t\t    }\n     \t\t\t ]\n        },\n        {\n            \"internalID\": \"Unique supplierID 2\",\n            \"name\": \"The 2nd Supplier\\'s Name\",\n            \"sirens\": [],\n            \"vatNumbers\": []\n        }        \n    ]\n}'"
+        samples-languages:
+        - curl
+  /list:
+    post:
+      summary: Supplier List
+      description: ''
+      operationId: supplier-list
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                internal_ids:
+                  type: array
+                  items:
+                    type: string
+                limit:
+                  type: integer
+                  default: 20
+                  format: int32
+                offset:
+                  type: integer
+                  default: 0
+                  format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Success:
+                  value: "{\n  \"data\": [\n    {\n      \"id\": 1,\n      \"internalId\": \"supplier_1\",\n      \"name\": \"Supplier 1\",\n      \"matches\": [\n        {\n          \"organization\": {\n            \"id\": 10,\n            \"name\": \"Manufacturer 1\"\n          },\n          \"reasons\": {\n            \"method\": \"automatic\",\n            \"sirens\": [\n              \"123456789\"\n            ]\n          },\n          \"status\": \"VALIDATED\",\n          \"lastValidatedAt\": \"2020-01-01T00:00:00Z\",\n          \"createdAt\": \"2020-01-01T00:00:00Z\",\n          \"updatedAt\": \"2020-01-01T00:00:00Z\"\n        }\n      ],\n      \"sirens\": [\n        \"123456789\"\n      ],\n      \"vatNumbers\": [\n        \"FR0123456\"\n      ],\n      \"supplierIDs\": [\n        \"Supplier id 1\"\n      ],\n      \"supplyChains\": [\n        \"Supply chain 1\"\n      ],\n      \"createdAt\": \"2020-01-01T00:00:00Z\",\n      \"updatedAt\": \"2020-01-01T00:00:00Z\"\n    }\n  ],\n\
+                    \  \"totalResults\": 1\n}"
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                          default: 0
+                        internalId:
+                          type: string
+                          example: supplier_1
+                        name:
+                          type: string
+                          example: Supplier 1
+                        matches:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              organization:
+                                type: object
+                                properties:
+                                  id:
+                                    type: integer
+                                    example: 10
+                                    default: 0
+                                  name:
+                                    type: string
+                                    example: Manufacturer 1
+                              reasons:
+                                type: object
+                                properties:
+                                  method:
+                                    type: string
+                                    example: automatic
+                                  sirens:
+                                    type: array
+                                    items:
+                                      type: string
+                                      example: '123456789'
+                              status:
+                                type: string
+                                example: VALIDATED
+                              lastValidatedAt:
+                                type: string
+                                example: '2020-01-01T00:00:00Z'
+                              createdAt:
+                                type: string
+                                example: '2020-01-01T00:00:00Z'
+                              updatedAt:
+                                type: string
+                                example: '2020-01-01T00:00:00Z'
+                        sirens:
+                          type: array
+                          items:
+                            type: string
+                            example: '123456789'
+                        vatNumbers:
+                          type: array
+                          items:
+                            type: string
+                            example: FR0123456
+                        supplierIDs:
+                          type: array
+                          items:
+                            type: string
+                            example: Supplier id 1
+                        supplyChains:
+                          type: array
+                          items:
+                            type: string
+                            example: Supply chain 1
+                        createdAt:
+                          type: string
+                          example: '2020-01-01T00:00:00Z'
+                        updatedAt:
+                          type: string
+                          example: '2020-01-01T00:00:00Z'
+                  totalResults:
+                    type: integer
+                    example: 1
+                    default: 0
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                With error:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+  /track/{tracker_id}:
+    get:
+      summary: Supplier import tracking
+      description: You can track your import using this endpoint, it allows you to check that your suppliers have been successfully imported, and get error reasons in case of failure
+      operationId: supplier-import-tracking
+      parameters:
+      - name: tracker_id
+        in: path
+        schema:
+          type: integer
+          format: int32
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Success:
+                  value: "{\n  \"status\": \"SUCCESS\",\n  \"startedAt\": \"2020-04-23T09:31:17\",\n  \"message\": null,\n  \"endedAt\": \"2020-04-23T09:31:21\",\n  \"suppliers\": [\n    {\n      \"status\": \"SUCCESS\",\n      \"message\": null,\n      \"identifier\": \"Unique supplierID 1\"\n    },\n    {\n      \"status\": \"SUCCESS\",\n      \"message\": null,\n      \"identifier\": \"Unique supplierID 2\"\n    }\n  ]\n}\n"
+                With error:
+                  value: "{\n  \"status\": \"CONTAINS_ERROR\",\n  \"startedAt\": \"2020-04-23T09:32:19\",\n  \"message\": null,\n  \"endedAt\": \"2020-04-23T09:32:21\",\n  \"suppliers\": [\n    {\n      \"status\": \"SUCCESS\",\n      \"message\": null,\n      \"identifier\": \"Unique supplierID 1\"\n    },\n    {\n      \"status\": \"ERROR\",\n      \"message\": \"sirens expected list got <type 'int'>\",\n      \"identifier\": \"Unique supplierID 2\"\n    }\n  ]\n}\n"
+              schema:
+                oneOf:
+                - title: Success
+                  type: object
+                  properties:
+                    status:
+                      type: string
+                      example: SUCCESS
+                    startedAt:
+                      type: string
+                      example: '2020-04-23T09:31:17'
+                    message: {}
+                    endedAt:
+                      type: string
+                      example: '2020-04-23T09:31:21'
+                    suppliers:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          status:
+                            type: string
+                            example: SUCCESS
+                          message: {}
+                          identifier:
+                            type: string
+                            example: Unique supplierID 1
+                - title: With error
+                  type: object
+                  properties:
+                    status:
+                      type: string
+                      example: CONTAINS_ERROR
+                    startedAt:
+                      type: string
+                      example: '2020-04-23T09:32:19'
+                    message: {}
+                    endedAt:
+                      type: string
+                      example: '2020-04-23T09:32:21'
+                    suppliers:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          status:
+                            type: string
+                            example: SUCCESS
+                          message: {}
+                          identifier:
+                            type: string
+                            example: Unique supplierID 1
+      deprecated: false
+components:
+  securitySchemes:
+    sec0:
+      type: apiKey
+      in: header
+      name: Authorization
+      x-bearer-format: bearer
+      x-default: SALSIFY_TOKEN
+x-provenance:
+  method: searched
+  source: https://docs.supplierxm.salsify.com/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://docs.supplierxm.salsify.com/reference/import-1.md
+  - https://docs.supplierxm.salsify.com/reference/supplier-import-tracking.md
+  - https://docs.supplierxm.salsify.com/reference/supplier-list.md
+  merge:
+    pages: 3
+    deduped: 2
+    conflicts_kept_first: 0

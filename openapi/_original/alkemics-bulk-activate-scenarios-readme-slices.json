@@ -1,0 +1,135 @@
+[
+ {
+  "page": "https://docs.supplierxm.salsify.com/reference/bulk-activate-scenarios-1-1.md",
+  "definition": {
+   "openapi": "3.1.0",
+   "info": {
+    "title": "bulk-activate-scenarios",
+    "version": "2.1"
+   },
+   "servers": [
+    {
+     "url": "https://apis.supplierxm.salsify.com/public/v1/validation/rulesets/require"
+    }
+   ],
+   "components": {
+    "securitySchemes": {
+     "sec0": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "Authorization",
+      "x-bearer-format": "bearer",
+      "x-default": "SALSIFY_TOKEN"
+     }
+    }
+   },
+   "security": [
+    {
+     "sec0": []
+    }
+   ],
+   "paths": {
+    "/": {
+     "post": {
+      "summary": "Bulk activate scenarios",
+      "description": "",
+      "operationId": "bulk-activate-scenarios-1",
+      "requestBody": {
+       "content": {
+        "application/json": {
+         "schema": {
+          "type": "object",
+          "required": [
+           "uuids",
+           "ruleset_values"
+          ],
+          "properties": {
+           "uuids": {
+            "type": "array",
+            "description": "List of products uuids",
+            "items": {
+             "type": "string"
+            }
+           },
+           "ruleset_values": {
+            "type": "object",
+            "description": "For each business process `id`, send `true` for activation and `false` for deactivation.",
+            "properties": {}
+           }
+          }
+         },
+         "examples": {
+          "Request Example": {
+           "value": {
+            "uuids": [
+             "11d8e2e0-fake-uuid-a55d-e6e051c1ac5d"
+            ],
+            "ruleset_values": {
+             "1": true,
+             "2": false
+            }
+           }
+          }
+         }
+        }
+       }
+      },
+      "responses": {
+       "200": {
+        "description": "200",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{\"data\": \"ok\"}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {
+            "data": {
+             "type": "string",
+             "example": "ok"
+            }
+           }
+          }
+         }
+        }
+       },
+       "404": {
+        "description": "404",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "12 product(s) successfully affected. \n- Missing products: [\"uuid-not-found\"]\n- Not shared products: [\"uuid-not-shared\"]"
+           }
+          }
+         }
+        }
+       }
+      },
+      "deprecated": false,
+      "x-readme": {
+       "code-samples": [
+        {
+         "language": "curl",
+         "code": "curl --request POST \\\n  --url https://apis.supplierxm.salsify.com/public/v1/validation/rulesets/require \\\n  --header 'Authorization: Bearer SALSIFY_TOKEN'\n  --header 'Content-Type: application/json'\n  --data '{\"uuids\":[\"uuid1\",\"uuid2\"],\"ruleset_values\":{\"1\":true,\"2\":false}}'"
+        }
+       ],
+       "samples-languages": [
+        "curl"
+       ]
+      }
+     }
+    }
+   },
+   "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+   },
+   "x-readme-fauxas": true
+  }
+ }
+]

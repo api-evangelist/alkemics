@@ -1,0 +1,2194 @@
+[
+ {
+  "page": "https://docs.supplierxm.salsify.com/reference/list-products.md",
+  "definition": {
+   "openapi": "3.1.0",
+   "info": {
+    "title": "product",
+    "version": "2.1"
+   },
+   "servers": [
+    {
+     "url": "https://apis.supplierxm.salsify.com/public/v1/products"
+    }
+   ],
+   "components": {
+    "securitySchemes": {
+     "sec0": {
+      "in": "header",
+      "name": "Authorization",
+      "type": "apiKey",
+      "x-bearer-format": "bearer",
+      "x-default": "SALSIFY_TOKEN"
+     }
+    }
+   },
+   "security": [
+    {
+     "sec0": []
+    }
+   ],
+   "paths": {
+    "/": {
+     "get": {
+      "summary": "List Products",
+      "description": "This method lists all the products you have access to.",
+      "operationId": "list-products",
+      "parameters": [
+       {
+        "name": "status_shared_from",
+        "in": "query",
+        "description": "Filters the shared status of the source products. (DRAFT=2 / PENDING=3 / ACCEPTED=4 / ARCHIVED=1 / DELETED=0 / PAUSED=6 / REFUSED=5)",
+        "schema": {
+         "type": "integer",
+         "format": "int32"
+        }
+       },
+       {
+        "name": "status_shared_with",
+        "in": "query",
+        "description": "Filters the shared status of the target products. (DRAFT=2 / PENDING=3 / ACCEPTED=4 / ARCHIVED=1 / DELETED=0 / PAUSED=6 / REFUSED=5)",
+        "schema": {
+         "type": "integer",
+         "format": "int32"
+        }
+       },
+       {
+        "name": "updated_at_from",
+        "in": "query",
+        "description": "Filters the minimum latest update date of the returned products (UNIX timestamp)",
+        "schema": {
+         "type": "string",
+         "format": "date-time"
+        }
+       },
+       {
+        "name": "updated_at_to",
+        "in": "query",
+        "description": "Filters the maximum latest update date of the returned products (UNIX timestamp)",
+        "schema": {
+         "type": "string",
+         "format": "date-time"
+        }
+       },
+       {
+        "name": "filter_gtins_in",
+        "in": "query",
+        "description": "Filters by GTINs (several possible, comma-separated)",
+        "schema": {
+         "type": "string",
+         "default": "03663215000110"
+        }
+       },
+       {
+        "in": "query",
+        "name": "filter_gmns_in",
+        "schema": {
+         "type": "string"
+        },
+        "description": "Filters by GMNs (several possible, comma-separated)"
+       },
+       {
+        "name": "filter_target_market",
+        "in": "query",
+        "description": "Filters by target market (ISO 3166-1 numeric)",
+        "schema": {
+         "type": "integer",
+         "format": "int32",
+         "default": 250
+        }
+       },
+       {
+        "name": "filter_product_languages",
+        "in": "query",
+        "description": "Filters by product languages (several possible, comma-separated)",
+        "schema": {
+         "type": "string",
+         "default": "fr"
+        }
+       },
+       {
+        "name": "filter_validation_status_in",
+        "in": "query",
+        "description": "Filters the data quality status (validation) of the products (several possible, comma-separated). (NA=0 / NOT OK=1 / OK=2 / CORRECTION=3)",
+        "schema": {
+         "type": "integer",
+         "format": "int32"
+        }
+       },
+       {
+        "name": "filter_has_packshot_new",
+        "in": "query",
+        "description": "Filters on products based on the presence/absence a packshot.",
+        "schema": {
+         "type": "boolean"
+        }
+       },
+       {
+        "name": "filter_pictures_last_updated_at_from",
+        "in": "query",
+        "description": "Filters the minimum latest update date for the images (milliseconds since 01/01/1970)",
+        "schema": {
+         "type": "string",
+         "format": "date-time"
+        }
+       },
+       {
+        "name": "filter_pictures_last_updated_at_to",
+        "in": "query",
+        "description": "Filters the maximum latest update date for the images (milliseconds since 01/01/1970)",
+        "schema": {
+         "type": "string",
+         "format": "date-time"
+        }
+       },
+       {
+        "name": "filter_tags_in",
+        "in": "query",
+        "description": "Filter products depending on a specific tag. Returns all products for which the specified tag is on",
+        "schema": {
+         "type": "string"
+        }
+       },
+       {
+        "name": "filter_tags_not_in",
+        "in": "query",
+        "description": "Filter products depending on a specific tag. Returns all products for which the specified tag is off",
+        "schema": {
+         "type": "string"
+        }
+       },
+       {
+        "name": "filter_source_include",
+        "in": "query",
+        "description": "Filters the fields returned by the API (fields are comma separated)",
+        "schema": {
+         "type": "string"
+        }
+       },
+       {
+        "name": "filter_source_exclude",
+        "in": "query",
+        "description": "Filters the fields returned by the API (fields are comma separated)",
+        "schema": {
+         "type": "string"
+        }
+       },
+       {
+        "name": "filter_quality_changed_at_from",
+        "in": "query",
+        "description": "Filters the minimum latest quality update date of the returned products.",
+        "schema": {
+         "type": "string",
+         "format": "date-time"
+        }
+       },
+       {
+        "name": "filter_quality_changed_at_to",
+        "in": "query",
+        "description": "Filters the maximum latest quality update date of the returned products.",
+        "schema": {
+         "type": "string",
+         "format": "date-time"
+        }
+       },
+       {
+        "name": "filter_lifecycle_in",
+        "in": "query",
+        "description": "Filters the lifecycle status of the source products. (PRELAUNCH=0 / PURCHASABLE=1 / NOT_PURCHASABLE=2 / ARCHIVED=3)",
+        "schema": {
+         "type": "integer",
+         "format": "int32"
+        }
+       },
+       {
+        "name": "filter_is_requested",
+        "in": "query",
+        "description": "Identifies products part of the retailer's active range = products you have uploaded to SupplierXM. Products that manufacturers push proactively have a value \"false\"",
+        "schema": {
+         "type": "boolean"
+        }
+       },
+       {
+        "name": "filter_request_product_status_in",
+        "in": "query",
+        "description": "Filters by request statuses (several possible, comma-separated). Values ACCEPTED, PENDING, REFUSED, RECIPIENT_NOT_RECONCILED",
+        "schema": {
+         "type": "string"
+        }
+       },
+       {
+        "name": "limit",
+        "in": "query",
+        "description": "The maximum number of products to be returned. The max value allowed is 500",
+        "schema": {
+         "type": "integer",
+         "format": "int32",
+         "default": 20
+        }
+       },
+       {
+        "name": "offset",
+        "in": "query",
+        "description": "The index of the first product to be returned",
+        "schema": {
+         "type": "integer",
+         "format": "int32",
+         "default": 0
+        }
+       },
+       {
+        "name": "next_page",
+        "in": "query",
+        "description": "To use scroll search when you need to retrieve more than 10K products (see end of step 3 at https://docs.supplierxm.salsify.com/docs/getting-started for more info)",
+        "schema": {
+         "type": "integer",
+         "format": "int64"
+        }
+       },
+       {
+        "name": "decrypt_price",
+        "in": "query",
+        "description": "Decrypt price if possible (based on permission). Possible values are : false, true.",
+        "schema": {
+         "type": "boolean"
+        }
+       },
+       {
+        "name": "advanced_search",
+        "in": "query",
+        "description": "See details in \"Search Products\": https://docs.supplierxm.salsify.com/reference/search-product",
+        "schema": {
+         "type": "string",
+         "format": "json"
+        }
+       },
+       {
+        "name": "sort_by",
+        "in": "query",
+        "description": "sort the element according to the field specified",
+        "schema": {
+         "type": "string"
+        }
+       },
+       {
+        "name": "filter_active_range",
+        "in": "query",
+        "description": "[DEPRECATED] Identifies products part of the retailer's active range = products you have uploaded to SupplierXM. Products that manufacturers push proactively have a value \"false\"",
+        "schema": {
+         "type": "boolean"
+        }
+       },
+       {
+        "name": "Accept-language",
+        "in": "header",
+        "description": "Filters by expected languages for labels associated to code values",
+        "schema": {
+         "type": "string",
+         "default": "fr"
+        }
+       }
+      ],
+      "responses": {
+       "200": {
+        "description": "200",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{\n  \"totalResults\": 1,\n  \"data\": [\n    {\n      \"_jsonVersion\": 3,\n      \"synonyms\": [],\n      \"updatedAt\": \"2017-03-24T09:42:20\",\n      \"conservationAdvices\": [],\n      \"productionVariantEffectiveDate\": null,\n      \"shapeStatement\": [],\n      \"productActivities\": [],\n      \"keepRefrigeratedAfter\": null,\n      \"isConsumerUnit\": true,\n      \"compulsoryStatements\": [],\n      \"isDerivedFrom\": [],\n      \"createdShareValueStatement\": [],\n      \"GPC\": {},\n      \"isPracticeCompatible\": [],\n      \"shape\": null,\n      \"serves\": [],\n      \"isComplementaryWith\": [],\n      \"isDespatchUnit\": null,\n      \"originText\": [],\n      \"brandHighlight\": [],\n      \"isOrderableUnit\": null,\n      \"expressedIn\": [\n        {\n          \"referential\": {\n            \"name\": \"languages\"\n          },\n          \"presentEntities\": [\n            {\n              \"normalizedCode\": \"fr\",\n              \"code\": \"fra-FR\",\n              \"description\": \"français\",\n              \"label\": \"français\"\n            }\n          ]\n        },\n        {\n          \"referential\": {\n            \"name\": \"netcontents\"\n          },\n          \"presentEntities\": []\n        },\n        {\n          \"referential\": {\n            \"name\": \"currencies\"\n          },\n          \"presentEntities\": []\n        },\n        {\n          \"referential\": {\n            \"name\": \"weights\"\n          },\n          \"presentEntities\": []\n        }\n      ],\n      \"createdAt\": \"2017-01-03T13:27:07\",\n      \"manufactureInsights\": [],\n      \"flavorStatement\": [],\n      \"hasTags\": [\n        {\n          \"tag\": \"datavalidated\",\n          \"createdAt\": \"2017-03-24T16:46:08\"\n        }\n      ],\n      \"lifeCycle\": 0,\n      \"isTaggedBy\": [\n        \"datavalidated\"\n      ],\n      \"substitutes\": [],\n      \"manufacturerSharingStatus\": 1,\n      \"importClassification\": [],\n      \"packagingMentions\": [],\n      \"isSharedFrom\": [],\n      \"allergens\": [],\n      \"additives\": [],\n      \"conservations\": [],\n      \"hasBatchNumber\": null,\n      \"tradeItemDateOnPackagingTypeCode\": null,\n      \"packaging\": [],\n      \"nameLegal\": [\n        {\n          \"expressedIn\": {\n            \"normalizedCode\": \"fr\",\n            \"code\": \"fra-FR\",\n            \"description\": \"français\",\n            \"label\": \"français\"\n          },\n          \"data\": \"Soda bien trop sucré\"\n        }\n      ],\n      \"namePublicShort\": [],\n      \"productionVariantName\": [],\n      \"temperature\": [],\n      \"isClassifiedIn\": null,\n      \"isWrappedBy\": [],\n      \"advertisedInformations\": [],\n      \"startAvailabilityDateTime\": null,\n      \"endAvailabilityDateTime\": null,\n      \"dutyFeeTax\": [],\n      \"hasNotableIngredients\": [],\n      \"isSizedBy\": [],\n      \"environmentStatement\": [],\n      \"namePublicLong\": [\n        {\n          \"expressedIn\": {\n            \"normalizedCode\": \"fr\",\n            \"code\": \"fra-FR\",\n            \"description\": \"français\",\n            \"label\": \"français\"\n          },\n          \"data\": \"Soda \"\n        }\n      ],\n      \"isPromotionalItem\": null,\n      \"brand\": {\n        \"code\": \"Salsify brand\",\n        \"description\": \"Sample description\",\n        \"label\": \"Sample label\",\n        \"pictureUrl\": \"https://smedia.supplierxm.salsify.com/brand/7919/picture/logo/original.png\"\n      },\n      \"sparklingValue\": null,\n      \"isLabeledBy\": [\n                {\n                    \"startDate\": null,\n                    \"endDate\": null,\n                    \"detail\": [],\n                    \"value\": null,\n                    \"isConceptualizedBy\": {\n                        \"code\": \"19096\",\n                        \"description\": \"Agriculture Biologique Française\",\n                        \"label\": \"Agriculture Biologique Française\",\n                        \"pictureUrl\": \"https://smedia.supplierxm.salsify.com/api/1/concept/19096/picture/logo/original.png\"\n                    },\n                    \"attributedAt\": null\n                }\n      ],\n      \"kind\": {\n        \"code\": \"Soda & autre BSA prête-à-boire\",\n        \"description\": \"Soda & autre BSA prête-à-boire\",\n        \"label\": \"Soda & autre BSA prête-à-boire\"\n      },\n      \"replaces\": [],\n      \"typePackaging\": {\n        \"code\": \"EACH\",\n        \"description\": \"Unité de base\",\n        \"label\": \"unité de base\"\n      },\n      \"specializes\": {\n        \"isBrandedBy\": {\n          \"code\": \"Sample code\",\n          \"description\": \"Sample description\",\n          \"label\": \"Sample label\"\n        },\n        \"isIdentifiedBy\": [\n          {\n            \"reference\": \"00366383600795\"\n          }\n        ],\n        \"kind\": {\n          \"code\": \"Soda & autre BSA prête-à-boire\",\n          \"description\": \"Soda & autre BSA prête-à-boire\",\n          \"label\": \"Soda & autre BSA prête-à-boire\"\n        }\n      },\n      \"owner\": {\n                \"type\": 1,\n                \"name\": \"Salsify\"\n      },\n      \"nutritionalAllegations\": [],\n      \"isEquivalentTo\": [],\n      \"netContent\": [],\n      \"history\": [],\n      \"netWeight\": [],\n      \"priceComparisonType\": null,\n      \"originCountry\": null,\n      \"isSubstitutableWith\": [],\n      \"id\": 4897534,\n      \"reasonForNewEAN\": null,\n      \"isReplaceableBy\": [],\n      \"productBenefits\": [],\n      \"suggestedRetailPrice\": [],\n      \"isMarkedRecyclable\": null,\n      \"composition\": [],\n      \"description\": [],\n      \"warnings\": [],\n      \"grossWeight\": [],\n      \"consumptionAdvice\": [],\n      \"assets\": {\n        \"pictures\": [\n          {\n            \"definition\": null,\n            \"typeOfInformation\": 1,\n            \"fileEffectiveEndDateTime\": null,\n            \"contentType\": 1,\n            \"sequenceNumber\": null,\n            \"angleHorizontal\": 0,\n            \"format\": null,\n            \"url\": \"https://smedia.supplierxm.salsify.com/product/3292988/version/4897534/picture/upload/20170324/a1f1405d-b087-46e8-9974-a76673fbf08c.jpg\",\n            \"productFace\": 1,\n            \"fileType\": 0,\n            \"tags\": [],\n            \"isPackshot\": true,\n            \"exportables\": [\n              {\n                \"uniformResourceIdentifier\": \"https://smedia.supplierxm.salsify.com/product/3292988/version/4897534/picture/exportable/a1f1405d-b087-46e8-9974-a76673fbf08c/1024x1024.jpg\",\n                \"height\": 1024,\n                \"width\": 1024,\n                \"fileSize\": 75841,\n                \"productpicture_id\": 576944,\n                \"updatedAt\": \"2017-03-24T09:42:14\",\n                \"crc32\": \"452EFCFE\",\n                \"createdAt\": \"2017-03-24T09:42:14\"\n              },\n              {\n                \"uniformResourceIdentifier\": \"https://smedia.supplierxm.salsify.com/product/3292988/version/4897534/picture/exportable/a1f1405d-b087-46e8-9974-a76673fbf08c/512x512.jpg\",\n                \"height\": 512,\n                \"width\": 512,\n                \"fileSize\": 67315,\n                \"productpicture_id\": 576944,\n                \"updatedAt\": \"2017-03-24T09:42:14\",\n                \"crc32\": \"FDA73655\",\n                \"createdAt\": \"2017-03-24T09:42:14\"\n              },\n              {\n                \"uniformResourceIdentifier\": \"https://smedia.supplierxm.salsify.com/product/3292988/version/4897534/picture/exportable/a1f1405d-b087-46e8-9974-a76673fbf08c/256x256.jpg\",\n                \"height\": 256,\n                \"width\": 256,\n                \"fileSize\": 51467,\n                \"productpicture_id\": 576944,\n                \"updatedAt\": \"2017-03-24T09:42:14\",\n                \"crc32\": \"6EE9515B\",\n                \"createdAt\": \"2017-03-24T09:42:14\"\n              },\n              {\n                \"uniformResourceIdentifier\": \"https://smedia.supplierxm.salsify.com/product/3292988/version/4897534/picture/exportable/a1f1405d-b087-46e8-9974-a76673fbf08c/128x128.jpg\",\n                \"height\": 128,\n                \"width\": 128,\n                \"fileSize\": 15057,\n                \"productpicture_id\": 576944,\n                \"updatedAt\": \"2017-03-24T09:42:15\",\n                \"crc32\": \"0CB9BC04\",\n                \"createdAt\": \"2017-03-24T09:42:15\"\n              },\n              {\n                \"uniformResourceIdentifier\": \"https://smedia.supplierxm.salsify.com/product/3292988/version/4897534/picture/exportable/a1f1405d-b087-46e8-9974-a76673fbf08c/64x64.jpg\",\n                \"height\": 64,\n                \"width\": 64,\n                \"fileSize\": 4675,\n                \"productpicture_id\": 576944,\n                \"updatedAt\": \"2017-03-24T09:42:15\",\n                \"crc32\": \"B096DCFC\",\n                \"createdAt\": \"2017-03-24T09:42:15\"\n              }\n            ],\n            \"uniformResourceIdentifierOrigin\": null,\n            \"updatedAt\": \"2017-03-24T09:42:15\",\n            \"ratio\": null,\n            \"fileEffectiveStartDateTime\": null,\n            \"resolution\": null,\n            \"angleVertical\": 1,\n            \"createdAt\": \"2017-03-24T09:42:13\",\n            \"angleOther\": null\n          }\n        ],\n        \"lastUpdatedAt\": {\n          \"pictures\": \"2017-03-24T09:42:15\"\n        },\n        \"enriched_contents\": [],\n        \"videos\": []\n      },\n      \"isNomadic\": null,\n      \"isPartitionedBy\": [],\n      \"subdivisions\": {},\n      \"contact\": [],\n      \"offerOnPack\": null,\n      \"isInvoiceUnit\": null,\n      \"keepRefrigeratedBefore\": null\n    }\n  ],\n  \"offset\": 0\n}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {
+            "totalResults": {
+             "type": "integer",
+             "example": 1,
+             "default": 0
+            },
+            "data": {
+             "type": "array",
+             "items": {
+              "type": "object",
+              "properties": {
+               "_jsonVersion": {
+                "type": "integer",
+                "example": 3,
+                "default": 0
+               },
+               "synonyms": {
+                "type": "array"
+               },
+               "updatedAt": {
+                "type": "string",
+                "example": "2017-03-24T09:42:20"
+               },
+               "conservationAdvices": {
+                "type": "array"
+               },
+               "productionVariantEffectiveDate": {},
+               "shapeStatement": {
+                "type": "array"
+               },
+               "productActivities": {
+                "type": "array"
+               },
+               "keepRefrigeratedAfter": {},
+               "isConsumerUnit": {
+                "type": "boolean",
+                "example": true,
+                "default": true
+               },
+               "compulsoryStatements": {
+                "type": "array"
+               },
+               "isDerivedFrom": {
+                "type": "array"
+               },
+               "createdShareValueStatement": {
+                "type": "array"
+               },
+               "GPC": {
+                "type": "object",
+                "properties": {}
+               },
+               "isPracticeCompatible": {
+                "type": "array"
+               },
+               "shape": {},
+               "serves": {
+                "type": "array"
+               },
+               "isComplementaryWith": {
+                "type": "array"
+               },
+               "isDespatchUnit": {},
+               "originText": {
+                "type": "array"
+               },
+               "brandHighlight": {
+                "type": "array"
+               },
+               "isOrderableUnit": {},
+               "expressedIn": {
+                "type": "array",
+                "items": {
+                 "type": "object",
+                 "properties": {
+                  "referential": {
+                   "type": "object",
+                   "properties": {
+                    "name": {
+                     "type": "string",
+                     "example": "languages"
+                    }
+                   }
+                  },
+                  "presentEntities": {
+                   "type": "array",
+                   "items": {
+                    "type": "object",
+                    "properties": {
+                     "normalizedCode": {
+                      "type": "string",
+                      "example": "fr"
+                     },
+                     "code": {
+                      "type": "string",
+                      "example": "fra-FR"
+                     },
+                     "description": {
+                      "type": "string",
+                      "example": "français"
+                     },
+                     "label": {
+                      "type": "string",
+                      "example": "français"
+                     }
+                    }
+                   }
+                  }
+                 }
+                }
+               },
+               "createdAt": {
+                "type": "string",
+                "example": "2017-01-03T13:27:07"
+               },
+               "manufactureInsights": {
+                "type": "array"
+               },
+               "flavorStatement": {
+                "type": "array"
+               },
+               "hasTags": {
+                "type": "array",
+                "items": {
+                 "type": "object",
+                 "properties": {
+                  "tag": {
+                   "type": "string",
+                   "example": "datavalidated"
+                  },
+                  "createdAt": {
+                   "type": "string",
+                   "example": "2017-03-24T16:46:08"
+                  }
+                 }
+                }
+               },
+               "lifeCycle": {
+                "type": "integer",
+                "example": 0,
+                "default": 0
+               },
+               "isTaggedBy": {
+                "type": "array",
+                "items": {
+                 "type": "string",
+                 "example": "datavalidated"
+                }
+               },
+               "substitutes": {
+                "type": "array"
+               },
+               "manufacturerSharingStatus": {
+                "type": "integer",
+                "example": 1,
+                "default": 0
+               },
+               "importClassification": {
+                "type": "array"
+               },
+               "packagingMentions": {
+                "type": "array"
+               },
+               "isSharedFrom": {
+                "type": "array"
+               },
+               "allergens": {
+                "type": "array"
+               },
+               "additives": {
+                "type": "array"
+               },
+               "conservations": {
+                "type": "array"
+               },
+               "hasBatchNumber": {},
+               "tradeItemDateOnPackagingTypeCode": {},
+               "packaging": {
+                "type": "array"
+               },
+               "nameLegal": {
+                "type": "array",
+                "items": {
+                 "type": "object",
+                 "properties": {
+                  "expressedIn": {
+                   "type": "object",
+                   "properties": {
+                    "normalizedCode": {
+                     "type": "string",
+                     "example": "fr"
+                    },
+                    "code": {
+                     "type": "string",
+                     "example": "fra-FR"
+                    },
+                    "description": {
+                     "type": "string",
+                     "example": "français"
+                    },
+                    "label": {
+                     "type": "string",
+                     "example": "français"
+                    }
+                   }
+                  },
+                  "data": {
+                   "type": "string",
+                   "example": "Soda bien trop sucré"
+                  }
+                 }
+                }
+               },
+               "namePublicShort": {
+                "type": "array"
+               },
+               "productionVariantName": {
+                "type": "array"
+               },
+               "temperature": {
+                "type": "array"
+               },
+               "isClassifiedIn": {},
+               "isWrappedBy": {
+                "type": "array"
+               },
+               "advertisedInformations": {
+                "type": "array"
+               },
+               "startAvailabilityDateTime": {},
+               "endAvailabilityDateTime": {},
+               "dutyFeeTax": {
+                "type": "array"
+               },
+               "hasNotableIngredients": {
+                "type": "array"
+               },
+               "isSizedBy": {
+                "type": "array"
+               },
+               "environmentStatement": {
+                "type": "array"
+               },
+               "namePublicLong": {
+                "type": "array",
+                "items": {
+                 "type": "object",
+                 "properties": {
+                  "expressedIn": {
+                   "type": "object",
+                   "properties": {
+                    "normalizedCode": {
+                     "type": "string",
+                     "example": "fr"
+                    },
+                    "code": {
+                     "type": "string",
+                     "example": "fra-FR"
+                    },
+                    "description": {
+                     "type": "string",
+                     "example": "français"
+                    },
+                    "label": {
+                     "type": "string",
+                     "example": "français"
+                    }
+                   }
+                  },
+                  "data": {
+                   "type": "string",
+                   "example": "Soda "
+                  }
+                 }
+                }
+               },
+               "isPromotionalItem": {},
+               "brand": {
+                "type": "object",
+                "properties": {
+                 "code": {
+                  "type": "string",
+                  "example": "Salsify brand"
+                 },
+                 "description": {
+                  "type": "string",
+                  "example": "Sample description"
+                 },
+                 "label": {
+                  "type": "string",
+                  "example": "Sample label"
+                 },
+                 "pictureUrl": {
+                  "type": "string",
+                  "example": "https://smedia.supplierxm.salsify.com/brand/7919/picture/logo/original.png"
+                 }
+                }
+               },
+               "sparklingValue": {},
+               "isLabeledBy": {
+                "type": "array",
+                "items": {
+                 "type": "object",
+                 "properties": {
+                  "startDate": {},
+                  "endDate": {},
+                  "detail": {
+                   "type": "array"
+                  },
+                  "value": {},
+                  "isConceptualizedBy": {
+                   "type": "object",
+                   "properties": {
+                    "code": {
+                     "type": "string",
+                     "example": "19096"
+                    },
+                    "description": {
+                     "type": "string",
+                     "example": "Agriculture Biologique Française"
+                    },
+                    "label": {
+                     "type": "string",
+                     "example": "Agriculture Biologique Française"
+                    },
+                    "pictureUrl": {
+                     "type": "string",
+                     "example": "https://smedia.supplierxm.salsify.com/api/1/concept/19096/picture/logo/original.png"
+                    }
+                   }
+                  },
+                  "attributedAt": {}
+                 }
+                }
+               },
+               "kind": {
+                "type": "object",
+                "properties": {
+                 "code": {
+                  "type": "string",
+                  "example": "Soda & autre BSA prête-à-boire"
+                 },
+                 "description": {
+                  "type": "string",
+                  "example": "Soda & autre BSA prête-à-boire"
+                 },
+                 "label": {
+                  "type": "string",
+                  "example": "Soda & autre BSA prête-à-boire"
+                 }
+                }
+               },
+               "replaces": {
+                "type": "array"
+               },
+               "typePackaging": {
+                "type": "object",
+                "properties": {
+                 "code": {
+                  "type": "string",
+                  "example": "EACH"
+                 },
+                 "description": {
+                  "type": "string",
+                  "example": "Unité de base"
+                 },
+                 "label": {
+                  "type": "string",
+                  "example": "unité de base"
+                 }
+                }
+               },
+               "specializes": {
+                "type": "object",
+                "properties": {
+                 "isBrandedBy": {
+                  "type": "object",
+                  "properties": {
+                   "code": {
+                    "type": "string",
+                    "example": "Sample code"
+                   },
+                   "description": {
+                    "type": "string",
+                    "example": "Sample description"
+                   },
+                   "label": {
+                    "type": "string",
+                    "example": "Sample label"
+                   }
+                  }
+                 },
+                 "isIdentifiedBy": {
+                  "type": "array",
+                  "items": {
+                   "type": "object",
+                   "properties": {
+                    "reference": {
+                     "type": "string",
+                     "example": "00366383600795"
+                    }
+                   }
+                  }
+                 },
+                 "kind": {
+                  "type": "object",
+                  "properties": {
+                   "code": {
+                    "type": "string",
+                    "example": "Soda & autre BSA prête-à-boire"
+                   },
+                   "description": {
+                    "type": "string",
+                    "example": "Soda & autre BSA prête-à-boire"
+                   },
+                   "label": {
+                    "type": "string",
+                    "example": "Soda & autre BSA prête-à-boire"
+                   }
+                  }
+                 }
+                }
+               },
+               "owner": {
+                "type": "object",
+                "properties": {
+                 "type": {
+                  "type": "integer",
+                  "example": 1,
+                  "default": 0
+                 },
+                 "name": {
+                  "type": "string",
+                  "example": "Salsify"
+                 }
+                }
+               },
+               "nutritionalAllegations": {
+                "type": "array"
+               },
+               "isEquivalentTo": {
+                "type": "array"
+               },
+               "netContent": {
+                "type": "array"
+               },
+               "history": {
+                "type": "array"
+               },
+               "netWeight": {
+                "type": "array"
+               },
+               "priceComparisonType": {},
+               "originCountry": {},
+               "isSubstitutableWith": {
+                "type": "array"
+               },
+               "id": {
+                "type": "integer",
+                "example": 4897534,
+                "default": 0
+               },
+               "reasonForNewEAN": {},
+               "isReplaceableBy": {
+                "type": "array"
+               },
+               "productBenefits": {
+                "type": "array"
+               },
+               "suggestedRetailPrice": {
+                "type": "array"
+               },
+               "isMarkedRecyclable": {},
+               "composition": {
+                "type": "array"
+               },
+               "description": {
+                "type": "array"
+               },
+               "warnings": {
+                "type": "array"
+               },
+               "grossWeight": {
+                "type": "array"
+               },
+               "consumptionAdvice": {
+                "type": "array"
+               },
+               "assets": {
+                "type": "object",
+                "properties": {
+                 "pictures": {
+                  "type": "array",
+                  "items": {
+                   "type": "object",
+                   "properties": {
+                    "definition": {},
+                    "typeOfInformation": {
+                     "type": "integer",
+                     "example": 1,
+                     "default": 0
+                    },
+                    "fileEffectiveEndDateTime": {},
+                    "contentType": {
+                     "type": "integer",
+                     "example": 1,
+                     "default": 0
+                    },
+                    "sequenceNumber": {},
+                    "angleHorizontal": {
+                     "type": "integer",
+                     "example": 0,
+                     "default": 0
+                    },
+                    "format": {},
+                    "url": {
+                     "type": "string",
+                     "example": "https://smedia.supplierxm.salsify.com/product/3292988/version/4897534/picture/upload/20170324/a1f1405d-b087-46e8-9974-a76673fbf08c.jpg"
+                    },
+                    "productFace": {
+                     "type": "integer",
+                     "example": 1,
+                     "default": 0
+                    },
+                    "fileType": {
+                     "type": "integer",
+                     "example": 0,
+                     "default": 0
+                    },
+                    "tags": {
+                     "type": "array"
+                    },
+                    "isPackshot": {
+                     "type": "boolean",
+                     "example": true,
+                     "default": true
+                    },
+                    "exportables": {
+                     "type": "array",
+                     "items": {
+                      "type": "object",
+                      "properties": {
+                       "uniformResourceIdentifier": {
+                        "type": "string",
+                        "example": "https://smedia.supplierxm.salsify.com/product/3292988/version/4897534/picture/exportable/a1f1405d-b087-46e8-9974-a76673fbf08c/1024x1024.jpg"
+                       },
+                       "height": {
+                        "type": "integer",
+                        "example": 1024,
+                        "default": 0
+                       },
+                       "width": {
+                        "type": "integer",
+                        "example": 1024,
+                        "default": 0
+                       },
+                       "fileSize": {
+                        "type": "integer",
+                        "example": 75841,
+                        "default": 0
+                       },
+                       "productpicture_id": {
+                        "type": "integer",
+                        "example": 576944,
+                        "default": 0
+                       },
+                       "updatedAt": {
+                        "type": "string",
+                        "example": "2017-03-24T09:42:14"
+                       },
+                       "crc32": {
+                        "type": "string",
+                        "example": "452EFCFE"
+                       },
+                       "createdAt": {
+                        "type": "string",
+                        "example": "2017-03-24T09:42:14"
+                       }
+                      }
+                     }
+                    },
+                    "uniformResourceIdentifierOrigin": {},
+                    "updatedAt": {
+                     "type": "string",
+                     "example": "2017-03-24T09:42:15"
+                    },
+                    "ratio": {},
+                    "fileEffectiveStartDateTime": {},
+                    "resolution": {},
+                    "angleVertical": {
+                     "type": "integer",
+                     "example": 1,
+                     "default": 0
+                    },
+                    "createdAt": {
+                     "type": "string",
+                     "example": "2017-03-24T09:42:13"
+                    },
+                    "angleOther": {}
+                   }
+                  }
+                 },
+                 "lastUpdatedAt": {
+                  "type": "object",
+                  "properties": {
+                   "pictures": {
+                    "type": "string",
+                    "example": "2017-03-24T09:42:15"
+                   }
+                  }
+                 },
+                 "enriched_contents": {
+                  "type": "array"
+                 },
+                 "videos": {
+                  "type": "array"
+                 }
+                }
+               },
+               "isNomadic": {},
+               "isPartitionedBy": {
+                "type": "array"
+               },
+               "subdivisions": {
+                "type": "object",
+                "properties": {}
+               },
+               "contact": {
+                "type": "array"
+               },
+               "offerOnPack": {},
+               "isInvoiceUnit": {},
+               "keepRefrigeratedBefore": {}
+              }
+             }
+            },
+            "offset": {
+             "type": "integer",
+             "example": 0,
+             "default": 0
+            }
+           }
+          }
+         }
+        }
+       },
+       "400": {
+        "description": "400",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {}
+          }
+         }
+        }
+       }
+      },
+      "deprecated": false
+     }
+    }
+   },
+   "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+   },
+   "x-readme-fauxas": true
+  }
+ },
+ {
+  "page": "https://docs.supplierxm.salsify.com/reference/search-product.md",
+  "definition": {
+   "openapi": "3.1.0",
+   "info": {
+    "title": "product",
+    "version": "2.1"
+   },
+   "servers": [
+    {
+     "url": "https://apis.supplierxm.salsify.com/public/v1/products"
+    }
+   ],
+   "components": {
+    "securitySchemes": {
+     "sec0": {
+      "in": "header",
+      "name": "Authorization",
+      "type": "apiKey",
+      "x-bearer-format": "bearer",
+      "x-default": "SALSIFY_TOKEN"
+     }
+    }
+   },
+   "security": [
+    {
+     "sec0": []
+    }
+   ],
+   "paths": {
+    "/list": {
+     "post": {
+      "summary": "Search Products",
+      "description": "This method lists all the products you have access to.\nIf you would like to call this API from this website, you will be asked to provide your authentication token, please prefix this token with following wording 'Bearer '.",
+      "operationId": "search-product",
+      "parameters": [
+       {
+        "name": "Accept-language",
+        "in": "header",
+        "description": "Filters by expected languages for labels associated to code values",
+        "schema": {
+         "type": "string",
+         "default": "en"
+        }
+       }
+      ],
+      "requestBody": {
+       "content": {
+        "application/json": {
+         "schema": {
+          "type": "object",
+          "properties": {
+           "status_shared_from": {
+            "type": "integer",
+            "description": "Filters the shared status of the source products (retailer specific). (DRAFT=2 / PENDING=3 / ACCEPTED=4)",
+            "format": "int32"
+           },
+           "status_shared_with": {
+            "type": "integer",
+            "description": "Filters the shared status of the target products (manufacturer specific). (DRAFT=2 / PENDING=3 / ACCEPTED=4)",
+            "format": "int32"
+           },
+           "updated_at_from": {
+            "type": "string",
+            "description": "Filters the minimum latest update date of the returned products (UNIX timestamp)",
+            "default": "1470643732",
+            "format": "date-time"
+           },
+           "updated_at_to": {
+            "type": "string",
+            "description": "Filters the maximum latest update date of the returned products (UNIX timestamp)",
+            "format": "date-time"
+           },
+           "filter_gtins_in": {
+            "type": "string",
+            "description": "Filters by GTINs (several possible, comma-separated)",
+            "default": "03663215000110"
+           },
+           "filter_gmns_in": {
+            "type": "string",
+            "description": "Filters by GMNs (several possible, comma-separated)"
+           },
+           "filter_target_market": {
+            "type": "integer",
+            "description": "Filters by target market (ISO 3166-1 numeric)",
+            "default": 250,
+            "format": "int32"
+           },
+           "filter_product_languages": {
+            "type": "string",
+            "description": "Filters by product languages (several possible, comma-separated)",
+            "default": "fr"
+           },
+           "filter_validation_status_in": {
+            "type": "integer",
+            "description": "Filters the data quality status (validation) of the products (several possible, comma-separated). (NA=0 / NOT OK=1 / OK=2 / CORRECTION=3)",
+            "format": "int32"
+           },
+           "filter_has_packshot_new": {
+            "type": "boolean",
+            "description": "Filters on products based on the presence/absence a packshot."
+           },
+           "filter_pictures_last_updated_at_from": {
+            "type": "string",
+            "description": "Filters the minimum latest update date for the images (milliseconds since 01/01/1970)",
+            "format": "date-time"
+           },
+           "filter_pictures_last_updated_at_to": {
+            "type": "string",
+            "description": "Filters the maximum latest update date for the images (milliseconds since 01/01/1970)",
+            "format": "date-time"
+           },
+           "filter_tags_in": {
+            "type": "string",
+            "description": "Filter products depending on a specific tag. Returns all products for which the specified tag is on"
+           },
+           "filter_tags_not_in": {
+            "type": "string",
+            "description": "Filter products depending on a specific tag. Returns all products for which the specified tag is off"
+           },
+           "filter_source_include": {
+            "type": "string",
+            "description": "Filters the fields returned by the API (fields are comma separated)",
+            "default": "description"
+           },
+           "filter_source_exclude": {
+            "type": "string",
+            "description": "Filters the fields returned by the API (fields are comma separated)"
+           },
+           "filter_active_range": {
+            "type": "boolean",
+            "description": "Identifies products part of the retailer's active range"
+           },
+           "filter_quality_changed_at_from": {
+            "type": "string",
+            "description": "Filters the minimum latest quality update date of the returned products.",
+            "format": "date-time"
+           },
+           "filter_quality_changed_at_to": {
+            "type": "string",
+            "description": "Filters the maximum latest quality update date of the returned products.",
+            "format": "date-time"
+           },
+           "filter_lifecycle_in": {
+            "type": "integer",
+            "description": "Filters the lifecycle status of the source products. (PRELAUNCH=0 / PURCHASABLE=1 / NOT_PURCHASABLE=2 / ARCHIVED=3)",
+            "format": "int32"
+           },
+           "limit": {
+            "type": "integer",
+            "description": "The maximum number of products to be returned. The max value allowed is 500.",
+            "default": 20,
+            "format": "int32"
+           },
+           "offset": {
+            "type": "integer",
+            "description": "The index of the first product to be returned",
+            "default": 0,
+            "format": "int32"
+           },
+           "next_page": {
+            "type": "integer",
+            "description": "To use scroll search when you need to retrieve more than 10K products (see https://docs.supplierxm.salsify.com/docs/retrieve-product#using-the-pagination-system for more info)",
+            "format": "int64"
+           },
+           "decrypt_price": {
+            "type": "integer",
+            "description": "Decrypt price if possible (based on permission). Possible values are : false, true.",
+            "default": null,
+            "format": "int32"
+           },
+           "advanced_search": {
+            "type": "string",
+            "description": "See details up, section \"Some details on...\"",
+            "format": "json"
+           },
+           "sort_by": {
+            "type": "string",
+            "description": "sort the element according to the field specified"
+           }
+          }
+         },
+         "examples": {
+          "Request Example": {
+           "value": {
+            "advanced_search": {
+             "must": [
+              {
+               "query": "jam",
+               "fields": [
+                "namePublicLong.data",
+                "kind.label",
+                "description.data"
+               ]
+              },
+              {
+               "query": "organic",
+               "fields": [
+                "namePublicLong.data",
+                "description.data"
+               ]
+              },
+              {
+               "query": "raspberry",
+               "fields": [
+                "namePublicLong.data",
+                "description.data",
+                "composition.data"
+               ]
+              }
+             ]
+            },
+            "offset": 0,
+            "limit": 20
+           }
+          }
+         }
+        }
+       }
+      },
+      "responses": {
+       "200": {
+        "description": "200",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{\n  \"totalResults\": 1,\n  \"data\": [\n    {\n      \"_jsonVersion\": 3,\n      \"synonyms\": [],\n      \"updatedAt\": \"2017-03-24T09:42:20\",\n      \"conservationAdvices\": [],\n      \"productionVariantEffectiveDate\": null,\n      \"shapeStatement\": [],\n      \"productActivities\": [],\n      \"keepRefrigeratedAfter\": null,\n      \"isConsumerUnit\": true,\n      \"compulsoryStatements\": [],\n      \"isDerivedFrom\": [],\n      \"createdShareValueStatement\": [],\n      \"GPC\": {},\n      \"isPracticeCompatible\": [],\n      \"shape\": null,\n      \"serves\": [],\n      \"isComplementaryWith\": [],\n      \"isDespatchUnit\": null,\n      \"originText\": [],\n      \"brandHighlight\": [],\n      \"isOrderableUnit\": null,\n      \"expressedIn\": [\n        {\n          \"referential\": {\n            \"name\": \"languages\"\n          },\n          \"presentEntities\": [\n            {\n              \"normalizedCode\": \"fr\",\n              \"code\": \"fra-FR\",\n              \"description\": \"français\",\n              \"label\": \"français\"\n            }\n          ]\n        },\n        {\n          \"referential\": {\n            \"name\": \"netcontents\"\n          },\n          \"presentEntities\": []\n        },\n        {\n          \"referential\": {\n            \"name\": \"currencies\"\n          },\n          \"presentEntities\": []\n        },\n        {\n          \"referential\": {\n            \"name\": \"weights\"\n          },\n          \"presentEntities\": []\n        }\n      ],\n      \"createdAt\": \"2017-01-03T13:27:07\",\n      \"manufactureInsights\": [],\n      \"flavorStatement\": [],\n      \"hasTags\": [\n        {\n          \"tag\": \"datavalidated\",\n          \"createdAt\": \"2017-03-24T16:46:08\"\n        }\n      ],\n      \"lifeCycle\": 0,\n      \"isTaggedBy\": [\n        \"datavalidated\"\n      ],\n      \"substitutes\": [],\n      \"manufacturerSharingStatus\": 1,\n      \"importClassification\": [],\n      \"packagingMentions\": [],\n      \"isSharedFrom\": [],\n      \"allergens\": [],\n      \"additives\": [],\n      \"conservations\": [],\n      \"hasBatchNumber\": null,\n      \"tradeItemDateOnPackagingTypeCode\": null,\n      \"packaging\": [],\n      \"nameLegal\": [\n        {\n          \"expressedIn\": {\n            \"normalizedCode\": \"fr\",\n            \"code\": \"fra-FR\",\n            \"description\": \"français\",\n            \"label\": \"français\"\n          },\n          \"data\": \"Soda bien trop sucré\"\n        }\n      ],\n      \"namePublicShort\": [],\n      \"productionVariantName\": [],\n      \"temperature\": [],\n      \"isClassifiedIn\": null,\n      \"isWrappedBy\": [],\n      \"advertisedInformations\": [],\n      \"startAvailabilityDateTime\": null,\n      \"endAvailabilityDateTime\": null,\n      \"dutyFeeTax\": [],\n      \"hasNotableIngredients\": [],\n      \"isSizedBy\": [],\n      \"environmentStatement\": [],\n      \"namePublicLong\": [\n        {\n          \"expressedIn\": {\n            \"normalizedCode\": \"fr\",\n            \"code\": \"fra-FR\",\n            \"description\": \"français\",\n            \"label\": \"français\"\n          },\n          \"data\": \"Soda \"\n        }\n      ],\n      \"isPromotionalItem\": null,\n      \"brand\": {\n        \"code\": \"Alkemics - Kind\",\n        \"description\": \"Alkemics - Kind\",\n        \"label\": \"Alkemics - Kind\",\n        \"pictureUrl\": \"https://smedia.supplierxm.salsify.com/brand/7919/picture/logo/original.png\"\n      },\n      \"sparklingValue\": null,\n      \"isLabeledBy\": [\n                {\n                    \"startDate\": null,\n                    \"endDate\": null,\n                    \"detail\": [],\n                    \"value\": null,\n                    \"isConceptualizedBy\": {\n                        \"code\": \"19096\",\n                        \"description\": \"Agriculture Biologique Française\",\n                        \"label\": \"Agriculture Biologique Française\",\n                        \"pictureUrl\": \"https://smedia.supplierxm.salsify.com/api/1/concept/19096/picture/logo/original.png\"\n                    },\n                    \"attributedAt\": null\n                }\n      ],\n      \"kind\": {\n        \"code\": \"Soda & autre BSA prête-à-boire\",\n        \"description\": \"Soda & autre BSA prête-à-boire\",\n        \"label\": \"Soda & autre BSA prête-à-boire\"\n      },\n      \"replaces\": [],\n      \"typePackaging\": {\n        \"code\": \"EACH\",\n        \"description\": \"Unité de base\",\n        \"label\": \"unité de base\"\n      },\n      \"specializes\": {\n        \"isBrandedBy\": {\n          \"code\": \"Alkemics - Kind\",\n          \"description\": \"Alkemics - Kind\",\n          \"label\": \"Alkemics - Kind\"\n        },\n        \"isIdentifiedBy\": [\n          {\n            \"reference\": \"00366383600795\"\n          }\n        ],\n        \"kind\": {\n          \"code\": \"Soda & autre BSA prête-à-boire\",\n          \"description\": \"Soda & autre BSA prête-à-boire\",\n          \"label\": \"Soda & autre BSA prête-à-boire\"\n        }\n      },\n      \"owner\": {\n                \"type\": 1,\n                \"name\": \"Alkemics\"\n      },\n      \"nutritionalAllegations\": [],\n      \"isEquivalentTo\": [],\n      \"netContent\": [],\n      \"history\": [],\n      \"netWeight\": [],\n      \"priceComparisonType\": null,\n      \"originCountry\": null,\n      \"isSubstitutableWith\": [],\n      \"id\": 4897534,\n      \"reasonForNewEAN\": null,\n      \"isReplaceableBy\": [],\n      \"productBenefits\": [],\n      \"suggestedRetailPrice\": [],\n      \"isMarkedRecyclable\": null,\n      \"composition\": [],\n      \"description\": [],\n      \"warnings\": [],\n      \"grossWeight\": [],\n      \"consumptionAdvice\": [],\n      \"assets\": {\n        \"pictures\": [\n          {\n            \"definition\": null,\n            \"typeOfInformation\": 1,\n            \"fileEffectiveEndDateTime\": null,\n            \"contentType\": 1,\n            \"sequenceNumber\": null,\n            \"angleHorizontal\": 0,\n            \"format\": null,\n            \"url\": \"https://smedia.supplierxm.salsify.com/product/3292988/version/4897534/picture/upload/20170324/a1f1405d-b087-46e8-9974-a76673fbf08c.jpg\",\n            \"productFace\": 1,\n            \"fileType\": 0,\n            \"tags\": [],\n            \"isPackshot\": true,\n            \"exportables\": [\n              {\n                \"uniformResourceIdentifier\": \"https://smedia.supplierxm.salsify.com/product/3292988/version/4897534/picture/exportable/a1f1405d-b087-46e8-9974-a76673fbf08c/1024x1024.jpg\",\n                \"height\": 1024,\n                \"width\": 1024,\n                \"fileSize\": 75841,\n                \"productpicture_id\": 576944,\n                \"updatedAt\": \"2017-03-24T09:42:14\",\n                \"crc32\": \"452EFCFE\",\n                \"createdAt\": \"2017-03-24T09:42:14\"\n              },\n              {\n                \"uniformResourceIdentifier\": \"https://smedia.supplierxm.salsify.com/product/3292988/version/4897534/picture/exportable/a1f1405d-b087-46e8-9974-a76673fbf08c/512x512.jpg\",\n                \"height\": 512,\n                \"width\": 512,\n                \"fileSize\": 67315,\n                \"productpicture_id\": 576944,\n                \"updatedAt\": \"2017-03-24T09:42:14\",\n                \"crc32\": \"FDA73655\",\n                \"createdAt\": \"2017-03-24T09:42:14\"\n              },\n              {\n                \"uniformResourceIdentifier\": \"https://smedia.supplierxm.salsify.com/product/3292988/version/4897534/picture/exportable/a1f1405d-b087-46e8-9974-a76673fbf08c/256x256.jpg\",\n                \"height\": 256,\n                \"width\": 256,\n                \"fileSize\": 51467,\n                \"productpicture_id\": 576944,\n                \"updatedAt\": \"2017-03-24T09:42:14\",\n                \"crc32\": \"6EE9515B\",\n                \"createdAt\": \"2017-03-24T09:42:14\"\n              },\n              {\n                \"uniformResourceIdentifier\": \"https://smedia.supplierxm.salsify.com/product/3292988/version/4897534/picture/exportable/a1f1405d-b087-46e8-9974-a76673fbf08c/128x128.jpg\",\n                \"height\": 128,\n                \"width\": 128,\n                \"fileSize\": 15057,\n                \"productpicture_id\": 576944,\n                \"updatedAt\": \"2017-03-24T09:42:15\",\n                \"crc32\": \"0CB9BC04\",\n                \"createdAt\": \"2017-03-24T09:42:15\"\n              },\n              {\n                \"uniformResourceIdentifier\": \"https://smedia.supplierxm.salsify.com/product/3292988/version/4897534/picture/exportable/a1f1405d-b087-46e8-9974-a76673fbf08c/64x64.jpg\",\n                \"height\": 64,\n                \"width\": 64,\n                \"fileSize\": 4675,\n                \"productpicture_id\": 576944,\n                \"updatedAt\": \"2017-03-24T09:42:15\",\n                \"crc32\": \"B096DCFC\",\n                \"createdAt\": \"2017-03-24T09:42:15\"\n              }\n            ],\n            \"uniformResourceIdentifierOrigin\": null,\n            \"updatedAt\": \"2017-03-24T09:42:15\",\n            \"ratio\": null,\n            \"fileEffectiveStartDateTime\": null,\n            \"resolution\": null,\n            \"angleVertical\": 1,\n            \"createdAt\": \"2017-03-24T09:42:13\",\n            \"angleOther\": null\n          }\n        ],\n        \"lastUpdatedAt\": {\n          \"pictures\": \"2017-03-24T09:42:15\"\n        },\n        \"enriched_contents\": [],\n        \"videos\": []\n      },\n      \"isNomadic\": null,\n      \"isPartitionedBy\": [],\n      \"subdivisions\": {},\n      \"contact\": [],\n      \"offerOnPack\": null,\n      \"isInvoiceUnit\": null,\n      \"keepRefrigeratedBefore\": null\n    }\n  ],\n  \"offset\": 0\n}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {
+            "totalResults": {
+             "type": "integer",
+             "example": 1,
+             "default": 0
+            },
+            "data": {
+             "type": "array",
+             "items": {
+              "type": "object",
+              "properties": {
+               "_jsonVersion": {
+                "type": "integer",
+                "example": 3,
+                "default": 0
+               },
+               "synonyms": {
+                "type": "array"
+               },
+               "updatedAt": {
+                "type": "string",
+                "example": "2017-03-24T09:42:20"
+               },
+               "conservationAdvices": {
+                "type": "array"
+               },
+               "productionVariantEffectiveDate": {},
+               "shapeStatement": {
+                "type": "array"
+               },
+               "productActivities": {
+                "type": "array"
+               },
+               "keepRefrigeratedAfter": {},
+               "isConsumerUnit": {
+                "type": "boolean",
+                "example": true,
+                "default": true
+               },
+               "compulsoryStatements": {
+                "type": "array"
+               },
+               "isDerivedFrom": {
+                "type": "array"
+               },
+               "createdShareValueStatement": {
+                "type": "array"
+               },
+               "GPC": {
+                "type": "object",
+                "properties": {}
+               },
+               "isPracticeCompatible": {
+                "type": "array"
+               },
+               "shape": {},
+               "serves": {
+                "type": "array"
+               },
+               "isComplementaryWith": {
+                "type": "array"
+               },
+               "isDespatchUnit": {},
+               "originText": {
+                "type": "array"
+               },
+               "brandHighlight": {
+                "type": "array"
+               },
+               "isOrderableUnit": {},
+               "expressedIn": {
+                "type": "array",
+                "items": {
+                 "type": "object",
+                 "properties": {
+                  "referential": {
+                   "type": "object",
+                   "properties": {
+                    "name": {
+                     "type": "string",
+                     "example": "languages"
+                    }
+                   }
+                  },
+                  "presentEntities": {
+                   "type": "array",
+                   "items": {
+                    "type": "object",
+                    "properties": {
+                     "normalizedCode": {
+                      "type": "string",
+                      "example": "fr"
+                     },
+                     "code": {
+                      "type": "string",
+                      "example": "fra-FR"
+                     },
+                     "description": {
+                      "type": "string",
+                      "example": "français"
+                     },
+                     "label": {
+                      "type": "string",
+                      "example": "français"
+                     }
+                    }
+                   }
+                  }
+                 }
+                }
+               },
+               "createdAt": {
+                "type": "string",
+                "example": "2017-01-03T13:27:07"
+               },
+               "manufactureInsights": {
+                "type": "array"
+               },
+               "flavorStatement": {
+                "type": "array"
+               },
+               "hasTags": {
+                "type": "array",
+                "items": {
+                 "type": "object",
+                 "properties": {
+                  "tag": {
+                   "type": "string",
+                   "example": "datavalidated"
+                  },
+                  "createdAt": {
+                   "type": "string",
+                   "example": "2017-03-24T16:46:08"
+                  }
+                 }
+                }
+               },
+               "lifeCycle": {
+                "type": "integer",
+                "example": 0,
+                "default": 0
+               },
+               "isTaggedBy": {
+                "type": "array",
+                "items": {
+                 "type": "string",
+                 "example": "datavalidated"
+                }
+               },
+               "substitutes": {
+                "type": "array"
+               },
+               "manufacturerSharingStatus": {
+                "type": "integer",
+                "example": 1,
+                "default": 0
+               },
+               "importClassification": {
+                "type": "array"
+               },
+               "packagingMentions": {
+                "type": "array"
+               },
+               "isSharedFrom": {
+                "type": "array"
+               },
+               "allergens": {
+                "type": "array"
+               },
+               "additives": {
+                "type": "array"
+               },
+               "conservations": {
+                "type": "array"
+               },
+               "hasBatchNumber": {},
+               "tradeItemDateOnPackagingTypeCode": {},
+               "packaging": {
+                "type": "array"
+               },
+               "nameLegal": {
+                "type": "array",
+                "items": {
+                 "type": "object",
+                 "properties": {
+                  "expressedIn": {
+                   "type": "object",
+                   "properties": {
+                    "normalizedCode": {
+                     "type": "string",
+                     "example": "fr"
+                    },
+                    "code": {
+                     "type": "string",
+                     "example": "fra-FR"
+                    },
+                    "description": {
+                     "type": "string",
+                     "example": "français"
+                    },
+                    "label": {
+                     "type": "string",
+                     "example": "français"
+                    }
+                   }
+                  },
+                  "data": {
+                   "type": "string",
+                   "example": "Soda bien trop sucré"
+                  }
+                 }
+                }
+               },
+               "namePublicShort": {
+                "type": "array"
+               },
+               "productionVariantName": {
+                "type": "array"
+               },
+               "temperature": {
+                "type": "array"
+               },
+               "isClassifiedIn": {},
+               "isWrappedBy": {
+                "type": "array"
+               },
+               "advertisedInformations": {
+                "type": "array"
+               },
+               "startAvailabilityDateTime": {},
+               "endAvailabilityDateTime": {},
+               "dutyFeeTax": {
+                "type": "array"
+               },
+               "hasNotableIngredients": {
+                "type": "array"
+               },
+               "isSizedBy": {
+                "type": "array"
+               },
+               "environmentStatement": {
+                "type": "array"
+               },
+               "namePublicLong": {
+                "type": "array",
+                "items": {
+                 "type": "object",
+                 "properties": {
+                  "expressedIn": {
+                   "type": "object",
+                   "properties": {
+                    "normalizedCode": {
+                     "type": "string",
+                     "example": "fr"
+                    },
+                    "code": {
+                     "type": "string",
+                     "example": "fra-FR"
+                    },
+                    "description": {
+                     "type": "string",
+                     "example": "français"
+                    },
+                    "label": {
+                     "type": "string",
+                     "example": "français"
+                    }
+                   }
+                  },
+                  "data": {
+                   "type": "string",
+                   "example": "Soda "
+                  }
+                 }
+                }
+               },
+               "isPromotionalItem": {},
+               "brand": {
+                "type": "object",
+                "properties": {
+                 "code": {
+                  "type": "string",
+                  "example": "Alkemics - Kind"
+                 },
+                 "description": {
+                  "type": "string",
+                  "example": "Alkemics - Kind"
+                 },
+                 "label": {
+                  "type": "string",
+                  "example": "Alkemics - Kind"
+                 },
+                 "pictureUrl": {
+                  "type": "string",
+                  "example": "https://smedia.supplierxm.salsify.com/brand/7919/picture/logo/original.png"
+                 }
+                }
+               },
+               "sparklingValue": {},
+               "isLabeledBy": {
+                "type": "array",
+                "items": {
+                 "type": "object",
+                 "properties": {
+                  "startDate": {},
+                  "endDate": {},
+                  "detail": {
+                   "type": "array"
+                  },
+                  "value": {},
+                  "isConceptualizedBy": {
+                   "type": "object",
+                   "properties": {
+                    "code": {
+                     "type": "string",
+                     "example": "19096"
+                    },
+                    "description": {
+                     "type": "string",
+                     "example": "Agriculture Biologique Française"
+                    },
+                    "label": {
+                     "type": "string",
+                     "example": "Agriculture Biologique Française"
+                    },
+                    "pictureUrl": {
+                     "type": "string",
+                     "example": "https://smedia.supplierxm.salsify.com/api/1/concept/19096/picture/logo/original.png"
+                    }
+                   }
+                  },
+                  "attributedAt": {}
+                 }
+                }
+               },
+               "kind": {
+                "type": "object",
+                "properties": {
+                 "code": {
+                  "type": "string",
+                  "example": "Soda & autre BSA prête-à-boire"
+                 },
+                 "description": {
+                  "type": "string",
+                  "example": "Soda & autre BSA prête-à-boire"
+                 },
+                 "label": {
+                  "type": "string",
+                  "example": "Soda & autre BSA prête-à-boire"
+                 }
+                }
+               },
+               "replaces": {
+                "type": "array"
+               },
+               "typePackaging": {
+                "type": "object",
+                "properties": {
+                 "code": {
+                  "type": "string",
+                  "example": "EACH"
+                 },
+                 "description": {
+                  "type": "string",
+                  "example": "Unité de base"
+                 },
+                 "label": {
+                  "type": "string",
+                  "example": "unité de base"
+                 }
+                }
+               },
+               "specializes": {
+                "type": "object",
+                "properties": {
+                 "isBrandedBy": {
+                  "type": "object",
+                  "properties": {
+                   "code": {
+                    "type": "string",
+                    "example": "Alkemics - Kind"
+                   },
+                   "description": {
+                    "type": "string",
+                    "example": "Alkemics - Kind"
+                   },
+                   "label": {
+                    "type": "string",
+                    "example": "Alkemics - Kind"
+                   }
+                  }
+                 },
+                 "isIdentifiedBy": {
+                  "type": "array",
+                  "items": {
+                   "type": "object",
+                   "properties": {
+                    "reference": {
+                     "type": "string",
+                     "example": "00366383600795"
+                    }
+                   }
+                  }
+                 },
+                 "kind": {
+                  "type": "object",
+                  "properties": {
+                   "code": {
+                    "type": "string",
+                    "example": "Soda & autre BSA prête-à-boire"
+                   },
+                   "description": {
+                    "type": "string",
+                    "example": "Soda & autre BSA prête-à-boire"
+                   },
+                   "label": {
+                    "type": "string",
+                    "example": "Soda & autre BSA prête-à-boire"
+                   }
+                  }
+                 }
+                }
+               },
+               "owner": {
+                "type": "object",
+                "properties": {
+                 "type": {
+                  "type": "integer",
+                  "example": 1,
+                  "default": 0
+                 },
+                 "name": {
+                  "type": "string",
+                  "example": "Alkemics"
+                 }
+                }
+               },
+               "nutritionalAllegations": {
+                "type": "array"
+               },
+               "isEquivalentTo": {
+                "type": "array"
+               },
+               "netContent": {
+                "type": "array"
+               },
+               "history": {
+                "type": "array"
+               },
+               "netWeight": {
+                "type": "array"
+               },
+               "priceComparisonType": {},
+               "originCountry": {},
+               "isSubstitutableWith": {
+                "type": "array"
+               },
+               "id": {
+                "type": "integer",
+                "example": 4897534,
+                "default": 0
+               },
+               "reasonForNewEAN": {},
+               "isReplaceableBy": {
+                "type": "array"
+               },
+               "productBenefits": {
+                "type": "array"
+               },
+               "suggestedRetailPrice": {
+                "type": "array"
+               },
+               "isMarkedRecyclable": {},
+               "composition": {
+                "type": "array"
+               },
+               "description": {
+                "type": "array"
+               },
+               "warnings": {
+                "type": "array"
+               },
+               "grossWeight": {
+                "type": "array"
+               },
+               "consumptionAdvice": {
+                "type": "array"
+               },
+               "assets": {
+                "type": "object",
+                "properties": {
+                 "pictures": {
+                  "type": "array",
+                  "items": {
+                   "type": "object",
+                   "properties": {
+                    "definition": {},
+                    "typeOfInformation": {
+                     "type": "integer",
+                     "example": 1,
+                     "default": 0
+                    },
+                    "fileEffectiveEndDateTime": {},
+                    "contentType": {
+                     "type": "integer",
+                     "example": 1,
+                     "default": 0
+                    },
+                    "sequenceNumber": {},
+                    "angleHorizontal": {
+                     "type": "integer",
+                     "example": 0,
+                     "default": 0
+                    },
+                    "format": {},
+                    "url": {
+                     "type": "string",
+                     "example": "https://smedia.supplierxm.salsify.com/product/3292988/version/4897534/picture/upload/20170324/a1f1405d-b087-46e8-9974-a76673fbf08c.jpg"
+                    },
+                    "productFace": {
+                     "type": "integer",
+                     "example": 1,
+                     "default": 0
+                    },
+                    "fileType": {
+                     "type": "integer",
+                     "example": 0,
+                     "default": 0
+                    },
+                    "tags": {
+                     "type": "array"
+                    },
+                    "isPackshot": {
+                     "type": "boolean",
+                     "example": true,
+                     "default": true
+                    },
+                    "exportables": {
+                     "type": "array",
+                     "items": {
+                      "type": "object",
+                      "properties": {
+                       "uniformResourceIdentifier": {
+                        "type": "string",
+                        "example": "https://smedia.supplierxm.salsify.com/product/3292988/version/4897534/picture/exportable/a1f1405d-b087-46e8-9974-a76673fbf08c/1024x1024.jpg"
+                       },
+                       "height": {
+                        "type": "integer",
+                        "example": 1024,
+                        "default": 0
+                       },
+                       "width": {
+                        "type": "integer",
+                        "example": 1024,
+                        "default": 0
+                       },
+                       "fileSize": {
+                        "type": "integer",
+                        "example": 75841,
+                        "default": 0
+                       },
+                       "productpicture_id": {
+                        "type": "integer",
+                        "example": 576944,
+                        "default": 0
+                       },
+                       "updatedAt": {
+                        "type": "string",
+                        "example": "2017-03-24T09:42:14"
+                       },
+                       "crc32": {
+                        "type": "string",
+                        "example": "452EFCFE"
+                       },
+                       "createdAt": {
+                        "type": "string",
+                        "example": "2017-03-24T09:42:14"
+                       }
+                      }
+                     }
+                    },
+                    "uniformResourceIdentifierOrigin": {},
+                    "updatedAt": {
+                     "type": "string",
+                     "example": "2017-03-24T09:42:15"
+                    },
+                    "ratio": {},
+                    "fileEffectiveStartDateTime": {},
+                    "resolution": {},
+                    "angleVertical": {
+                     "type": "integer",
+                     "example": 1,
+                     "default": 0
+                    },
+                    "createdAt": {
+                     "type": "string",
+                     "example": "2017-03-24T09:42:13"
+                    },
+                    "angleOther": {}
+                   }
+                  }
+                 },
+                 "lastUpdatedAt": {
+                  "type": "object",
+                  "properties": {
+                   "pictures": {
+                    "type": "string",
+                    "example": "2017-03-24T09:42:15"
+                   }
+                  }
+                 },
+                 "enriched_contents": {
+                  "type": "array"
+                 },
+                 "videos": {
+                  "type": "array"
+                 }
+                }
+               },
+               "isNomadic": {},
+               "isPartitionedBy": {
+                "type": "array"
+               },
+               "subdivisions": {
+                "type": "object",
+                "properties": {}
+               },
+               "contact": {
+                "type": "array"
+               },
+               "offerOnPack": {},
+               "isInvoiceUnit": {},
+               "keepRefrigeratedBefore": {}
+              }
+             }
+            },
+            "offset": {
+             "type": "integer",
+             "example": 0,
+             "default": 0
+            }
+           }
+          }
+         }
+        }
+       },
+       "400": {
+        "description": "400",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {}
+          }
+         }
+        }
+       }
+      },
+      "deprecated": false
+     }
+    }
+   },
+   "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+   },
+   "x-readme-fauxas": true
+  }
+ },
+ {
+  "page": "https://docs.supplierxm.salsify.com/reference/product-upsert.md",
+  "definition": {
+   "openapi": "3.1.0",
+   "info": {
+    "title": "product",
+    "version": "2.1"
+   },
+   "servers": [
+    {
+     "url": "https://apis.supplierxm.salsify.com/public/v1/products"
+    }
+   ],
+   "components": {
+    "securitySchemes": {
+     "sec0": {
+      "in": "header",
+      "name": "Authorization",
+      "type": "apiKey",
+      "x-bearer-format": "bearer",
+      "x-default": "SALSIFY_TOKEN"
+     }
+    }
+   },
+   "security": [
+    {
+     "sec0": []
+    }
+   ],
+   "paths": {
+    "/": {
+     "post": {
+      "summary": "Product Upsert",
+      "description": "Allow you to write product data",
+      "operationId": "product-upsert",
+      "parameters": [
+       {
+        "name": "Content-Type",
+        "in": "header",
+        "description": "application/json for json format application/xml for xml format",
+        "schema": {
+         "type": "string",
+         "default": "application/json"
+        }
+       }
+      ],
+      "requestBody": {
+       "content": {
+        "application/json": {
+         "schema": {
+          "type": "object",
+          "properties": {
+           "data": {
+            "properties": {
+             "gtin": {
+              "type": "string",
+              "description": "GTIN of the product"
+             }
+            },
+            "required": [
+             "gtin"
+            ],
+            "type": "object",
+            "description": "List of products"
+           }
+          }
+         }
+        }
+       }
+      },
+      "responses": {
+       "200": {
+        "description": "200",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{'tracking': 42}"
+           }
+          }
+         },
+         "application/xml": {
+          "examples": {
+           "Result": {
+            "value": "<tracking>42</tracking>"
+           }
+          }
+         }
+        }
+       },
+       "400": {
+        "description": "400",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {}
+          }
+         }
+        }
+       }
+      },
+      "deprecated": false,
+      "x-readme": {
+       "code-samples": [
+        {
+         "language": "xml",
+         "code": "curl -H 'Authorization: Bearer SALSIFY_TOKEN' -XPOST 'https://apis.supplierxm.salsify.com/public/v1/products' -d '\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<SupplierProducts>\n\t<product>\n\t\t<gtin>03663215000080</gtin>\n\t\t<isConsumerUnit>true</isConsumerUnit>\n\t\t<namePublicLong languages=\"FRA-FR\">Hello from write API</namePublicLong>\n\t</product>\n</SupplierProducts>' -H 'Content-Type: application/xml'",
+         "name": "HTTP XML"
+        }
+       ],
+       "samples-languages": [
+        "xml"
+       ]
+      }
+     }
+    }
+   },
+   "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+   },
+   "x-readme-fauxas": true
+  }
+ },
+ {
+  "page": "https://docs.supplierxm.salsify.com/reference/product-upsert-tracking.md",
+  "definition": {
+   "openapi": "3.1.0",
+   "info": {
+    "title": "product",
+    "version": "2.1"
+   },
+   "servers": [
+    {
+     "url": "https://apis.supplierxm.salsify.com/public/v1/products"
+    }
+   ],
+   "components": {
+    "securitySchemes": {
+     "sec0": {
+      "in": "header",
+      "name": "Authorization",
+      "type": "apiKey",
+      "x-bearer-format": "bearer",
+      "x-default": "SALSIFY_TOKEN"
+     }
+    }
+   },
+   "security": [
+    {
+     "sec0": []
+    }
+   ],
+   "paths": {
+    "/track/{tracking_id}": {
+     "get": {
+      "summary": "Product inbound Tracking",
+      "description": "",
+      "operationId": "product-upsert-tracking",
+      "parameters": [
+       {
+        "name": "tracking_id",
+        "in": "path",
+        "description": "Tracking id as returned by the Product Upsert API",
+        "schema": {
+         "type": "integer",
+         "format": "int32"
+        },
+        "required": true
+       },
+       {
+        "name": "with_uuids",
+        "in": "query",
+        "description": "Return the uuid for each product.",
+        "schema": {
+         "type": "boolean",
+         "default": false
+        }
+       }
+      ],
+      "responses": {
+       "200": {
+        "description": "200",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{\n  \"createdAt\": \"2018-03-05T08:00:10\",\n  \"status\": \"CONTAINS_ERRORS\",\n  \"count\": 2,\n  \"tracking\": 424242,\n  \"products\": [\n    {\n      \"gtin\": \"03663215000080\",\n      \"message\": \"Invalid value: GRMQ in referential weights.\",\n      \"status\": \"ERROR\"\n    },\n    {\n      \"gtin\": \"03663215111113\",\n      \"message\": \"\",\n      \"status\": \"SUCCESS\"\n    }\n  ],\n  \"user\": {\n  \t\"id\": 42,\n    \"username\": \"apiwriter@salsify.com\"\n  },\n  \"organization\": {\n    \"id\": 42,\n    \"nameLegal\": \"Test Organization\"\n  },\n  \"message\": \"\",\n  \"endpoint\": \"API\"\n}\n"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {
+            "createdAt": {
+             "type": "string",
+             "example": "2018-03-05T08:00:10"
+            },
+            "status": {
+             "type": "string",
+             "example": "CONTAINS_ERRORS"
+            },
+            "count": {
+             "type": "integer",
+             "example": 2,
+             "default": 0
+            },
+            "tracking": {
+             "type": "integer",
+             "example": 424242,
+             "default": 0
+            },
+            "products": {
+             "type": "array",
+             "items": {
+              "type": "object",
+              "properties": {
+               "gtin": {
+                "type": "string",
+                "example": "03663215000080"
+               },
+               "message": {
+                "type": "string",
+                "example": "Invalid value: GRMQ in referential weights."
+               },
+               "status": {
+                "type": "string",
+                "example": "ERROR"
+               }
+              }
+             }
+            },
+            "user": {
+             "type": "object",
+             "properties": {
+              "id": {
+               "type": "integer",
+               "example": 42,
+               "default": 0
+              },
+              "username": {
+               "type": "string",
+               "example": "apiwriter@salsify.com"
+              }
+             }
+            },
+            "organization": {
+             "type": "object",
+             "properties": {
+              "id": {
+               "type": "integer",
+               "example": 42,
+               "default": 0
+              },
+              "nameLegal": {
+               "type": "string",
+               "example": "Test Organization"
+              }
+             }
+            },
+            "message": {
+             "type": "string",
+             "example": ""
+            },
+            "endpoint": {
+             "type": "string",
+             "example": "API"
+            }
+           }
+          }
+         }
+        }
+       },
+       "400": {
+        "description": "400",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {}
+          }
+         }
+        }
+       }
+      },
+      "deprecated": false
+     }
+    }
+   },
+   "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+   },
+   "x-readme-fauxas": true
+  }
+ }
+]

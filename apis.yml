@@ -1,4 +1,5 @@
 aid: alkemics
+
 deliveryModel:
   model: library
   open_source: false
@@ -10,6 +11,7 @@ deliveryModel:
   - none
   generated: '2026-08-28'
   method: derived
+
 accessModel:
   pricing: unknown
   onboarding: unknown
@@ -23,8 +25,11 @@ accessModel:
   method: derived
   source:
   - {url: 'https://www.alkemics.com/', status: 301, note: 'declared website redirects to https://www.salsify.com/ — a different registrable domain (alkemics.com -> salsify.com), possible rename or acquisition (probed 2026-09-03, roadmap#169)'}
+
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/alkemics.png
+
 name: Alkemics
+
 description: 'Alkemics was a French SaaS company founded in 2011 in Paris that operated a collaborative
   commerce platform connecting consumer packaged goods (CPG) brands and retailers to share, enrich, and
   distribute product content and data across the FMCG/grocery supply chain. Backed by investors including
@@ -33,22 +38,38 @@ description: 'Alkemics was a French SaaS company founded in 2011 in Paris that o
   and docs.alkemics.com redirect to Salsify, and the successor developer documentation is hosted at
   docs.supplierxm.salsify.com. This company profile is preserved in the API Evangelist network with an
   honest acquisition/successor record. No independent Alkemics-owned API surface remains.'
+
 url: https://raw.githubusercontent.com/api-evangelist/alkemics/refs/heads/main/apis.yml
+
 x-type: company
+
 x-source: vc-portfolio
+
 x-backed-by:
 - partech
+
 x-tier: stub
+
 x-tier-reason: portfolio-lead
+
 specificationVersion: '0.23'
+
 created: '2026-07-17'
+
 modified: '2026-08-17'
+
 x-acquired-by: salsify
+
 x-acquired-date: '2020-10'
+
 x-successor-product: SupplierXM by Salsify
+
 x-docs-platform: readme
+
 x-docs-platform-confidence: high
+
 x-docs-platform-checked: 2026-09-17
+
 tags:
 - Company
 - Applicative Saas
@@ -59,6 +80,7 @@ tags:
 - E-Commerce
 - Data Syndication
 - Acquired
+
 tags_raw:
 - Company
 - Applicative Saas
@@ -69,13 +91,44 @@ tags_raw:
 - Ecommerce
 - Data Syndication
 - Acquired
-apis: []
+
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+
 common:
+- type: AgenticAccess
+  url: agentic-access/alkemics-agentic-access.yml
+- type: Spectral
+  url: rules/alkemics-rules.yml
+- type: Deprecation
+  url: lifecycle/alkemics-lifecycle.yml
+- type: ErrorCatalog
+  url: errors/alkemics-problem-types.yml
+- type: Conformance
+  url: conformance/alkemics-conformance.yml
+- type: Hosts
+  url: hosts/alkemics-hosts.yml
+- type: Vendors
+  url: vendors/alkemics-vendors.yml
+- type: SDKs
+  url: packages/alkemics-packages.yml
+- type: TermsOfService
+  url: https://www.salsify.com/legal/terms-of-service?hsLang=en-us
+- type: Support
+  url: https://www.salsify.com/support
+- type: PrivacyPolicy
+  url: https://www.salsify.com/privacy-policy?hsLang=en-us
+- type: Leadership
+  url: https://www.salsify.com/team
+- type: Blog
+  url: https://www.salsify.com/blog
+- type: OAuthScopes
+  url: scopes/alkemics-scopes.yml
+- type: Authentication
+  url: authentication/alkemics-authentication.yml
 - type: DomainSecurity
   url: security/alkemics-domain-security.yml
 - type: Lifecycle
@@ -98,6 +151,109 @@ common:
 - type: Company
   name: Salsify (acquirer)
   url: https://www.salsify.com/
+
+apis:
+- aid: alkemics:alkemics-authentication
+  name: Alkemics Authentication Openapi.Yml API
+  description: >-
+    The Authentication Openapi.Yml API from Alkemics — 2 operation(s) for authentication openapi.yml.
+  tags:
+  - Authentication Openapi.Yml
+  properties:
+  - type: OpenAPI
+    url: openapi/alkemics-authentication-openapi.yml
+- aid: alkemics:alkemics-bulk-activate-scenarios
+  name: Alkemics Bulk Activate Scenarios Openapi.Yml API
+  description: >-
+    The Bulk Activate Scenarios Openapi.Yml API from Alkemics — 1 operation(s) for bulk activate scenarios
+    openapi.yml.
+  tags:
+  - Bulk Activate Scenarios Openapi.Yml
+  properties:
+  - type: OpenAPI
+    url: openapi/alkemics-bulk-activate-scenarios-openapi.yml
+- aid: alkemics:alkemics-information-requests
+  name: Alkemics Information Requests Openapi.Yml API
+  description: >-
+    The Information Requests Openapi.Yml API from Alkemics — 2 operation(s) for information requests openapi.yml.
+  tags:
+  - Information Requests Openapi.Yml
+  properties:
+  - type: OpenAPI
+    url: openapi/alkemics-information-requests-openapi.yml
+- aid: alkemics:alkemics-list-available-scenarios
+  name: Alkemics List Available Scenarios Openapi.Yml API
+  description: >-
+    The List Available Scenarios Openapi.Yml API from Alkemics — 1 operation(s) for list available scenarios
+    openapi.yml.
+  tags:
+  - List Available Scenarios Openapi.Yml
+  properties:
+  - type: OpenAPI
+    url: openapi/alkemics-list-available-scenarios-openapi.yml
+- aid: alkemics:alkemics-product
+  name: Alkemics Product Openapi.Yml API
+  description: The Product Openapi.Yml API from Alkemics — 3 operation(s) for product openapi.yml.
+  tags:
+  - Product Openapi.Yml
+  properties:
+  - type: OpenAPI
+    url: openapi/alkemics-product-openapi.yml
+- aid: alkemics:alkemics-product-segment
+  name: Alkemics Product Segment Openapi.Yml API
+  description: >-
+    The Product Segment Openapi.Yml API from Alkemics — 1 operation(s) for product segment openapi.yml.
+  tags:
+  - Product Segment Openapi.Yml
+  properties:
+  - type: OpenAPI
+    url: openapi/alkemics-product-segment-openapi.yml
+- aid: alkemics:alkemics-referentials
+  name: Alkemics Referentials Openapi.Yml API
+  description: >-
+    The Referentials Openapi.Yml API from Alkemics — 1 operation(s) for referentials openapi.yml.
+  tags:
+  - Referentials Openapi.Yml
+  properties:
+  - type: OpenAPI
+    url: openapi/alkemics-referentials-openapi.yml
+- aid: alkemics:alkemics-supplier
+  name: Alkemics Supplier Openapi.Yml API
+  description: The Supplier Openapi.Yml API from Alkemics — 3 operation(s) for supplier openapi.yml.
+  tags:
+  - Supplier Openapi.Yml
+  properties:
+  - type: OpenAPI
+    url: openapi/alkemics-supplier-openapi.yml
+- aid: alkemics:alkemics-tariff
+  name: Alkemics Tariff Openapi.Yml API
+  description: The Tariff Openapi.Yml API from Alkemics — 3 operation(s) for tariff openapi.yml.
+  tags:
+  - Tariff Openapi.Yml
+  properties:
+  - type: OpenAPI
+    url: openapi/alkemics-tariff-openapi.yml
+- aid: alkemics:alkemics-tenders-public-retailer
+  name: Alkemics Tenders Public Retailer Openapi.Yml API
+  description: >-
+    The Tenders Public Retailer Openapi.Yml API from Alkemics — 9 operation(s) for tenders public retailer
+    openapi.yml.
+  tags:
+  - Tenders Public Retailer Openapi.Yml
+  properties:
+  - type: OpenAPI
+    url: openapi/alkemics-tenders-public-retailer-openapi.yml
+- aid: alkemics:alkemics-tenders-public-supplier
+  name: Alkemics Tenders Public Supplier Openapi.Yml API
+  description: >-
+    The Tenders Public Supplier Openapi.Yml API from Alkemics — 4 operation(s) for tenders public supplier
+    openapi.yml.
+  tags:
+  - Tenders Public Supplier Openapi.Yml
+  properties:
+  - type: OpenAPI
+    url: openapi/alkemics-tenders-public-supplier-openapi.yml
+
 x-enrichment:
   date: '2026-08-17'
   status: minimal
@@ -109,6 +265,7 @@ x-enrichment:
     records HTTP 301 on every path and never a 200 document. Added a terminal
     lifecycle record, a first-party package inventory (4 OSS packages, 0 SDKs) and a
     generated llms.txt that routes agents to the Salsify successor.
+
 x-coverage:
   state: none
   reason: defunct
@@ -129,3 +286,9 @@ x-coverage:
   - url: https://github.com/alkemics
     status: 200
   checked: '2026-08-17'
+
+x-readme-harvest:
+  date: '2026-10-14'
+  ops: 48
+  tool: harvest-readme-openapi.py
+  portal: https://docs.supplierxm.salsify.com

@@ -1,0 +1,223 @@
+generated: '2026-10-14'
+method: derived
+generator: derive-mcp-candidate.py
+source:
+- openapi/alkemics-authentication-openapi.yml
+- openapi/alkemics-bulk-activate-scenarios-openapi.yml
+- openapi/alkemics-information-requests-openapi.yml
+- openapi/alkemics-list-available-scenarios-openapi.yml
+- openapi/alkemics-product-openapi.yml
+- openapi/alkemics-product-segment-openapi.yml
+- openapi/alkemics-referentials-openapi.yml
+- openapi/alkemics-supplier-openapi.yml
+- openapi/alkemics-tariff-openapi.yml
+- openapi/alkemics-tenders-public-retailer-openapi.yml
+- openapi/alkemics-tenders-public-supplier-openapi.yml
+status: candidate
+deployment:
+  mode: none
+  auth: unknown
+  verified: derived
+note: No MCP server was found. No probe result in the dossier. Candidate tools below are derived from the 48 operation(s) in the provider's own
+  OpenAPI (40 listed); they describe what a server WOULD expose, not one that exists.
+tools:
+- name: list_organizations
+  operationId: list-organizations
+  method: GET
+  path: /v2/organization
+  description: List Organizations
+- name: bulk_activate_scenarios_1
+  operationId: bulk-activate-scenarios-1
+  method: POST
+  path: /
+  description: Bulk activate scenarios
+- name: request_engine_import
+  operationId: request-engine-import
+  method: POST
+  path: /
+  description: Request Engine import
+- name: list_available_scenarios_for_your_organization
+  operationId: list-available-scenarios-for-your-organization
+  method: GET
+  path: /
+  description: List available scenarios for your organization
+- name: list_products
+  operationId: list-products
+  method: GET
+  path: /
+  description: List Products
+- name: list_product_segments
+  operationId: list-product-segments
+  method: GET
+  path: /
+  description: List product segments
+- name: list_referential_code_values
+  operationId: list-referential-code-values
+  method: POST
+  path: /
+  description: List referential code values
+- name: import
+  operationId: import
+  method: POST
+  path: /
+  description: Supplier Import
+- name: tariff_list
+  operationId: tariff-list
+  method: GET
+  path: /
+  description: Tariff list
+- name: list_answer_retailer
+  operationId: list-answer-retailer
+  method: GET
+  path: /v1/answers
+  description: List Answer
+- name: create_answer
+  operationId: create-answer
+  method: POST
+  path: /v1/answers
+  description: Create Answer
+- name: token_v2
+  operationId: token-v2
+  method: POST
+  path: /v2/token
+  description: Create Token
+- name: request_engine_import_1
+  operationId: request-engine-import-1
+  method: GET
+  path: /track/{tracker_id}
+  description: Request Engine import tracking
+- name: product_upsert
+  operationId: product-upsert
+  method: POST
+  path: /
+  description: Product Upsert
+- name: supplier_list
+  operationId: supplier-list
+  method: POST
+  path: /list
+  description: Supplier List
+- name: tariff_upsert
+  operationId: tariff-upsert
+  method: POST
+  path: /
+  description: Tariff update
+- name: create_bu
+  operationId: create-bu
+  method: POST
+  path: /v1/business_units
+  description: Create BU
+- name: update_answer
+  operationId: update-answer
+  method: PUT
+  path: /v1/answers
+  description: Update Answer
+- name: search_product
+  operationId: search-product
+  method: POST
+  path: /list
+  description: Search Products
+- name: supplier_import_tracking
+  operationId: supplier-import-tracking
+  method: GET
+  path: /track/{tracker_id}
+  description: Supplier import tracking
+- name: products_list
+  operationId: products-list
+  method: GET
+  path: /{uuid}/products
+  description: Products list
+- name: update_bu
+  operationId: update-bu
+  method: PUT
+  path: /v1/business_units
+  description: Update BU
+- name: list_answer_supplier
+  operationId: list-answer-supplier
+  method: GET
+  path: /v1/answers
+  description: List Answer
+- name: product_upsert_tracking
+  operationId: product-upsert-tracking
+  method: GET
+  path: /track/{tracking_id}
+  description: Product inbound Tracking
+- name: tariff_product_upsert
+  operationId: tariff-product-upsert
+  method: POST
+  path: /{uuid}/products
+  description: Products upsert
+- name: list_bu
+  operationId: list-bu
+  method: GET
+  path: /v1/business_units
+  description: List BU
+- name: delete_answer
+  operationId: delete-answer
+  method: DELETE
+  path: /v1/answers
+  description: Delete Answer
+- name: tariff_publish
+  operationId: tariff-publish
+  method: POST
+  path: /{uuid}/publish
+  description: Tariff publish
+- name: delete_bu
+  operationId: delete-bu
+  method: DELETE
+  path: /v1/business_units
+  description: Delete BU
+- name: send_answer
+  operationId: send-answer
+  method: POST
+  path: /v1/business_units/send/answers
+  description: Send Answer
+- name: decline_rfp
+  operationId: decline-rfp
+  method: POST
+  path: /v1/business_units/{uuid}/decline
+  description: Decline BU
+- name: list_event_supplier
+  operationId: list-event-supplier
+  method: GET
+  path: /v1/events
+  description: List Event
+- name: create_event
+  operationId: create-event
+  method: POST
+  path: /v1/events
+  description: Create Event
+- name: list_message_supplier
+  operationId: list-message-supplier
+  method: GET
+  path: /v1/messages
+  description: List Message
+- name: update_event
+  operationId: update-event
+  method: PUT
+  path: /v1/events
+  description: Update Event
+- name: list_event_retailer
+  operationId: list-event-retailer
+  method: GET
+  path: /v1/events
+  description: List Event
+- name: delete_event
+  operationId: delete-event
+  method: DELETE
+  path: /v1/events
+  description: Delete Event
+- name: create_rfp
+  operationId: create-rfp
+  method: POST
+  path: /v1/rfps
+  description: Create RFP
+- name: update_rfp
+  operationId: update-rfp
+  method: PUT
+  path: /v1/rfps
+  description: Update RFP
+- name: list_rfp
+  operationId: list-rfp
+  method: GET
+  path: /v1/rfps
+  description: List RFP
