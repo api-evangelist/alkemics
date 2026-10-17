@@ -1,33 +1,26 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: referentials
-  version: '2.1'
+  title: product-segment Product Segment API
+  version: '2'
 servers:
-- url: https://apis.supplierxm.salsify.com/field/documentation/v1/downloads/referentials
+- url: https://apis.alkemics.com/core/v3/productsegments/hierarchy
 security:
 - sec0: []
-x-readme-fauxas: true
+tags:
+- name: Product Segment
 paths:
   /:
-    post:
-      summary: List referential code values
+    get:
+      summary: List product segments
       description: ''
-      operationId: list-referential-code-values
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                root:
-                  type: integer
-                  description: Filters the unit type. (FIELD_ROOT_UNKNOWN=0 / CONSUMER_UNIT=1 / PICTURE=2 / VIDEO=3 / ENRICHED_CONTENT=4 / DOCUMENT=5 / SHARING_UNIT=6 / DISPLAY_UNIT=7 / LOGISTICAL_UNIT=8 / RFP_EVENT=9 / RFP_BU=10 / RFP_SUPPLIER=11 / ORGANIZATION=12 / RFP_PROPOSAL=13)
-                  default: 0
-                  format: int32
-                lang:
-                  type: string
-                  description: Is going to translate some of the label & description in the chosen language
-                  default: en
+      operationId: list-product-segments
+      parameters:
+      - name: permission
+        in: query
+        description: The type of permission requested.
+        schema:
+          type: string
+          default: product.show
       responses:
         '200':
           description: '200'
@@ -50,6 +43,8 @@ paths:
                 type: object
                 properties: {}
       deprecated: false
+      tags:
+      - Product Segment
 components:
   securitySchemes:
     sec0:
@@ -57,7 +52,8 @@ components:
       in: header
       name: Authorization
       x-bearer-format: bearer
-      x-default: SALSIFY
+      x-default: TOKEN
+x-readme-fauxas: true
 x-provenance:
   method: searched
   source: https://docs.supplierxm.salsify.com/reference
@@ -65,7 +61,7 @@ x-provenance:
   tool: harvest-readme-openapi.py
   note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
   assembled_from:
-  - https://docs.supplierxm.salsify.com/reference/list-referential-code-values.md
+  - https://docs.supplierxm.salsify.com/reference/list-product-segments.md
   merge:
     pages: 1
     deduped: 0

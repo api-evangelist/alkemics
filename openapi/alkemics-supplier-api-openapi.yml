@@ -1,0 +1,66 @@
+openapi: 3.2.0
+info:
+  title: Supplier API
+  version: '2.1'
+servers:
+- url: https://apis.supplierxm.salsify.com/public/v1/supplier
+security:
+- sec0: []
+tags:
+- name: Supplier
+paths:
+  /:
+    post:
+      summary: Supplier Import
+      description: ''
+      operationId: import
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"tracker\": {\n     \"id\": 42\n  }\n}"
+              schema:
+                type: object
+                properties:
+                  tracker:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 42
+                        default: 0
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl -H 'Authorization: Bearer SALSIFY_TOKEN' -XPOST 'https://apis.supplierxm.salsify.com/public/v1/supplier' -H 'Content-Type: application/json' -d '{\n    \"suppliers\": [\n        {\n            \"internalID\": \"Unique supplierID 1\",\n            \"name\": \"The 1st Supplier\\'s Name\",\n            \"sirens\": [\"123456789\"],\n            \"vatNumbers\": [\"FR01123456789\"],\n            \"contacts\":[\n       \t\t \t\t{\n              \"emailAddress\": \"SupplierContact.ret301.1\",\n              \"firstName\":\"Bastien\",\n              \"lastName\":\"Testalk\",\n              \"jobTitle\":\"Sourcing Mgr\",\n              \"phoneNumber\":\"0612334455\",\n              \"mobileNumber\":\"0755667788\"\n           \t  },\n     \t\t\t   {\n              \"emailAddress\": \"SupplierContact.ret301.2\",\n              \"firstName\":\"Lee\",\n              \"lastName\":\"Long\",\n              \"jobTitle\":\"Long job title\",\n              \"phoneNumber\":\"0600101112\",\n              \"mobileNumber\":\"0743101112\"\n    \t\t\t    }\n     \t\t\t ]\n        },\n        {\n            \"internalID\": \"Unique supplierID 2\",\n            \"name\": \"The 2nd Supplier\\'s Name\",\n            \"sirens\": [],\n            \"vatNumbers\": []\n        }        \n    ]\n}'"
+        samples-languages:
+        - curl
+      tags:
+      - Supplier
+components:
+  securitySchemes:
+    sec0:
+      type: apiKey
+      in: header
+      name: Authorization
+      x-bearer-format: bearer
+      x-default: SALSIFY_TOKEN
+x-readme-fauxas: true
+x-provenance:
+  method: searched
+  source: https://docs.supplierxm.salsify.com/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://docs.supplierxm.salsify.com/reference/import-1.md
+  - https://docs.supplierxm.salsify.com/reference/supplier-import-tracking.md
+  - https://docs.supplierxm.salsify.com/reference/supplier-list.md
+  merge:
+    pages: 3
+    deduped: 2
+    conflicts_kept_first: 0

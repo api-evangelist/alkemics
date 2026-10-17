@@ -1,18 +1,26 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: list-available-scenarios
+  title: tariff Publish API
   version: '2.1'
 servers:
-- url: https://apis.supplierxm.salsify.com/public/v1/validation/rulesets/requestable
+- url: https://apis.supplierxm.salsify.com/public/v1/tariffs
 security:
 - sec0: []
-x-readme-fauxas: true
+tags:
+- name: Publish
 paths:
-  /:
-    get:
-      summary: List available scenarios for your organization
+  /{uuid}/publish:
+    post:
+      summary: Tariff publish
       description: ''
-      operationId: list-available-scenarios-for-your-organization
+      operationId: tariff-publish
+      parameters:
+      - name: uuid
+        in: path
+        description: The uuid of the tariff you want to publish.
+        schema:
+          type: string
+        required: true
       responses:
         '200':
           description: '200'
@@ -20,22 +28,13 @@ paths:
             application/json:
               examples:
                 Result:
-                  value: "{\n  \"data\": [\n    {\"id\": 1, \"label\": \"My first business process\"}\n  ]\n}"
+                  value: '{"data":"ok"}'
               schema:
                 type: object
                 properties:
                   data:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                          example: 1
-                          default: 0
-                        label:
-                          type: string
-                          example: My first business process
+                    type: string
+                    example: ok
         '400':
           description: '400'
           content:
@@ -47,6 +46,8 @@ paths:
                 type: object
                 properties: {}
       deprecated: false
+      tags:
+      - Publish
 components:
   securitySchemes:
     sec0:
@@ -55,6 +56,7 @@ components:
       name: Authorization
       x-bearer-format: bearer
       x-default: SALSIFY_TOKEN
+x-readme-fauxas: true
 x-provenance:
   method: searched
   source: https://docs.supplierxm.salsify.com/reference
@@ -62,8 +64,12 @@ x-provenance:
   tool: harvest-readme-openapi.py
   note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
   assembled_from:
-  - https://docs.supplierxm.salsify.com/reference/list-available-scenarios-for-your-organization-1.md
+  - https://docs.supplierxm.salsify.com/reference/products-list.md
+  - https://docs.supplierxm.salsify.com/reference/tariff-list.md
+  - https://docs.supplierxm.salsify.com/reference/tariff-product-upsert.md
+  - https://docs.supplierxm.salsify.com/reference/tariff-publish.md
+  - https://docs.supplierxm.salsify.com/reference/tariff-upsert.md
   merge:
-    pages: 1
-    deduped: 0
+    pages: 5
+    deduped: 4
     conflicts_kept_first: 0

@@ -1,0 +1,222 @@
+openapi: 3.2.0
+info:
+  title: tenders-public-retailer Webhook API
+  version: '2.1'
+servers:
+- url: https://apis.supplierxm.salsify.com/rfp/public/
+security:
+- sec0: []
+tags:
+- name: Webhook
+paths:
+  /v1/webhook:
+    post:
+      summary: Create Webhook
+      description: ''
+      operationId: create-webhook
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                webhook:
+                  properties:
+                    url:
+                      type: string
+                      description: URL of your webhook, must be https
+                    signature_token:
+                      type: string
+                    registered_events:
+                      properties:
+                        name:
+                          type: string
+                          description: Name of the event you want to register
+                        version:
+                          type: integer
+                          description: Version of the event you want to register
+                          format: int32
+                      required: []
+                      type: object
+                  required:
+                  - url
+                  type: object
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"webhook\": {\n  \t\"uuid\": \"WEBHOOK_UUID\",\n    \"url\": \"https://webhook_url.com\",\n    \"last_success_at\": null,\n    \"is_broken\": false,\n    \"last_failure_at\": null,\n    \"signature_token\": null,\n    \"registered_events\": [\n      {\n        \"name\": \"BU_CHASED\",\n        \"version\": 1\n      },\n      {\n        \"name\": \"EVENT_CREATED\",\n        \"version\": 1\n      },\n      {\n        \"name\": \"EVENT_UPDATED\",\n        \"version\": 1\n      },\n      {\n        \"name\": \"EVENT_DELETED\",\n        \"version\": 1\n      },\n      {\n        \"name\": \"ANSWER_STATUS_UPDATED\",\n        \"version\": 1\n      },\n      {\n        \"name\": \"NEW_CHAT_MESSAGE\",\n        \"version\": 1\n      }\n    ],\n  }\n}"
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --request POST \\\n     --url https://apis.supplierxm.salsify.com/rfp/public/v1/business_units \\\n     --header 'Accept: application/json' \\\n     --header 'Authorization: Bearer SALSIFY_TOKEN' \\\n     --header 'Content-Type: application/json' \\\n     --data '\n        {\n            \"webhook\": {\n                \"url\": \"https://webhook_url.com\",\n                \"signature_token\": \"TOKEN\",\n                \"registered_events\": [\n                    {\n                        \"name\": \"BU_CHASED\",\n                        \"version\": 1\n                    },\n                    {\n                        \"name\": \"EVENT_CREATED\",\n                        \"version\": 1\n                    },\n                    {\n                        \"name\": \"EVENT_UPDATED\",\n                        \"version\": 1\n                    },\n                    {\n                        \"name\": \"EVENT_DELETED\",\n                        \"version\": 1\n                    },\n                    {\n                        \"name\": \"ANSWER_STATUS_UPDATED\",\n                        \"version\": 1\n                    },\n                    {\n                        \"name\": \"NEW_CHAT_MESSAGE\",\n                        \"version\": 1\n                    },\n                    {\n                   \t\t\t\"name\": \"ANSWER_SENDABLE_UPDATED\",\n                        \"version\": 1\n                    }\n                ]\n            }\n        }\n     '"
+        samples-languages:
+        - curl
+      tags:
+      - Webhook
+    put:
+      summary: Update Webhook
+      description: ''
+      operationId: update-webhook
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                webhook:
+                  properties:
+                    uuid:
+                      type: string
+                      description: The uuid of the webhook
+                    url:
+                      type: string
+                      description: URL of your webhook, must be https
+                    signature_token:
+                      type: string
+                    registered_events:
+                      properties:
+                        name:
+                          type: string
+                          description: Name of the event you want to register
+                        version:
+                          type: integer
+                          description: Version of the event you want to register
+                          format: int32
+                      required: []
+                      type: object
+                  required:
+                  - uuid
+                  type: object
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"webhook\": {\n  \t\"uuid\": \"WEBHOOK_UUID\",\n    \"url\": \"https://webhook_url.com\",\n    \"last_success_at\": null,\n    \"is_broken\": false,\n    \"last_failure_at\": null,\n    \"signature_token\": null,\n    \"registered_events\": [\n      {\n        \"name\": \"BU_CHASED\",\n        \"version\": 1\n      },\n      {\n        \"name\": \"EVENT_CREATED\",\n        \"version\": 1\n      },\n      {\n        \"name\": \"EVENT_UPDATED\",\n        \"version\": 1\n      },\n      {\n        \"name\": \"EVENT_DELETED\",\n        \"version\": 1\n      },\n      {\n        \"name\": \"ANSWER_STATUS_UPDATED\",\n        \"version\": 1\n      },\n      {\n        \"name\": \"NEW_CHAT_MESSAGE\",\n        \"version\": 1\n      }\n    ],\n  }\n}"
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --request POST \\\n     --url https://apis.supplierxm.salsify.com/rfp/public/v1/business_units \\\n     --header 'Accept: application/json' \\\n     --header 'Authorization: Bearer SALSIFY_TOKEN' \\\n     --header 'Content-Type: application/json' \\\n     --data '\n        {\n            \"webhook\": {\n\t  \t\t\t\t\t\t\"uuid\": \"WEBHOOK_UUID\",\n                \"url\": \"https://webhook_url.com\",\n                \"signature_token\": \"TOKEN\",\n                \"registered_events\": [\n                    {\n                        \"name\": \"BU_CHASED\",\n                        \"version\": 1\n                    },\n                    {\n                        \"name\": \"EVENT_CREATED\",\n                        \"version\": 1\n                    },\n                    {\n                        \"name\": \"EVENT_UPDATED\",\n                        \"version\": 1\n                    },\n                    {\n                        \"name\": \"EVENT_DELETED\",\n                        \"version\": 1\n                    },\n                    {\n                        \"name\": \"ANSWER_STATUS_UPDATED\",\n                        \"version\": 1\n                    },\n                    {\n                        \"name\": \"NEW_CHAT_MESSAGE\",\n                        \"version\": 1\n                    }\n                ]\n            }\n        }\n     '"
+        samples-languages:
+        - curl
+      tags:
+      - Webhook
+    get:
+      summary: List Webhook
+      description: ''
+      operationId: list-webhook
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"webhooks\": [\n    {\n      \"uuid\": \"WEBHOOK_UUID_1\",\n      \"url\": \"https://webhook_url_1.com\",\n      \"last_success_at\": null,\n      \"is_broken\": false,\n      \"last_failure_at\": null,\n      \"signature_token\": null,\n      \"registered_events\": [\n        {\n          \"name\": \"BU_CHASED\",\n          \"version\": 1\n        },\n        {\n          \"name\": \"EVENT_CREATED\",\n          \"version\": 1\n        },\n        {\n          \"name\": \"EVENT_UPDATED\",\n          \"version\": 1\n        },\n        {\n          \"name\": \"EVENT_DELETED\",\n          \"version\": 1\n        },\n        {\n          \"name\": \"ANSWER_STATUS_UPDATED\",\n          \"version\": 1\n        },\n        {\n          \"name\": \"NEW_CHAT_MESSAGE\",\n          \"version\": 1\n        },\n        {\n          \"name\": \"ANSWER_SENDABLE_UPDATED\",\n          \"version\": 1\n        }\n      ],\n    },\n    {\n      \"uuid\": \"WEBHOOK_UUID_2\",\n      \"url\": \"https://webhook_url_2.com\",\n      \"last_success_at\": null,\n      \"is_broken\": false,\n      \"last_failure_at\": null,\n      \"signature_token\": null,\n      \"registered_events\": []\n    }\n  ]\n}"
+      deprecated: false
+      tags:
+      - Webhook
+    delete:
+      summary: Delete Webhook
+      description: ''
+      operationId: delete-webhook
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                webhook:
+                  properties:
+                    uuid:
+                      type: string
+                      description: The uuid of the webhook
+                  required:
+                  - uuid
+                  type: object
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"deleted_webhook\": \"WEBHOOK_UUID\",\n}"
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --request POST \\\n     --url https://apis.supplierxm.salsify.com/rfp/public/v1/business_units \\\n     --header 'Accept: application/json' \\\n     --header 'Authorization: Bearer SALSIFY_TOKEN' \\\n     --header 'Content-Type: application/json' \\\n     --data '\n        {\n            \"webhook\": {\n\t  \t\t\t\t\t\t\"uuid\": \"WEBHOOK_UUID\"\n            }\n        }\n     '"
+        samples-languages:
+        - curl
+      tags:
+      - Webhook
+components:
+  securitySchemes:
+    sec0:
+      type: apiKey
+      in: header
+      x-default: SALSIFY_TOKEN
+      name: Authorization
+      x-bearer-format: bearer
+x-readme-fauxas: true
+x-provenance:
+  method: searched
+  source: https://docs.supplierxm.salsify.com/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://docs.supplierxm.salsify.com/reference/create-bu.md
+  - https://docs.supplierxm.salsify.com/reference/create-event.md
+  - https://docs.supplierxm.salsify.com/reference/create-rfp.md
+  - https://docs.supplierxm.salsify.com/reference/create-webhook.md
+  - https://docs.supplierxm.salsify.com/reference/decline-rfp.md
+  - https://docs.supplierxm.salsify.com/reference/delete-bu.md
+  - https://docs.supplierxm.salsify.com/reference/delete-event.md
+  - https://docs.supplierxm.salsify.com/reference/delete-rfp.md
+  - https://docs.supplierxm.salsify.com/reference/delete-webhook.md
+  - https://docs.supplierxm.salsify.com/reference/list-answer-retailer.md
+  - https://docs.supplierxm.salsify.com/reference/list-bu.md
+  - https://docs.supplierxm.salsify.com/reference/list-event-retailer.md
+  - https://docs.supplierxm.salsify.com/reference/list-rfp.md
+  - https://docs.supplierxm.salsify.com/reference/list-webhook-event.md
+  - https://docs.supplierxm.salsify.com/reference/list-webhook.md
+  - https://docs.supplierxm.salsify.com/reference/send-answer-1.md
+  - https://docs.supplierxm.salsify.com/reference/unbreak-webhook.md
+  - https://docs.supplierxm.salsify.com/reference/update-bu.md
+  - https://docs.supplierxm.salsify.com/reference/update-event.md
+  - https://docs.supplierxm.salsify.com/reference/update-rfp.md
+  - https://docs.supplierxm.salsify.com/reference/update-webhook.md
+  merge:
+    pages: 21
+    deduped: 20
+    conflicts_kept_first: 0

@@ -1,25 +1,41 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: product-segment
-  version: '2'
+  title: authentication Organization API
+  version: '2.1'
 servers:
-- url: https://apis.alkemics.com/core/v3/productsegments/hierarchy
+- url: https://apis.supplierxm.salsify.com/auth
 security:
-- sec0: []
-x-readme-fauxas: true
+- {}
+tags:
+- name: Organization
 paths:
-  /:
+  /v2/organization:
     get:
-      summary: List product segments
+      summary: List Organizations
       description: ''
-      operationId: list-product-segments
+      operationId: list-organizations
       parameters:
-      - name: permission
+      - name: organization_type
         in: query
-        description: The type of permission requested.
+        description: 'The organization type: 1 is manufacturers, 2 is retailers'
         schema:
-          type: string
-          default: product.show
+          type: integer
+          format: int32
+          default: 1
+      - name: offset
+        in: query
+        description: The offset to handle pagination
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: limit
+        in: query
+        description: The limit of organizations to reply
+        schema:
+          type: integer
+          format: int32
+          default: 20
       responses:
         '200':
           description: '200'
@@ -42,14 +58,10 @@ paths:
                 type: object
                 properties: {}
       deprecated: false
-components:
-  securitySchemes:
-    sec0:
-      type: apiKey
-      in: header
-      name: Authorization
-      x-bearer-format: bearer
-      x-default: TOKEN
+      security: []
+      tags:
+      - Organization
+x-readme-fauxas: true
 x-provenance:
   method: searched
   source: https://docs.supplierxm.salsify.com/reference
@@ -57,8 +69,9 @@ x-provenance:
   tool: harvest-readme-openapi.py
   note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
   assembled_from:
-  - https://docs.supplierxm.salsify.com/reference/list-product-segments.md
+  - https://docs.supplierxm.salsify.com/reference/list-organizations.md
+  - https://docs.supplierxm.salsify.com/reference/token-v2.md
   merge:
-    pages: 1
+    pages: 2
     deduped: 0
     conflicts_kept_first: 0

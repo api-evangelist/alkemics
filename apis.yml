@@ -153,107 +153,184 @@ common:
   url: https://www.salsify.com/
 
 apis:
-- aid: alkemics:alkemics-authentication
-  name: Alkemics Authentication Openapi.Yml API
+- aid: alkemics:alkemics-answers-api
+  name: Alkemics Answers API
+  description: The Answers API from Alkemics — 1 operation(s) for answers.
+  tags:
+  - Answers
+  properties:
+  - type: OpenAPI
+    url: openapi/alkemics-answers-api-openapi.yml
+- aid: alkemics:alkemics-bulk-activate-scenarios-api
+  name: Alkemics Bulk Activate Scenarios API
   description: >-
-    The Authentication Openapi.Yml API from Alkemics — 2 operation(s) for authentication openapi.yml.
+    The Bulk Activate Scenarios API from Alkemics — 1 operation(s) for bulk activate scenarios.
   tags:
-  - Authentication Openapi.Yml
+  - Bulk Activate Scenarios
   properties:
   - type: OpenAPI
-    url: openapi/alkemics-authentication-openapi.yml
-- aid: alkemics:alkemics-bulk-activate-scenarios
-  name: Alkemics Bulk Activate Scenarios Openapi.Yml API
+    url: openapi/alkemics-bulk-activate-scenarios-api-openapi.yml
+- aid: alkemics:alkemics-business-units-api
+  name: Alkemics Business Units API
+  description: The Business Units API from Alkemics — 3 operation(s) for business units.
+  tags:
+  - Business Units
+  properties:
+  - type: OpenAPI
+    url: openapi/alkemics-business-units-api-openapi.yml
+- aid: alkemics:alkemics-events-api
+  name: Alkemics Events API
+  description: The Events API from Alkemics — 1 operation(s) for events.
+  tags:
+  - Events
+  properties:
+  - type: OpenAPI
+    url: openapi/alkemics-events-api-openapi.yml
+- aid: alkemics:alkemics-information-requests-api
+  name: Alkemics Information Requests API
+  description: The Information Requests API from Alkemics — 1 operation(s) for information requests.
+  tags:
+  - Information Requests
+  properties:
+  - type: OpenAPI
+    url: openapi/alkemics-information-requests-api-openapi.yml
+- aid: alkemics:alkemics-list-api
+  name: Alkemics List API
+  description: The List API from Alkemics — 1 operation(s) for list.
+  tags:
+  - List
+  properties:
+  - type: OpenAPI
+    url: openapi/alkemics-list-api-openapi.yml
+- aid: alkemics:alkemics-list-available-scenarios-api
+  name: Alkemics List Available Scenarios API
   description: >-
-    The Bulk Activate Scenarios Openapi.Yml API from Alkemics — 1 operation(s) for bulk activate scenarios
-    openapi.yml.
+    The List Available Scenarios API from Alkemics — 1 operation(s) for list available scenarios.
   tags:
-  - Bulk Activate Scenarios Openapi.Yml
+  - List Available Scenarios
   properties:
   - type: OpenAPI
-    url: openapi/alkemics-bulk-activate-scenarios-openapi.yml
-- aid: alkemics:alkemics-information-requests
-  name: Alkemics Information Requests Openapi.Yml API
-  description: >-
-    The Information Requests Openapi.Yml API from Alkemics — 2 operation(s) for information requests openapi.yml.
+    url: openapi/alkemics-list-available-scenarios-api-openapi.yml
+- aid: alkemics:alkemics-messages-api
+  name: Alkemics Messages API
+  description: The Messages API from Alkemics — 1 operation(s) for messages.
   tags:
-  - Information Requests Openapi.Yml
+  - Messages
   properties:
   - type: OpenAPI
-    url: openapi/alkemics-information-requests-openapi.yml
-- aid: alkemics:alkemics-list-available-scenarios
-  name: Alkemics List Available Scenarios Openapi.Yml API
-  description: >-
-    The List Available Scenarios Openapi.Yml API from Alkemics — 1 operation(s) for list available scenarios
-    openapi.yml.
+    url: openapi/alkemics-messages-api-openapi.yml
+- aid: alkemics:alkemics-organization-api
+  name: Alkemics Organization API
+  description: The Organization API from Alkemics — 1 operation(s) for organization.
   tags:
-  - List Available Scenarios Openapi.Yml
+  - Organization
   properties:
   - type: OpenAPI
-    url: openapi/alkemics-list-available-scenarios-openapi.yml
-- aid: alkemics:alkemics-product
-  name: Alkemics Product Openapi.Yml API
-  description: The Product Openapi.Yml API from Alkemics — 3 operation(s) for product openapi.yml.
+    url: openapi/alkemics-organization-api-openapi.yml
+- aid: alkemics:alkemics-product-api
+  name: Alkemics Product API
+  description: The Product API from Alkemics — 1 operation(s) for product.
   tags:
-  - Product Openapi.Yml
+  - Product
   properties:
   - type: OpenAPI
-    url: openapi/alkemics-product-openapi.yml
-- aid: alkemics:alkemics-product-segment
-  name: Alkemics Product Segment Openapi.Yml API
-  description: >-
-    The Product Segment Openapi.Yml API from Alkemics — 1 operation(s) for product segment openapi.yml.
+    url: openapi/alkemics-product-api-openapi.yml
+- aid: alkemics:alkemics-product-segment-api
+  name: Alkemics Product Segment API
+  description: The Product Segment API from Alkemics — 1 operation(s) for product segment.
   tags:
-  - Product Segment Openapi.Yml
+  - Product Segment
   properties:
   - type: OpenAPI
-    url: openapi/alkemics-product-segment-openapi.yml
-- aid: alkemics:alkemics-referentials
-  name: Alkemics Referentials Openapi.Yml API
-  description: >-
-    The Referentials Openapi.Yml API from Alkemics — 1 operation(s) for referentials openapi.yml.
+    url: openapi/alkemics-product-segment-api-openapi.yml
+- aid: alkemics:alkemics-products-api
+  name: Alkemics Products API
+  description: The Products API from Alkemics — 1 operation(s) for products.
   tags:
-  - Referentials Openapi.Yml
+  - Products
   properties:
   - type: OpenAPI
-    url: openapi/alkemics-referentials-openapi.yml
-- aid: alkemics:alkemics-supplier
-  name: Alkemics Supplier Openapi.Yml API
-  description: The Supplier Openapi.Yml API from Alkemics — 3 operation(s) for supplier openapi.yml.
+    url: openapi/alkemics-products-api-openapi.yml
+- aid: alkemics:alkemics-publish-api
+  name: Alkemics Publish API
+  description: The Publish API from Alkemics — 1 operation(s) for publish.
   tags:
-  - Supplier Openapi.Yml
+  - Publish
   properties:
   - type: OpenAPI
-    url: openapi/alkemics-supplier-openapi.yml
-- aid: alkemics:alkemics-tariff
-  name: Alkemics Tariff Openapi.Yml API
-  description: The Tariff Openapi.Yml API from Alkemics — 3 operation(s) for tariff openapi.yml.
+    url: openapi/alkemics-publish-api-openapi.yml
+- aid: alkemics:alkemics-referentials-api
+  name: Alkemics Referentials API
+  description: The Referentials API from Alkemics — 1 operation(s) for referentials.
   tags:
-  - Tariff Openapi.Yml
+  - Referentials
   properties:
   - type: OpenAPI
-    url: openapi/alkemics-tariff-openapi.yml
-- aid: alkemics:alkemics-tenders-public-retailer
-  name: Alkemics Tenders Public Retailer Openapi.Yml API
-  description: >-
-    The Tenders Public Retailer Openapi.Yml API from Alkemics — 9 operation(s) for tenders public retailer
-    openapi.yml.
+    url: openapi/alkemics-referentials-api-openapi.yml
+- aid: alkemics:alkemics-rfps-api
+  name: Alkemics Rfps API
+  description: The Rfps API from Alkemics — 2 operation(s) for rfps.
   tags:
-  - Tenders Public Retailer Openapi.Yml
+  - Rfps
   properties:
   - type: OpenAPI
-    url: openapi/alkemics-tenders-public-retailer-openapi.yml
-- aid: alkemics:alkemics-tenders-public-supplier
-  name: Alkemics Tenders Public Supplier Openapi.Yml API
-  description: >-
-    The Tenders Public Supplier Openapi.Yml API from Alkemics — 4 operation(s) for tenders public supplier
-    openapi.yml.
+    url: openapi/alkemics-rfps-api-openapi.yml
+- aid: alkemics:alkemics-supplier-api
+  name: Alkemics Supplier API
+  description: The Supplier API from Alkemics — 1 operation(s) for supplier.
   tags:
-  - Tenders Public Supplier Openapi.Yml
+  - Supplier
   properties:
   - type: OpenAPI
-    url: openapi/alkemics-tenders-public-supplier-openapi.yml
-
+    url: openapi/alkemics-supplier-api-openapi.yml
+- aid: alkemics:alkemics-tariff-api
+  name: Alkemics Tariff API
+  description: The Tariff API from Alkemics — 1 operation(s) for tariff.
+  tags:
+  - Tariff
+  properties:
+  - type: OpenAPI
+    url: openapi/alkemics-tariff-api-openapi.yml
+- aid: alkemics:alkemics-token-api
+  name: Alkemics Token API
+  description: The Token API from Alkemics — 1 operation(s) for token.
+  tags:
+  - Token
+  properties:
+  - type: OpenAPI
+    url: openapi/alkemics-token-api-openapi.yml
+- aid: alkemics:alkemics-track-api
+  name: Alkemics Track API
+  description: The Track API from Alkemics — 2 operation(s) for track.
+  tags:
+  - Track
+  properties:
+  - type: OpenAPI
+    url: openapi/alkemics-track-api-openapi.yml
+- aid: alkemics:alkemics-webhook-api
+  name: Alkemics Webhook API
+  description: The Webhook API from Alkemics — 1 operation(s) for webhook.
+  tags:
+  - Webhook
+  properties:
+  - type: OpenAPI
+    url: openapi/alkemics-webhook-api-openapi.yml
+- aid: alkemics:alkemics-webhooks-api
+  name: Alkemics Webhooks API
+  description: The Webhooks API from Alkemics — 1 operation(s) for webhooks.
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/alkemics-webhooks-api-openapi.yml
+- aid: alkemics:alkemics-webhooks-events-api
+  name: Alkemics Webhooks Events API
+  description: The Webhooks Events API from Alkemics — 1 operation(s) for webhooks events.
+  tags:
+  - Webhooks Events
+  properties:
+  - type: OpenAPI
+    url: openapi/alkemics-webhooks-events-api-openapi.yml
 x-enrichment:
   date: '2026-08-17'
   status: minimal

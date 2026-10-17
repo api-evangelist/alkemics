@@ -1,12 +1,13 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: information-requests
+  title: information-requests Information Requests API
   version: '2.1'
 servers:
 - url: https://apis.supplierxm.salsify.com/public/v1/products/requests
 security:
 - sec0: []
-x-readme-fauxas: true
+tags:
+- name: Information Requests
 paths:
   /:
     post:
@@ -66,60 +67,14 @@ paths:
           code: "curl -H 'Authorization: Bearer SALSIFY_TOKEN' -XPOST 'https://apis.supplierxm.salsify.com/public/v1/products/requests' -H 'Content-Type: application/json' -d '{\n  \"products\": [\n    {\n      \"gtin\": \"0123456789123\",\n      \"isRequested\": true,\n      \"namePublicLong\": [\n        {\n          \"data\": \"Product name\",\n          \"expressedIn\": {\n            \"code\": \"fr\"\n          }\n        }\n      ],\n      \"primaryInternalReference\": \"0x42\",\n      \"supplierInternalId\": \"supplier_internal_id\"\n    }\n  ]\n}'"
         samples-languages:
         - curl
-  /track/{tracker_id}:
-    get:
-      summary: Request Engine import tracking
-      description: ''
-      operationId: request-engine-import-1
-      parameters:
-      - name: tracker_id
-        in: path
-        schema:
-          type: integer
-          format: int32
-        required: true
-      responses:
-        '200':
-          description: '200'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: "{\n  \"status\": \"SUCCESS\", \n  \"count\": 1, \n\t\"tracking\": 42, \n  \"products\": [\n    {\n      \"status\": \"SUCCESS\", \n      \"message\": \"\", \n      \"gtin\": \"0123456789123\"\n    }\n  ]\n}"
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: SUCCESS
-                  count:
-                    type: integer
-                    example: 1
-                    default: 0
-                  tracking:
-                    type: integer
-                    example: 42
-                    default: 0
-                  products:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        status:
-                          type: string
-                          example: SUCCESS
-                        message:
-                          type: string
-                          example: ''
-                        gtin:
-                          type: string
-                          example: 0123456789123
-      deprecated: false
+      tags:
+      - Information Requests
 components:
   securitySchemes:
     sec0:
       type: oauth2
       flows: {}
+x-readme-fauxas: true
 x-provenance:
   method: searched
   source: https://docs.supplierxm.salsify.com/reference

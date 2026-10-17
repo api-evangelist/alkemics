@@ -1,0 +1,459 @@
+openapi: 3.2.0
+info:
+  title: tenders-public-retailer Rfps API
+  version: '2.1'
+servers:
+- url: https://apis.supplierxm.salsify.com/rfp/public/
+security:
+- sec0: []
+tags:
+- name: RFPs
+paths:
+  /v1/rfps:
+    post:
+      summary: Create RFP
+      description: ''
+      operationId: create-rfp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                rfps:
+                  properties:
+                    business_unit:
+                      properties:
+                        uuid:
+                          type: string
+                          description: The uuid of the business unit
+                      required:
+                      - uuid
+                      type: object
+                    supplier:
+                      properties:
+                        id:
+                          type: string
+                          description: 'Your internal id for the supplier you are inviting to the tender. NB: corresponds to the internalID of one of your suppliers imported via the supplier directory.'
+                      required:
+                      - id
+                      type: object
+                  required: []
+                  type: object
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"data\": [\n        {\n            \"sent\": false,\n            \"status\": \"NOT_SENT\",\n            \"supplier\": [\n                {\n                    \"id\": \"UNIQUE-ID-SUPPLIER\"\n                }\n            ],\n            \"data\": {\n                \"limitDate\": \"2022-03-27\"\n            },\n            \"business_unit\": {\n                \"uuid\": \"UNIQUE-ID-BU\"\n            },\n            \"uuid\": \"UNIQUE-ID-RFP\",\n            \"declined\": false,\n            \"last_chased_at\": null,\n            \"chased\": false\n        }\n    ]\n}"
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        sent:
+                          type: boolean
+                          example: false
+                          default: true
+                        status:
+                          type: string
+                          example: NOT_SENT
+                        supplier:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                example: UNIQUE-ID-SUPPLIER
+                        data:
+                          type: object
+                          properties:
+                            limitDate:
+                              type: string
+                              example: '2022-03-27'
+                        business_unit:
+                          type: object
+                          properties:
+                            uuid:
+                              type: string
+                              example: UNIQUE-ID-BU
+                        uuid:
+                          type: string
+                          example: UNIQUE-ID-RFP
+                        declined:
+                          type: boolean
+                          example: false
+                          default: true
+                        last_chased_at: {}
+                        chased:
+                          type: boolean
+                          example: false
+                          default: true
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --request POST \\\n     --url https://apis.supplierxm.salsify.com/rfp/public/v1/rfps \\\n     --header 'Accept: application/json' \\\n     --header 'Authorization: Bearer SALSIFY_TOKEN' \\\n     --header 'Content-Type: application/json' \\\n     --data '\n        {\n          \"rfps\": [\n            {\n              \"business_unit\": {\n                \"uuid\": \"UNIQUE-ID-BU\"\n              },\n              \"supplier\": {\n                \"id\": \"UNIQUE-ID-SUPPLIER\"\n              }\n            }\n          ]\n        }'\t"
+        samples-languages:
+        - curl
+      tags:
+      - RFPs
+    put:
+      summary: Update RFP
+      description: ''
+      operationId: update-rfp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                rfps:
+                  properties:
+                    uuid:
+                      type: string
+                      description: The uuid of the rfp
+                    data:
+                      properties:
+                        limitDate:
+                          type: object
+                          description: The limit date is the response deadline for a given RFP
+                          properties: {}
+                      required: []
+                      type: object
+                  required:
+                  - uuid
+                  type: object
+                chased:
+                  type: string
+                last_chased_at:
+                  type: string
+                status:
+                  type: string
+                  description: The RFP status. Was the RFP sent by retailer or not?
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"data\": [\n        {\n            \"sent\": false,\n            \"status\": \"NOT_SENT\",\n            \"supplier\": [\n                {\n                    \"id\": \"UNIQUE-ID-SUPPLIER\"\n                }\n            ],\n            \"data\": {\n                \"limitDate\": \"2022-03-27\"\n            },\n            \"business_unit\": {\n                \"uuid\": \"UNIQUE-ID-BU\"\n            },\n            \"uuid\": \"UNIQUE-ID-RFP\",\n            \"declined\": false,\n            \"last_chased_at\": null,\n            \"chased\": false\n        }\n    ]\n}"
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        sent:
+                          type: boolean
+                          example: false
+                          default: true
+                        status:
+                          type: string
+                          example: NOT_SENT
+                        supplier:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                example: UNIQUE-ID-SUPPLIER
+                        data:
+                          type: object
+                          properties:
+                            limitDate:
+                              type: string
+                              example: '2022-03-27'
+                        business_unit:
+                          type: object
+                          properties:
+                            uuid:
+                              type: string
+                              example: UNIQUE-ID-BU
+                        uuid:
+                          type: string
+                          example: UNIQUE-ID-RFP
+                        declined:
+                          type: boolean
+                          example: false
+                          default: true
+                        last_chased_at: {}
+                        chased:
+                          type: boolean
+                          example: false
+                          default: true
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --request PUT \\\n     --url https://apis.supplierxm.salsify.com/rfp/public/v1/rfps \\\n     --header 'Accept: application/json' \\\n     --header 'Authorization: Bearer SALSIFY_TOKEN' \\\n     --header 'Content-Type: application/json' \\\n     --data '\n        {\n          \"rfps\": [\n            {\n\t\t\t\t\t\t\t\"uuid\": \"{{RfpUuid}}\",\n\t\t\t\t\t\t\t\"data\": {\n\t\t\t\t\t\t\t\"chased\": \"{{status: true or false}}\" ,\n\t\t\t\t\t\t\t\"last_chased_at\": \"{{date}}\",\n\t\t\t\t\t\t\t\"status\":\"{{status: SENT or NOT SENT}}\n              }\n            }\n          ]\n        }'"
+        samples-languages:
+        - curl
+      tags:
+      - RFPs
+    get:
+      summary: List RFP
+      description: ''
+      operationId: list-rfp
+      parameters:
+      - name: uuids
+        in: query
+        description: List of filtered rfps uuids
+        schema:
+          type: string
+          default: UUID_1,UUID_2
+      - name: offset
+        in: query
+        description: The index of the first rfp to be returned.
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: limit
+        in: query
+        description: The maximum number of rfp to be returned.
+        schema:
+          type: integer
+          format: int32
+          default: 20
+      - name: from_updated_at
+        in: query
+        description: Filter requests for proposals for which the data has been updated after a certain date/time.
+        schema:
+          type: string
+          format: date
+      - name: to_updated_at
+        in: query
+        description: Filter requests for proposals for which the data has been updated after a certain date/time.
+        schema:
+          type: string
+          format: date
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"data\": [\n        {\n            \"sent\": true,\n            \"status\": \"SENT\",\n            \"supplier\": [\n                {\n                    \"id\": \"SUPPLIER-ID-1\"\n                },\n                {\n                    \"id\": \"SUPPLIER-ID-2\"\n                }\n            ],\n            \"data\": {\n                \"limitDate\": \"2020-04-09\"\n            },\n            \"business_unit\": {\n                \"uuid\": \"UNIQUE-ID-BU-1\"\n            },\n            \"uuid\": \"UNIQUE-ID-RFP-1\",\n            \"declined\": false,\n            \"last_chased_at\": null,\n            \"chased\": false\n        },\n        {\n            \"sent\": true,\n            \"status\": \"ANSWERED\",\n            \"supplier\": [\n                {\n                    \"id\": \"SUPPLIER-ID-3\"\n                }\n            ],\n            \"data\": {\n                \"limitDate\": \"2020-04-09\"\n            },\n            \"business_unit\": {\n                \"uuid\": \"UNIQUE-ID-BU-2\"\n            },\n            \"uuid\": \"UNIQUE-ID-RFP-2\",\n            \"declined\": false,\n            \"last_chased_at\": null,\n            \"chased\": false\n        }\n    ],\n    \"totalResults\": 240\n}"
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        sent:
+                          type: boolean
+                          example: true
+                          default: true
+                        status:
+                          type: string
+                          example: SENT
+                        supplier:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                example: SUPPLIER-ID-1
+                        data:
+                          type: object
+                          properties:
+                            limitDate:
+                              type: string
+                              example: '2020-04-09'
+                        business_unit:
+                          type: object
+                          properties:
+                            uuid:
+                              type: string
+                              example: UNIQUE-ID-BU-1
+                        uuid:
+                          type: string
+                          example: UNIQUE-ID-RFP-1
+                        declined:
+                          type: boolean
+                          example: false
+                          default: true
+                        last_chased_at: {}
+                        chased:
+                          type: boolean
+                          example: false
+                          default: true
+                  totalResults:
+                    type: integer
+                    example: 240
+                    default: 0
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - RFPs
+    delete:
+      summary: Delete RFP
+      description: ''
+      operationId: delete-rfp
+      parameters:
+      - name: uuids
+        in: query
+        description: List of rfps uuids to delete
+        required: true
+        schema:
+          type: string
+          default: UUID_1,UUID_2
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: 'null'
+              schema: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - RFPs
+  /v1/rfps/send:
+    post:
+      summary: Send RFP
+      description: ''
+      operationId: send-answer-1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - uuids
+              properties:
+                uuids:
+                  type: array
+                  description: The uuids of the rfps to send
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"success\": true\n}"
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                    default: true
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --request POST \\\n     --url https://apis.supplierxm.salsify.com/rfp/public/v1/rfps/send \\\n     --header 'Accept: application/json' \\\n     --header 'Authorization: Bearer SALSIFY_TOKEN' \\\n     --header 'Content-Type: application/json' \\\n     --data '\n        {\n          \"uuids\": [\"UNIQUE-ID-RFP\"]\n        }'"
+        samples-languages:
+        - curl
+      tags:
+      - RFPs
+components:
+  securitySchemes:
+    sec0:
+      type: apiKey
+      in: header
+      x-default: SALSIFY_TOKEN
+      name: Authorization
+      x-bearer-format: bearer
+x-readme-fauxas: true
+x-provenance:
+  method: searched
+  source: https://docs.supplierxm.salsify.com/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://docs.supplierxm.salsify.com/reference/create-bu.md
+  - https://docs.supplierxm.salsify.com/reference/create-event.md
+  - https://docs.supplierxm.salsify.com/reference/create-rfp.md
+  - https://docs.supplierxm.salsify.com/reference/create-webhook.md
+  - https://docs.supplierxm.salsify.com/reference/decline-rfp.md
+  - https://docs.supplierxm.salsify.com/reference/delete-bu.md
+  - https://docs.supplierxm.salsify.com/reference/delete-event.md
+  - https://docs.supplierxm.salsify.com/reference/delete-rfp.md
+  - https://docs.supplierxm.salsify.com/reference/delete-webhook.md
+  - https://docs.supplierxm.salsify.com/reference/list-answer-retailer.md
+  - https://docs.supplierxm.salsify.com/reference/list-bu.md
+  - https://docs.supplierxm.salsify.com/reference/list-event-retailer.md
+  - https://docs.supplierxm.salsify.com/reference/list-rfp.md
+  - https://docs.supplierxm.salsify.com/reference/list-webhook-event.md
+  - https://docs.supplierxm.salsify.com/reference/list-webhook.md
+  - https://docs.supplierxm.salsify.com/reference/send-answer-1.md
+  - https://docs.supplierxm.salsify.com/reference/unbreak-webhook.md
+  - https://docs.supplierxm.salsify.com/reference/update-bu.md
+  - https://docs.supplierxm.salsify.com/reference/update-event.md
+  - https://docs.supplierxm.salsify.com/reference/update-rfp.md
+  - https://docs.supplierxm.salsify.com/reference/update-webhook.md
+  merge:
+    pages: 21
+    deduped: 20
+    conflicts_kept_first: 0
