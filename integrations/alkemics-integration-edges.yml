@@ -6,9 +6,16 @@ source:
 - https://composio.dev/toolkits/alkemics
 - https://monid.ai/tools/alkemics
 checked:
+- https://api.nuget.org/v3
 - https://composio.dev/toolkits/alkemics
+- https://crates.io/api/v1
 - https://monid.ai/tools/alkemics
 - https://n8n.io/integrations/alkemics/
+- https://proxy.golang.org
+- https://pypi.org/pypi
+- https://registry.npmjs.org
+- https://repo1.maven.org/maven2
+- https://rubygems.org/api/v1
 - https://storage.googleapis.com/tcfac/additional-consent-providers.csv
 - https://zapier.com/apps/alkemics/integrations
 summary: null
@@ -37,4 +44,73 @@ edges:
     detected: '2026-10-14'
   detected_by: sweep-adtech.py
   detected: '2026-10-14'
+- partner_name: Go module proxy
+  partner: null
+  partner_match: null
+  type: register
+  direction: provider-built
+  category: official SDK (Go)
+  evidence: https://pkg.go.dev/github.com/alkemics/goflow
+  channel: package-registry
+  relationship: distribution-channel
+  contract_reference:
+    register: Go module proxy (public registry JSON)
+    spec_file: null
+    language: Go
+    packages:
+    - name: github.com/alkemics/goflow
+      version: v0.3.2
+      released: '2025-04-30'
+      released_field: Time
+      lapsed: false
+      page: https://pkg.go.dev/github.com/alkemics/goflow
+      repo_leg: github-org:alkemics
+      publisher_leg: org:alkemics
+      matched_by: github-org
+    current: true
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  detected_by: sweep-official-sdks.py
+  first_seen: '2026-10-18'
+- partner_name: npm registry
+  partner: npm
+  partner_match: register
+  type: register
+  direction: provider-built
+  category: official SDK (JavaScript/TypeScript)
+  evidence: https://www.npmjs.com/package/cancelable-promise
+  channel: package-registry
+  relationship: distribution-channel
+  contract_reference:
+    register: npm registry (public registry JSON)
+    spec_file: null
+    language: JavaScript/TypeScript
+    packages:
+    - name: cancelable-promise
+      version: 4.3.1
+      released: '2022-10-14'
+      released_field: modified
+      lapsed: true
+      page: https://www.npmjs.com/package/cancelable-promise
+      repo_leg: github-org:alkemics
+      publisher_leg: email:alkemics.com
+      matched_by: domain
+    - name: cauliflower
+      version: 0.1.4
+      released: '2022-06-13'
+      released_field: modified
+      lapsed: true
+      page: https://www.npmjs.com/package/cauliflower
+      repo_leg: github-org:alkemics
+      publisher_leg: email:alkemics.com
+      matched_by: domain
+    current: false
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  detected_by: sweep-official-sdks.py
+  first_seen: '2026-10-18'
 templates: []
